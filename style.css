@@ -1506,22 +1506,22 @@ body[data-mode="classic"] .interactive-only-btn {
 /* ── XP / Level HUD — Fixed Corner Card (Top-Right, below navbar) ── */
 #xp-hud {
     position: fixed !important;
-    top: 76px !important;         /* sits right below the 70px navbar with 6px gap */
-    right: 18px !important;
-    z-index: 500 !important;      /* below navbar (z-index: 1000) so it never covers it */
-    background: rgba(8, 14, 28, 0.88);
+    top: 95px !important;         /* navbar top(20px) + height(~56px) + gap(19px) */
+    right: 6% !important;         /* aligned with navbar right edge (navbar is 90% wide, centered) */
+    z-index: 999 !important;
+    background: rgba(8, 14, 28, 0.92);
     border: 1px solid var(--primary-color);
     border-radius: 14px;
     padding: 0.55rem 0.85rem 0.6rem;
     width: 160px;
     backdrop-filter: blur(16px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.55), 0 0 12px rgba(56,189,248,0.12);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.55), 0 0 12px rgba(56,189,248,0.15);
     display: flex !important;
     flex-direction: column;
     gap: 0.25rem;
     font-size: 0.8rem;
     font-family: var(--font-code);
-    pointer-events: none;         /* doesn't block clicks on underlying content */
+    pointer-events: none;
     transition: opacity 0.3s ease;
 }
 .hud-row {
