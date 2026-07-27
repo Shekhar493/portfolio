@@ -1,4 +1,12 @@
-// ===== Chandra Shekhar Yadav - Interactive Portfolio Script =====
+// ===== Imports for Core System & UI =====
+import PortfolioManager from './src/core/portfolioManager.js';
+import EventBus from './src/core/eventBus.js';
+import SaveManager from './src/core/saveManager.js';
+import SoundManager from './src/core/soundManager.js';
+import Analytics from './src/core/analytics.js';
+import Toast from './src/ui/toast.js';
+import HUD from './src/ui/hud.js';
+import Progress from './src/ui/progress.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     initParticleCanvas();
@@ -13,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initNavigation();
     initCursorFollower();
+    initInteractiveSystem();
 });
 
 // ===== 1. Interactive Background Particle Canvas =====
@@ -219,6 +228,11 @@ function initTerminal() {
   - <span class="highlight">theme [violet|matrix|cyberpunk|default]</span> : Switch terminal/portfolio theme<br>
   - <span class="highlight">clear</span> : Clear terminal output<br>
   - <span class="highlight">repo</span> : View GitHub repository link<br>
+  - <span class="highlight">achievements</span> : View your unlocked achievements<br>
+  - <span class="highlight">xp</span> : View your XP & level progression<br>
+  - <span class="highlight">analytics</span> : View privacy-safe interaction stats<br>
+  - <span class="highlight">mode [classic|interactive]</span> : Switch portfolio mode<br>
+  - <span class="highlight">sound [on|off]</span> : Toggle audio effects<br>
   - <span class="highlight">whoami</span> : Display current session visitor info`,
         sonexa: () => `<strong>Sonexa — AI Live Dubbing Platform</strong><br>
   - Core Stack: FastAPI, WebSockets, Async Python, Chrome Extension, React<br>
@@ -240,11 +254,28 @@ function initTerminal() {
   3. Mapping Tomorrow — Pokhara Disaster & Risk Dashboard [Streamlit / OSM]<br>
   4. The Last Minute Saver — Hackfest x Google for Developers Tool<br>
   5. Spell Bee — Interactive Word Puzzle Game [Python]<br>
-  6. Interactive Portfolio [HTML / CSS / JS / Vite]`,
+  6. Applied Machine Learning Suite [Supervised/Unsupervised Models]`,
         contact: () => `Contact Info:<br>
   - Email: <a href="mailto:chandrashekhary866@gmail.com" style="color:var(--primary-color)">chandrashekhary866@gmail.com</a><br>
   - LinkedIn: <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" style="color:var(--primary-color)">Chandra Shekhar Yadav</a><br>
   - GitHub: <a href="https://github.com/Shekhar493" target="_blank" style="color:var(--primary-color)">github.com/Shekhar493</a>`,
+        achievements: () => {
+            const st = PortfolioManager.getState();
+            return `🏆 Unlocked ${st.achievements.length}/${st.totalAchievements} Achievements. Type 'xp' for level details.`;
+        },
+        xp: () => {
+            const st = PortfolioManager.getState();
+            return `${st.levelIcon} Level ${st.level} (${st.levelTitle}) · Total XP: ${st.xp}`;
+        },
+        level: () => {
+            const st = PortfolioManager.getState();
+            return `${st.levelIcon} Level ${st.level}: ${st.levelTitle} · XP: ${st.xp}`;
+        },
+        konami: () => {
+            EventBus.emit('achievement:unlock', { id: 'hidden_cmd' });
+            return `🕵️ Secret command found! +30 XP awarded!`;
+        },
+        analytics: () => Analytics.getSummary(),
         whoami: () => `guest@chandra-shekhar-portfolio [Permission: Visitor]`,
         repo: () => `GitHub Repository: <a href="https://github.com/Shekhar493/portfolio" target="_blank" style="color:var(--primary-color)">https://github.com/Shekhar493/portfolio</a>`,
         sudo: () => `<span class="warning">Nice try! Permission denied: User is not in the sudoers file. This incident will be reported.</span>`,
@@ -739,24 +770,71 @@ function initCursorFollower() {
     }
 }
 
-// ===== Utility Toast Notification System =====
-function showToast(msg, type = 'info') {
-    const container = document.getElementById('toast-container');
-    if (!container) return;
+// ===== Interactive System Initialization =====
+function initInteractiveSystem() {
+    Toast.init();
+    HUD.init();
+    Progress.init();
+    Analytics.init();
+    PortfolioManager.init();
 
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    const icon = type === 'success' ? 'fa-check-circle' : type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-    toast.innerHTML = `<i class="fas ${icon}" style="color:var(--primary-color)"></i> <span>${msg}</span>`;
+    // Mode Toggle Checkbox
+    const modeCheckbox = document.getElementById('mode-toggle-checkbox');
+    if (modeCheckbox) {
+        const initialMode = PortfolioManager.getState().mode;
+        modeCheckbox.checked = (initialMode === 'interactive');
+        modeCheckbox.addEventListener('change', () => {
+            const mode = modeCheckbox.checked ? 'interactive' : 'classic';
+            PortfolioManager.setMode(mode);
+            showToast(`Switched to ${mode.toUpperCase()} mode!`);
+        });
+    }
 
-    container.appendChild(toast);
+    // Sound Toggle Button
+    const soundBtn = document.getElementById('sound-toggle-btn');
+    const soundIcon = document.getElementById('sound-icon');
+    if (soundBtn && soundIcon) {
+        const updateSoundUI = (on) => {
+            soundIcon.className = on ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+            soundBtn.style.color = on ? 'var(--primary-color)' : '#cbd5e1';
+        };
+        updateSoundUI(SaveManager.get('sound'));
+        soundBtn.addEventListener('click', () => {
+            const current = SaveManager.get('sound');
+            EventBus.emit('sound:toggle', { on: !current });
+            updateSoundUI(!current);
+            showToast(`Sound ${!current ? 'Enabled 🔊' : 'Disabled 🔇'}`);
+        });
+    }
 
-    setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateX(100%)';
-        toast.style.transition = 'all 0.3s ease';
-        setTimeout(() => toast.remove(), 300);
-    }, 3500);
+    // Achievements Button
+    const achBtn = document.getElementById('achievements-modal-btn');
+    if (achBtn) {
+        achBtn.addEventListener('click', () => {
+            const achEl = document.getElementById('achievements');
+            if (achEl) achEl.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    // Challenge Me Button
+    const challengeBtn = document.getElementById('challenge-me-btn');
+    if (challengeBtn) {
+        challengeBtn.addEventListener('click', () => {
+            EventBus.emit('challenge:random');
+        });
+    }
+
+    // GitHub Logo 5-click Easter Egg
+    const githubLogos = document.querySelectorAll('a[href*="github.com"]');
+    githubLogos.forEach(logo => {
+        logo.addEventListener('click', () => {
+            EventBus.emit('github:click');
+        });
+    });
+
+    // Initial Progress Render
+    Progress.render(PortfolioManager.getState());
+    HUD.update(PortfolioManager.getState());
 }
 
 function escapeHtml(str) {

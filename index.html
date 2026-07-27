@@ -29,6 +29,23 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="nav-actions">
+            <!-- Sound Toggle Button -->
+            <button class="nav-icon-btn" id="sound-toggle-btn" title="Toggle Sound" aria-label="Toggle Sound">
+                <i class="fas fa-volume-mute" id="sound-icon"></i>
+            </button>
+            <!-- Achievements Drawer Button -->
+            <button class="nav-icon-btn" id="achievements-modal-btn" title="View Achievements" aria-label="View Achievements">
+                <i class="fas fa-trophy"></i>
+            </button>
+            <!-- Mode Toggle Switch -->
+            <div class="mode-toggle-wrapper" title="Switch Mode">
+                <span class="mode-label">💼 Classic</span>
+                <label class="switch">
+                    <input type="checkbox" id="mode-toggle-checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <span class="mode-label">🎮 Interactive</span>
+            </div>
             <button class="cmd-k-btn" id="cmd-k-trigger" title="Quick Search (Ctrl+K)">
                 <i class="fas fa-search"></i>
                 <span class="cmd-k-badge">⌘K</span>
@@ -73,6 +90,8 @@
                 <div class="hero-btns reveal">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
                     <a href="#terminal" class="btn btn-secondary"><i class="fas fa-terminal"></i> Open Terminal</a>
+                    <button id="challenge-me-btn" class="btn btn-secondary interactive-only-btn"><i class="fas fa-dice"></i> Challenge Me</button>
+                    <a href="world.html" class="btn btn-secondary interactive-only-btn"><i class="fas fa-city"></i> Explore World</a>
                 </div>
                 <div class="hero-socials reveal">
                     <a href="https://www.facebook.com/share/1ABnJLtE1j/" target="_blank" title="Facebook"><i
@@ -224,6 +243,71 @@
             </div>
         </section>
 
+        <!-- Debug Challenge Section (Interactive Mode) -->
+        <section id="debug-challenge" class="section game-section">
+            <h2 class="section-title">🛠️ Debug <span>The Code</span></h2>
+            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Find the bug line before the countdown timer expires!</p>
+
+            <div class="dc-container glass-card">
+                <!-- Setup Screen -->
+                <div id="dc-setup" class="dc-screen">
+                    <div class="dc-options-row">
+                        <div class="dc-option-group">
+                            <span class="dc-label">Category:</span>
+                            <div class="dc-btn-group">
+                                <button class="dc-category-btn active" data-category="all">All</button>
+                                <button class="dc-category-btn" data-category="Python">Python</button>
+                                <button class="dc-category-btn" data-category="JavaScript">JS</button>
+                                <button class="dc-category-btn" data-category="React">React</button>
+                                <button class="dc-category-btn" data-category="FastAPI">FastAPI</button>
+                                <button class="dc-category-btn" data-category="SQL">SQL</button>
+                                <button class="dc-category-btn" data-category="Git">Git</button>
+                            </div>
+                        </div>
+                        <div class="dc-option-group">
+                            <span class="dc-label">Difficulty:</span>
+                            <div class="dc-btn-group">
+                                <button class="dc-difficulty-btn active" data-difficulty="all">All</button>
+                                <button class="dc-difficulty-btn" data-difficulty="easy">Easy</button>
+                                <button class="dc-difficulty-btn" data-difficulty="medium">Medium</button>
+                                <button class="dc-difficulty-btn" data-difficulty="hard">Hard</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align:center; margin-top: 2rem;">
+                        <button id="dc-start-btn" class="btn btn-primary"><i class="fas fa-play"></i> Start Challenge</button>
+                    </div>
+                </div>
+
+                <!-- Active Game Screen -->
+                <div id="dc-game" class="dc-screen dc-hidden">
+                    <div class="dc-header">
+                        <div class="dc-meta">
+                            <span id="dc-lang" class="dc-badge">Python</span>
+                            <span id="dc-difficulty-badge" class="dc-badge dc-badge-easy">Easy</span>
+                            <span id="dc-streak" class="dc-streak-text">🔥 Streak: 0</span>
+                        </div>
+                        <div class="dc-timer-box">
+                            <svg class="dc-timer-svg" width="60" height="60">
+                                <circle cx="30" cy="30" r="28" class="dc-timer-bg"></circle>
+                                <circle id="dc-timer-ring" cx="30" cy="30" r="28" class="dc-timer-circle"></circle>
+                            </svg>
+                            <span id="dc-timer" class="dc-timer">30</span>
+                        </div>
+                    </div>
+
+                    <div id="dc-code" class="dc-code-block" role="listbox" aria-label="Code lines. Click or press enter on the bug line."></div>
+
+                    <div id="dc-feedback" class="dc-feedback" style="display:none;"></div>
+
+                    <div class="dc-actions">
+                        <button id="dc-next-btn" class="btn btn-primary" style="display:none;"><i class="fas fa-arrow-right"></i> Next Question</button>
+                        <button id="dc-reset-btn" class="btn btn-secondary"><i class="fas fa-redo"></i> Back to Menu</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Projects Section -->
         <section id="projects" class="projects section">
             <h2 class="section-title">Featured <span>Projects</span></h2>
@@ -349,6 +433,9 @@
         <section id="achievements" class="section" style="padding: 5rem 2rem;">
             <h2 class="section-title">Key <span>Achievements</span></h2>
             <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 3rem;">Milestones built through hands-on projects and real-world problem solving.</p>
+            
+            <!-- Explorer Progress Panel -->
+            <div id="explorer-progress" style="max-width: 1100px; margin: 0 auto 3rem auto;"></div>
             <div class="achievements-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; max-width:1100px; margin:0 auto;">
                 <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
                     <div style="font-size:2rem; margin-bottom:1rem;">🤖</div>
@@ -379,6 +466,37 @@
                     <div style="font-size:2rem; margin-bottom:1rem;">🧩</div>
                     <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Scalable Monorepo Architecture</h4>
                     <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Designed modular monorepo backends with pluggable provider abstractions covering ASR, translation, and TTS services.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Snake Section (Interactive Mode) -->
+        <section id="tech-snake" class="section game-section">
+            <h2 class="section-title">🐍 Tech <span>Snake</span></h2>
+            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Guide the snake to collect technology tokens & unlock project details!</p>
+
+            <div class="snake-container glass-card">
+                <div class="snake-main">
+                    <div class="snake-header-bar">
+                        <span id="snake-score" class="snake-score-label">Score: 0</span>
+                        <span id="snake-highscore" class="snake-score-label">Best: 0</span>
+                        <div class="snake-controls-btns">
+                            <button id="snake-play-btn" class="btn btn-primary btn-sm">▶ Play</button>
+                            <button id="snake-restart-btn" class="btn btn-secondary btn-sm">↺ Restart</button>
+                        </div>
+                    </div>
+                    <div class="snake-canvas-wrapper">
+                        <canvas id="snake-canvas"></canvas>
+                        <div id="snake-popup" class="snake-tech-popup"></div>
+                    </div>
+                    <div class="snake-controls-hint">
+                        <span>Controls: Arrow Keys or W A S D</span>
+                    </div>
+                </div>
+
+                <div class="snake-sidebar">
+                    <h3 class="snake-sidebar-title">Collected Technologies</h3>
+                    <div id="snake-tech-list" class="snake-tech-list"></div>
                 </div>
             </div>
         </section>
