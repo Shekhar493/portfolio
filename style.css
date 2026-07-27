@@ -1503,38 +1503,67 @@ body[data-mode="classic"] .interactive-only-btn {
     display: none !important;
 }
 
-/* ── XP HUD Overlay (Embedded Navbar Pill) ── */
+/* ── XP / Level HUD — Fixed Corner Card (Top-Right, below navbar) ── */
 #xp-hud {
-    position: static !important;
+    position: fixed !important;
+    top: 76px !important;         /* sits right below the 70px navbar with 6px gap */
+    right: 18px !important;
+    z-index: 500 !important;      /* below navbar (z-index: 1000) so it never covers it */
+    background: rgba(8, 14, 28, 0.88);
+    border: 1px solid var(--primary-color);
+    border-radius: 14px;
+    padding: 0.55rem 0.85rem 0.6rem;
+    width: 160px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.55), 0 0 12px rgba(56,189,248,0.12);
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    font-family: var(--font-code);
+    pointer-events: none;         /* doesn't block clicks on underlying content */
+    transition: opacity 0.3s ease;
+}
+.hud-row {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    background: rgba(15, 23, 42, 0.75);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 0.35rem 0.75rem;
-    font-size: 0.8rem;
-    backdrop-filter: blur(10px);
-    transition: var(--transition);
-    width: auto !important;
-    box-shadow: none !important;
-    margin: 0;
+    gap: 0.35rem;
 }
-#xp-hud:hover {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 10px var(--accent-glow) !important;
+.hud-icon { font-size: 1rem; line-height: 1; }
+.hud-level-num {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.88rem;
+    font-family: var(--font-heading);
 }
-.hud-level { display: flex; align-items: center; gap: 0.3rem; font-weight: 700; color: #fff; font-family: var(--font-heading); }
-.hud-level-num { color: var(--primary-color); font-size: 0.85rem; }
-.hud-xp-bar {
-    width: 45px;
-    height: 5px;
-    background: rgba(255,255,255,0.12);
-    border-radius: 3px;
+.hud-title-text {
+    color: #94a3b8;
+    font-size: 0.68rem;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
 }
-.hud-xp-fill { height: 100%; background: var(--primary-color); transition: width 0.4s ease; }
-.hud-xp-text { color: #94a3b8; font-size: 0.7rem; font-family: var(--font-code); white-space: nowrap; }
+.hud-xp-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 0.1rem;
+}
+.hud-xp-fill {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 6px var(--primary-color);
+}
+.hud-xp-text {
+    color: #64748b;
+    font-size: 0.67rem;
+    text-align: right;
+    margin-top: 0.05rem;
+}
 
 @media (max-width: 768px) {
     #xp-hud {
