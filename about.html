@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About & Skills | Chandra Shekhar Yadav | Developer Portfolio</title>
+    <title>About &amp; Skills | Chandra Shekhar Yadav</title>
+    <meta name="description" content="About Chandra Shekhar Yadav — engineering story, technical skills, and proficiency in AI, backend, GIS, and frontend development.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +17,6 @@
     <canvas id="bg-canvas"></canvas>
     <div class="cursor-follower"></div>
 
-    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">CS<span>Y</span></div>
         <ul class="nav-links">
@@ -31,17 +31,6 @@
             <button class="nav-icon-btn" id="sound-toggle-btn" title="Toggle Sound" aria-label="Toggle Sound">
                 <i class="fas fa-volume-mute" id="sound-icon"></i>
             </button>
-            <button class="nav-icon-btn" id="achievements-modal-btn" title="View Achievements" aria-label="View Achievements">
-                <i class="fas fa-trophy"></i>
-            </button>
-            <div class="mode-toggle-wrapper" title="Switch Mode">
-                <span class="mode-label">💼 Classic</span>
-                <label class="switch">
-                    <input type="checkbox" id="mode-toggle-checkbox">
-                    <span class="slider round"></span>
-                </label>
-                <span class="mode-label">🎮 Interactive</span>
-            </div>
             <button class="cmd-k-btn" id="cmd-k-trigger" title="Quick Search (Ctrl+K)">
                 <i class="fas fa-search"></i>
                 <span class="cmd-k-badge">⌘K</span>
@@ -51,104 +40,184 @@
                     <i class="fas fa-palette"></i>
                 </button>
                 <div class="theme-menu" id="theme-menu">
-                    <button class="theme-option" data-theme="default">
-                        <i class="fas fa-fire" style="color: #38bdf8;"></i> Cosmic Cyan
-                    </button>
-                    <button class="theme-option" data-theme="violet">
-                        <i class="fas fa-bolt" style="color: #a855f7;"></i> Neon Violet
-                    </button>
-                    <button class="theme-option" data-theme="matrix">
-                        <i class="fas fa-terminal" style="color: #10b981;"></i> Matrix Green
-                    </button>
-                    <button class="theme-option" data-theme="cyberpunk">
-                        <i class="fas fa-vr-cardboard" style="color: #00f0ff;"></i> Cyberpunk
-                    </button>
+                    <button class="theme-option" data-theme="default"><i class="fas fa-fire" style="color:#38bdf8;"></i> Cosmic Cyan</button>
+                    <button class="theme-option" data-theme="violet"><i class="fas fa-bolt" style="color:#a855f7;"></i> Neon Violet</button>
+                    <button class="theme-option" data-theme="matrix"><i class="fas fa-terminal" style="color:#10b981;"></i> Matrix Green</button>
+                    <button class="theme-option" data-theme="cyberpunk"><i class="fas fa-vr-cardboard" style="color:#00f0ff;"></i> Cyberpunk</button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main About Content -->
-    <main style="padding-top: 100px;">
-        <section class="about section">
+    <main style="padding-top: 90px;">
+
+        <!-- ── About Section ── -->
+        <section id="about" class="about section">
             <h2 class="section-title">About <span>Me</span></h2>
-            <div class="about-container glass-card" style="max-width: 1000px; margin: 0 auto 3rem auto; padding: 2.5rem; border-radius: 1.25rem;">
+            <div class="about-container">
                 <div class="about-text">
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: #e2e8f0; margin-bottom: 1.5rem;">
-                        I'm <strong>Chandra Shekhar Yadav</strong>, a passionate software developer building intelligent real-time applications, AI systems, and geospatial visualization platforms.
+                    <p style="font-size: 1.15rem; line-height: 1.8; color: #f1f5f9; margin-bottom: 1.2rem;">
+                        I'm a software developer passionate about building intelligent systems that solve real-world problems. My interests span <strong>Artificial Intelligence</strong>, <strong>Full-Stack Web Development</strong>, <strong>Computer Vision</strong>, <strong>Accessibility Technologies</strong>, and <strong>Geospatial Applications</strong>.
                     </p>
-                    <p style="font-size: 1rem; line-height: 1.8; color: #94a3b8; margin-bottom: 1.5rem;">
-                        My engineering work focuses on low-latency streaming architectures, computer vision for accessibility, modular monorepos, and interactive web application design.
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 1.2rem;">
+                        I enjoy designing scalable architectures, developing real-time applications (WebSockets, streaming ASR/TTS), and transforming innovative ideas into practical products. With a strong builder mindset, I prefer long-term, high-impact projects over quick tutorials.
                     </p>
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
-                        <a href="contact.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Get In Touch</a>
-                        <a href="https://github.com/Shekhar493" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> GitHub Profile</a>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: #94a3b8;">
+                        I'm continuously expanding my skills through hands-on projects, open-source development, and hackathons, with the ultimate goal of creating technology that has meaningful, lasting impact.
+                    </p>
+                    <div class="hero-btns reveal" style="margin-top: 2rem;">
+                        <a href="projects.html" class="btn btn-primary"><i class="fas fa-layer-group"></i> View Projects</a>
+                        <a href="contact.html" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Me</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Technical Skills Section -->
-        <section class="skills section">
-            <h2 class="section-title">Technical <span>Proficiency</span></h2>
-            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2.5rem;">Domain expertise and core engineering tools</p>
-
-            <div class="skills-grid" style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; padding: 0 1.5rem;">
-                <div class="skill-card glass-card">
-                    <div class="skill-icon"><i class="fas fa-brain" style="color:var(--primary-color);"></i></div>
-                    <h3>AI & Computer Vision</h3>
-                    <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1rem;">OpenCV, MediaPipe 3D Landmark Tracking, Whisper/Deepgram ASR, TTS & Speech Synthesis</p>
-                    <div class="skill-bar"><div class="skill-bar-fill" data-progress="92%"></div></div>
+        <!-- ── Skills Section ── -->
+        <section id="skills" class="skills section">
+            <h2 class="section-title">Technical <span>Expertise</span></h2>
+            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Core domains, frameworks, and engineering tools.</p>
+            <div class="skills-grid">
+                <div class="skill-card" data-skill="ai">
+                    <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                    <h3>AI &amp; Computer Vision</h3>
+                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">OpenCV, MediaPipe, Speech ASR/TTS, Translation Pipelines</p>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill" data-progress="92%"></div>
+                    </div>
+                    <div class="skill-percentage">92% Proficiency</div>
                 </div>
-
-                <div class="skill-card glass-card">
-                    <div class="skill-icon"><i class="fas fa-server" style="color:var(--primary-color);"></i></div>
-                    <h3>Backend & Real-Time</h3>
-                    <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1rem;">Python 3, FastAPI, WebSockets Async Streaming, REST API Provider Abstractions</p>
-                    <div class="skill-bar"><div class="skill-bar-fill" data-progress="94%"></div></div>
+                <div class="skill-card" data-skill="backend">
+                    <div class="skill-icon"><i class="fas fa-server"></i></div>
+                    <h3>Backend &amp; Real-Time</h3>
+                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">Python, FastAPI, WebSockets, Async Pipelines, REST APIs</p>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill" data-progress="94%"></div>
+                    </div>
+                    <div class="skill-percentage">94% Proficiency</div>
                 </div>
-
-                <div class="skill-card glass-card">
-                    <div class="skill-icon"><i class="fas fa-laptop-code" style="color:var(--primary-color);"></i></div>
-                    <h3>Frontend & Extensions</h3>
-                    <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1rem;">JavaScript ES6+, React, TypeScript, Chrome Extensions Manifest V3, HTML5/CSS3</p>
-                    <div class="skill-bar"><div class="skill-bar-fill" data-progress="90%"></div></div>
+                <div class="skill-card" data-skill="frontend">
+                    <div class="skill-icon"><i class="fab fa-react"></i></div>
+                    <h3>Frontend &amp; Extensions</h3>
+                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">React, TypeScript, JS ES6+, Chrome Extensions, Vite</p>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill" data-progress="90%"></div>
+                    </div>
+                    <div class="skill-percentage">90% Proficiency</div>
                 </div>
-
-                <div class="skill-card glass-card">
-                    <div class="skill-icon"><i class="fas fa-globe-asia" style="color:var(--primary-color);"></i></div>
-                    <h3>GIS & Spatial Analytics</h3>
-                    <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1rem;">GeoPandas, OpenStreetMap APIs, Folium, Disaster Hazard Analysis, Streamlit</p>
-                    <div class="skill-bar"><div class="skill-bar-fill" data-progress="88%"></div></div>
+                <div class="skill-card" data-skill="gis">
+                    <div class="skill-icon"><i class="fas fa-globe-americas"></i></div>
+                    <h3>GIS &amp; Spatial Tech</h3>
+                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">GeoPandas, OSMnx, Folium, PyDeck, OpenStreetMap, PostGIS</p>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill" data-progress="88%"></div>
+                    </div>
+                    <div class="skill-percentage">88% Proficiency</div>
                 </div>
-
-                <div class="skill-card glass-card">
-                    <div class="skill-icon"><i class="fas fa-microchip" style="color:var(--primary-color);"></i></div>
-                    <h3>Systems & Automation</h3>
-                    <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1rem;">C Programming, Pytest Test Suites, Git Monorepos, System Shell Automation</p>
-                    <div class="skill-bar"><div class="skill-bar-fill" data-progress="91%"></div></div>
+                <div class="skill-card" data-skill="engineering">
+                    <div class="skill-icon"><i class="fas fa-cubes"></i></div>
+                    <h3>Software Engineering</h3>
+                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">Monorepo Architecture, Modular Design, C, Git, Pytest, Linux/macOS</p>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill" data-progress="91%"></div>
+                    </div>
+                    <div class="skill-percentage">91% Proficiency</div>
                 </div>
             </div>
         </section>
+
+        <!-- ── Technologies Tag Cloud ── -->
+        <section class="section" style="padding: 5rem 2rem;">
+            <h2 class="section-title">Technologies &amp; <span>Tools</span></h2>
+            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 3rem;">Every tool I use to build real-world systems.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; max-width:900px; margin:0 auto 4rem;">
+                <span class="tech-pill"><i class="fab fa-python"></i> Python</span>
+                <span class="tech-pill"><i class="fab fa-js-square"></i> JavaScript</span>
+                <span class="tech-pill"><i class="fab fa-react"></i> React</span>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" style="width:14px;height:14px;vertical-align:middle;"> TypeScript</span>
+                <span class="tech-pill"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="tech-pill"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="tech-pill"><i class="fas fa-code"></i> C</span>
+                <span class="tech-pill"><i class="fas fa-server"></i> FastAPI</span>
+                <span class="tech-pill"><i class="fas fa-plug"></i> WebSockets</span>
+                <span class="tech-pill"><i class="fas fa-bolt"></i> Async Python</span>
+                <span class="tech-pill"><i class="fas fa-eye"></i> OpenCV</span>
+                <span class="tech-pill"><i class="fas fa-hand-paper"></i> MediaPipe</span>
+                <span class="tech-pill"><i class="fas fa-microphone"></i> Whisper / Deepgram</span>
+                <span class="tech-pill"><i class="fas fa-globe-americas"></i> GeoPandas</span>
+                <span class="tech-pill"><i class="fas fa-map"></i> OSMnx</span>
+                <span class="tech-pill"><i class="fas fa-map-marked-alt"></i> Folium</span>
+                <span class="tech-pill"><i class="fas fa-database"></i> PostGIS</span>
+                <span class="tech-pill"><i class="fab fa-chrome"></i> Chrome Extensions</span>
+                <span class="tech-pill"><i class="fab fa-git-alt"></i> Git / GitHub</span>
+                <span class="tech-pill"><i class="fas fa-vial"></i> Pytest</span>
+                <span class="tech-pill"><i class="fab fa-linux"></i> Linux / macOS</span>
+                <span class="tech-pill"><i class="fas fa-wind"></i> Vite</span>
+            </div>
+        </section>
+
+        <!-- ── Key Achievements ── -->
+        <section id="achievements" class="section" style="padding: 5rem 2rem;">
+            <h2 class="section-title">Key <span>Achievements</span></h2>
+            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 3rem;">Milestones built through hands-on projects and real-world problem solving.</p>
+            <div id="explorer-progress" style="max-width: 1100px; margin: 0 auto 3rem auto;"></div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; max-width:1100px; margin:0 auto;">
+                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div style="font-size:2rem; margin-bottom:1rem;">🤖</div>
+                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Built Multiple AI-Based Applications</h4>
+                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Developed AI pipelines for live dubbing (Sonexa), sign language detection (Sign2Sound), and applied machine learning models.</p>
+                </div>
+                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div style="font-size:2rem; margin-bottom:1rem;">⚡</div>
+                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Developed Real-Time WebSocket Systems</h4>
+                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Engineered low-latency WebSocket streaming backends and Chrome extension audio pipelines for real-time AI dubbing.</p>
+                </div>
+                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div style="font-size:2rem; margin-bottom:1rem;">🏆</div>
+                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Participated in Hackathons</h4>
+                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Built The Last Minute Saver during Hackfest x Google for Developers, competing under tight deadlines with real delivery.</p>
+                </div>
+                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div style="font-size:2rem; margin-bottom:1rem;">♿</div>
+                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Accessibility-Focused Technology</h4>
+                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Built Sign2Sound — a Computer Vision platform enabling people who use sign language to communicate through speech.</p>
+                </div>
+                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div style="font-size:2rem; margin-bottom:1rem;">🗺️</div>
+                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">GIS-Based Visualization Tools</h4>
+                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Built Mapping Tomorrow — a geospatial disaster risk &amp; circular economy resource dashboard for Pokhara, Nepal.</p>
+                </div>
+                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div style="font-size:2rem; margin-bottom:1rem;">🧩</div>
+                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Scalable Monorepo Architecture</h4>
+                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Designed modular monorepo backends with pluggable provider abstractions covering ASR, translation, and TTS services.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer style="text-align: center; padding: 3rem 1rem; margin-top: 4rem; border-top: 1px solid var(--glass-border); color: #64748b; font-size: 0.9rem;">
-        <p>© 2026 Chandra Shekhar Yadav · Built with Precision & Stellarium Space Engine</p>
+    <footer>
+        <div class="footer-socials">
+            <a href="https://github.com/Shekhar493" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2026 Chandra Shekhar Yadav. All rights reserved.</p>
     </footer>
 
-    <!-- Command Palette Modal -->
+    <button id="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
     <div class="cmd-palette-backdrop" id="cmd-palette">
-        <div class="cmd-palette-modal glass-card">
-            <div class="cmd-input-wrapper">
+        <div class="cmd-palette-container">
+            <div class="cmd-search-wrapper">
                 <i class="fas fa-search"></i>
-                <input type="text" id="cmd-input" placeholder="Type a command or search..." autocomplete="off">
-                <span class="cmd-esc-badge">ESC</span>
+                <input type="text" id="cmd-input" class="cmd-input" placeholder="Search pages, themes...">
             </div>
             <div class="cmd-results" id="cmd-results"></div>
         </div>
     </div>
-
+    <div class="toast-container" id="toast-container"></div>
     <script type="module" src="script.js"></script>
 </body>
+
 </html>

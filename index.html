@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chandra Shekhar Yadav | Interactive Developer Portfolio</title>
+    <title>Chandra Shekhar Yadav | Developer Portfolio</title>
+    <meta name="description" content="Software developer building AI systems, real-time WebSocket backends, computer vision tools, and geospatial applications.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -29,15 +28,12 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
         <div class="nav-actions">
-            <!-- Sound Toggle Button -->
             <button class="nav-icon-btn" id="sound-toggle-btn" title="Toggle Sound" aria-label="Toggle Sound">
                 <i class="fas fa-volume-mute" id="sound-icon"></i>
             </button>
-            <!-- Achievements Drawer Button -->
             <button class="nav-icon-btn" id="achievements-modal-btn" title="View Achievements" aria-label="View Achievements">
                 <i class="fas fa-trophy"></i>
             </button>
-            <!-- Mode Toggle Switch -->
             <div class="mode-toggle-wrapper" title="Switch Mode">
                 <span class="mode-label">💼 Classic</span>
                 <label class="switch">
@@ -56,7 +52,7 @@
                 </button>
                 <div class="theme-menu" id="theme-menu">
                     <button class="theme-option" data-theme="default">
-                        <i class="fas fa-fire" style="color: #ff3e3e;"></i> Cyber Red
+                        <i class="fas fa-fire" style="color: #38bdf8;"></i> Cosmic Cyan
                     </button>
                     <button class="theme-option" data-theme="violet">
                         <i class="fas fa-bolt" style="color: #a855f7;"></i> Neon Violet
@@ -69,16 +65,11 @@
                     </button>
                 </div>
             </div>
-            <div class="menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
     <main>
-        <!-- Hero Section -->
+        <!-- ── Hero Section ── -->
         <section id="home" class="hero">
             <div class="hero-content">
                 <h2 class="reveal">Hello, I'm</h2>
@@ -89,18 +80,15 @@
                 <p class="reveal-delay-2">Software developer building AI systems, real-time WebSocket backends, computer vision tools, and geospatial applications that solve real-world problems.</p>
                 <div class="hero-btns reveal">
                     <a href="projects.html" class="btn btn-primary"><i class="fas fa-layer-group"></i> View Projects</a>
-                    <a href="about.html" class="btn btn-secondary"><i class="fas fa-user"></i> About & Skills</a>
+                    <a href="about.html" class="btn btn-secondary"><i class="fas fa-user"></i> About &amp; Skills</a>
                     <a href="arcade.html" class="btn btn-secondary"><i class="fas fa-gamepad"></i> Play Arcade</a>
                     <a href="world.html" class="btn btn-secondary"><i class="fas fa-city"></i> Explore World</a>
-                    <a href="contact.html" class="btn btn-secondary"><i class="fas fa-terminal"></i> Terminal / Contact</a>
+                    <a href="contact.html" class="btn btn-secondary"><i class="fas fa-terminal"></i> Terminal</a>
                 </div>
                 <div class="hero-socials reveal">
-                    <a href="https://www.facebook.com/share/1ABnJLtE1j/" target="_blank" title="Facebook"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                        target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.instagram.com/s_hekhar?utm_source=qr&igsh=a2xnMnlla2p2ZHp3" target="_blank"
-                        title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1ABnJLtE1j/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/s_hekhar" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="https://github.com/Shekhar493" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
             </div>
@@ -113,7 +101,7 @@
             </div>
         </section>
 
-        <!-- Stats Counter Section -->
+        <!-- ── Stats Counter Section ── -->
         <section class="stats-section">
             <div class="stats-grid">
                 <div class="stat-card">
@@ -139,387 +127,47 @@
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="about section">
-            <h2 class="section-title">About <span>Me</span></h2>
-            <div class="about-container">
-                <div class="about-text">
-                    <p style="font-size: 1.15rem; line-height: 1.8; color: #f1f5f9; margin-bottom: 1.2rem;">
-                        I'm a software developer passionate about building intelligent systems that solve real-world problems. My interests span <strong>Artificial Intelligence</strong>, <strong>Full-Stack Web Development</strong>, <strong>Computer Vision</strong>, <strong>Accessibility Technologies</strong>, and <strong>Geospatial Applications</strong>.
-                    </p>
-                    <p style="font-size: 1.05rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 1.2rem;">
-                        I enjoy designing scalable architectures, developing real-time applications (WebSockets, streaming ASR/TTS), and transforming innovative ideas into practical products. With a strong builder mindset, I prefer long-term, high-impact projects over quick tutorials — whether building live AI dubbing systems or exploring urban resilience modeling.
-                    </p>
-                    <p style="font-size: 1.05rem; line-height: 1.7; color: #94a3b8;">
-                        I'm continuously expanding my skills through hands-on projects, open-source development, and hackathons, with the ultimate goal of creating technology that has meaningful, lasting impact.
-                    </p>
-                </div>
-            </div>
-        </section>
+        <!-- ── Quick Navigation Hub ── -->
+        <section style="padding: 5rem 2rem; max-width: 1100px; margin: 0 auto;">
+            <h2 class="section-title" style="text-align:center; margin-bottom: 1rem;">Explore the <span>Portfolio</span></h2>
+            <p style="text-align:center; color:#94a3b8; margin-bottom: 3rem; font-size: 1.05rem;">Navigate to any section — each on its own dedicated page.</p>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
 
-        <!-- Interactive Developer Terminal Section -->
-        <section id="terminal" class="terminal-section section">
-            <h2 class="section-title">Developer <span>Terminal</span></h2>
-            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Type real commands below or click preset buttons to explore my background interactively.</p>
-            <div class="terminal-box">
-                <div class="header terminal-header">
-                    <div class="terminal-dots">
-                        <span class="dot dot-red"></span>
-                        <span class="dot dot-yellow"></span>
-                        <span class="dot dot-green"></span>
-                    </div>
-                    <div class="terminal-title">shekhar@portfolio:~ (zsh)</div>
-                    <div class="terminal-presets-top">
-                        <button class="preset-chip" data-cmd="help">help</button>
-                        <button class="preset-chip" data-cmd="sonexa">sonexa</button>
-                        <button class="preset-chip" data-cmd="skills">skills</button>
-                        <button class="preset-chip" data-cmd="projects">projects</button>
-                        <button class="preset-chip" data-cmd="contact">contact</button>
-                        <button class="preset-chip" data-cmd="clear">clear</button>
-                    </div>
-                </div>
-                <div class="terminal-body" id="terminal-output">
-                    <div class="terminal-line info">Welcome to Chandra Shekhar Yadav's interactive shell! [v2.0]</div>
-                    <div class="terminal-line output">Type '<span class="highlight">help</span>' to see available commands or click quick presets above.</div>
-                </div>
-                <div style="padding: 0 1.5rem 1.2rem 1.5rem;">
-                    <form id="terminal-form" class="terminal-input-form">
-                        <span class="terminal-prompt-symbol">shekhar@portfolio:~$</span>
-                        <input type="text" id="terminal-input" class="terminal-input" placeholder="Type a command (e.g. sonexa, help, skills)..." autocomplete="off" spellcheck="false">
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="skills section">
-            <h2 class="section-title">Technical <span>Expertise</span></h2>
-            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Core domains, frameworks, and engineering tools.</p>
-            <div class="skills-grid">
-                <div class="skill-card" data-skill="ai">
-                    <div class="skill-icon"><i class="fas fa-brain"></i></div>
-                    <h3>AI & Computer Vision</h3>
-                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">OpenCV, MediaPipe, Speech ASR/TTS, Translation Pipelines</p>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar-fill" data-progress="92%"></div>
-                    </div>
-                    <div class="skill-percentage">92% Proficiency</div>
-                </div>
-                <div class="skill-card" data-skill="backend">
-                    <div class="skill-icon"><i class="fas fa-server"></i></div>
-                    <h3>Backend & Real-Time</h3>
-                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">Python, FastAPI, WebSockets, Async Pipelines, REST APIs</p>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar-fill" data-progress="94%"></div>
-                    </div>
-                    <div class="skill-percentage">94% Proficiency</div>
-                </div>
-                <div class="skill-card" data-skill="frontend">
-                    <div class="skill-icon"><i class="fab fa-react"></i></div>
-                    <h3>Frontend & Extensions</h3>
-                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">React, TypeScript, JS ES6+, Chrome Extensions, Vite, Tailwind</p>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar-fill" data-progress="90%"></div>
-                    </div>
-                    <div class="skill-percentage">90% Proficiency</div>
-                </div>
-                <div class="skill-card" data-skill="gis">
-                    <div class="skill-icon"><i class="fas fa-globe-americas"></i></div>
-                    <h3>GIS & Spatial Tech</h3>
-                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">GeoPandas, OSMnx, Folium, PyDeck, OpenStreetMap, PostGIS</p>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar-fill" data-progress="88%"></div>
-                    </div>
-                    <div class="skill-percentage">88% Proficiency</div>
-                </div>
-                <div class="skill-card" data-skill="engineering">
-                    <div class="skill-icon"><i class="fas fa-cubes"></i></div>
-                    <h3>Software Engineering</h3>
-                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">Monorepo Architecture, Modular Design, C, Git, Pytest, Linux/macOS</p>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar-fill" data-progress="91%"></div>
-                    </div>
-                    <div class="skill-percentage">91% Proficiency</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Debug Challenge Section (Interactive Mode) -->
-        <section id="debug-challenge" class="section game-section">
-            <h2 class="section-title">🛠️ Debug <span>The Code</span></h2>
-            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Find the bug line before the countdown timer expires!</p>
-
-            <div class="dc-container glass-card">
-                <!-- Setup Screen -->
-                <div id="dc-setup" class="dc-screen">
-                    <div class="dc-options-row">
-                        <div class="dc-option-group">
-                            <span class="dc-label">Category:</span>
-                            <div class="dc-btn-group">
-                                <button class="dc-category-btn active" data-category="all">All</button>
-                                <button class="dc-category-btn" data-category="Python">Python</button>
-                                <button class="dc-category-btn" data-category="JavaScript">JS</button>
-                                <button class="dc-category-btn" data-category="React">React</button>
-                                <button class="dc-category-btn" data-category="FastAPI">FastAPI</button>
-                                <button class="dc-category-btn" data-category="SQL">SQL</button>
-                                <button class="dc-category-btn" data-category="Git">Git</button>
-                            </div>
-                        </div>
-                        <div class="dc-option-group">
-                            <span class="dc-label">Difficulty:</span>
-                            <div class="dc-btn-group">
-                                <button class="dc-difficulty-btn active" data-difficulty="all">All</button>
-                                <button class="dc-difficulty-btn" data-difficulty="easy">Easy</button>
-                                <button class="dc-difficulty-btn" data-difficulty="medium">Medium</button>
-                                <button class="dc-difficulty-btn" data-difficulty="hard">Hard</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="text-align:center; margin-top: 2rem;">
-                        <button id="dc-start-btn" class="btn btn-primary"><i class="fas fa-play"></i> Start Challenge</button>
-                    </div>
-                </div>
-
-                <!-- Active Game Screen -->
-                <div id="dc-game" class="dc-screen dc-hidden">
-                    <div class="dc-header">
-                        <div class="dc-meta">
-                            <span id="dc-lang" class="dc-badge">Python</span>
-                            <span id="dc-difficulty-badge" class="dc-badge dc-badge-easy">Easy</span>
-                            <span id="dc-streak" class="dc-streak-text">🔥 Streak: 0</span>
-                        </div>
-                        <div class="dc-timer-box">
-                            <svg class="dc-timer-svg" width="60" height="60">
-                                <circle cx="30" cy="30" r="28" class="dc-timer-bg"></circle>
-                                <circle id="dc-timer-ring" cx="30" cy="30" r="28" class="dc-timer-circle"></circle>
-                            </svg>
-                            <span id="dc-timer" class="dc-timer">30</span>
-                        </div>
-                    </div>
-
-                    <div id="dc-code" class="dc-code-block" role="listbox" aria-label="Code lines. Click or press enter on the bug line."></div>
-
-                    <div id="dc-feedback" class="dc-feedback" style="display:none;"></div>
-
-                    <div class="dc-actions">
-                        <button id="dc-next-btn" class="btn btn-primary" style="display:none;"><i class="fas fa-arrow-right"></i> Next Question</button>
-                        <button id="dc-reset-btn" class="btn btn-secondary"><i class="fas fa-redo"></i> Back to Menu</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="projects section">
-            <h2 class="section-title">Featured <span>Projects</span></h2>
-            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Showcasing real-world AI, WebSockets, Accessibility, and GIS systems.</p>
-            <div class="projects-grid">
-                <div class="project-card" data-id="sonexa">
-                    <div class="project-image">
-                        <i class="fas fa-headphones-alt"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>Sonexa — AI Live Dubbing Platform</h3>
-                        <p>Real-time AI dubbing platform combining WebSocket streaming, Chrome extension, Whisper/Deepgram ASR, real-time translation pipeline, and synthetic AI voice generation.</p>
-                        <div class="project-tags">
-                            <span>FastAPI</span> <span>WebSockets</span> <span>Chrome Extension</span> <span>AI Dubbing</span> <span>React</span>
-                        </div>
-                        <button class="btn-text quick-view-btn" data-project="sonexa">Quick View <i class="fas fa-expand-alt"></i></button>
-                    </div>
-                </div>
-                <div class="project-card" data-id="sign2sound">
-                    <div class="project-image">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>Sign2Sound — Sign Language Accessibility</h3>
-                        <p>Computer Vision platform detecting sign language gestures in real time using MediaPipe and OpenCV, translating gestures to audible speech and Braille concepts.</p>
-                        <div class="project-tags">
-                            <span>MediaPipe</span> <span>OpenCV</span> <span>Computer Vision</span> <span>Accessibility</span> <span>Python</span>
-                        </div>
-                        <button class="btn-text quick-view-btn" data-project="sign2sound">Quick View <i class="fas fa-expand-alt"></i></button>
-                    </div>
-                </div>
-                <div class="project-card" data-id="mapping-tomorrow">
-                    <div class="project-image">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>Mapping Tomorrow: Risk & Resource Dashboard</h3>
-                        <p>Streamlit geospatial application visualizing circular economy resources and natural disaster vulnerability (floods, landslides) in Pokhara, Nepal using OpenStreetMap data.</p>
-                        <div class="project-tags">
-                            <span>Python</span> <span>Streamlit</span> <span>OSM</span> <span>GeoPandas</span> <span>Folium</span>
-                        </div>
-                        <button class="btn-text quick-view-btn" data-project="mapping-tomorrow">Quick View <i class="fas fa-expand-alt"></i></button>
-                    </div>
-                </div>
-                <div class="project-card" data-id="last-minute-saver">
-                    <div class="project-image">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>The Last Minute Saver</h3>
-                        <p>Web application built for Hackfest x Google for Developers — engineered for rapid emergency study prep and resource consolidation under exam deadline pressure.</p>
-                        <div class="project-tags">
-                            <span>JavaScript</span> <span>Google Developers</span> <span>Web Stack</span>
-                        </div>
-                        <button class="btn-text quick-view-btn" data-project="last-minute-saver">Quick View <i class="fas fa-expand-alt"></i></button>
-                    </div>
-                </div>
-                <div class="project-card" data-id="spell-bee">
-                    <div class="project-image">
-                        <i class="fas fa-spell-check"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>Spell Bee Word Game</h3>
-                        <p>An interactive word puzzle game testing spelling recall, vocabulary speed, and word recognition with real-time score tracking and interactive game mechanics.</p>
-                        <div class="project-tags">
-                            <span>Python</span> <span>Algorithms</span> <span>Word Game</span>
-                        </div>
-                        <button class="btn-text quick-view-btn" data-project="spell-bee">Quick View <i class="fas fa-expand-alt"></i></button>
-                    </div>
-                </div>
-                <div class="project-card" data-id="ml-cfe">
-                    <div class="project-image">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>Applied Machine Learning Suite</h3>
-                        <p>Hands-on ML projects covering supervised/unsupervised algorithms, exploratory data analysis, predictive modeling, and feature engineering.</p>
-                        <div class="project-tags">
-                            <span>Python</span> <span>Jupyter</span> <span>Scikit-Learn</span> <span>Pandas</span>
-                        </div>
-                        <button class="btn-text quick-view-btn" data-project="ml-cfe">Quick View <i class="fas fa-expand-alt"></i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="projects-view-all">
-                <a href="projects.html" class="btn btn-primary">
-                    <i class="fas fa-arrow-right"></i> View Full Projects Directory
+                <a href="about.html" class="glass-card" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:2.5rem 2rem; border-radius:1.25rem; border:1px solid var(--glass-border); text-decoration:none; color:inherit; transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 50px rgba(56,189,248,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div style="font-size:2.5rem; margin-bottom:1rem;">👤</div>
+                    <h3 style="font-family:var(--font-heading); color:#fff; margin-bottom:0.5rem;">About &amp; Skills</h3>
+                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.5;">Engineering story, philosophy, and proficiency bars.</p>
+                    <span style="color:var(--primary-color); font-size:0.85rem; margin-top:1rem; font-family:var(--font-code);">about.html →</span>
                 </a>
-            </div>
-        </section>
 
-        <!-- Technologies Tag Cloud Section -->
-        <section id="technologies" class="section" style="padding: 5rem 2rem;">
-            <h2 class="section-title">Technologies & <span>Tools</span></h2>
-            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 3rem;">Every tool I use to build real-world systems.</p>
-            <div class="tech-cloud" style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; max-width:900px; margin:0 auto 4rem;">
-                <span class="tech-pill"><i class="fab fa-python"></i> Python</span>
-                <span class="tech-pill"><i class="fab fa-js-square"></i> JavaScript</span>
-                <span class="tech-pill"><i class="fab fa-react"></i> React</span>
-                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" style="width:14px;height:14px;vertical-align:middle;"> TypeScript</span>
-                <span class="tech-pill"><i class="fab fa-html5"></i> HTML5</span>
-                <span class="tech-pill"><i class="fab fa-css3-alt"></i> CSS3</span>
-                <span class="tech-pill"><i class="fas fa-code"></i> C</span>
-                <span class="tech-pill"><i class="fas fa-server"></i> FastAPI</span>
-                <span class="tech-pill"><i class="fas fa-plug"></i> WebSockets</span>
-                <span class="tech-pill"><i class="fas fa-bolt"></i> Async Python</span>
-                <span class="tech-pill"><i class="fas fa-eye"></i> OpenCV</span>
-                <span class="tech-pill"><i class="fas fa-hand-paper"></i> MediaPipe</span>
-                <span class="tech-pill"><i class="fas fa-microphone"></i> Whisper / Deepgram</span>
-                <span class="tech-pill"><i class="fas fa-globe-americas"></i> GeoPandas</span>
-                <span class="tech-pill"><i class="fas fa-map"></i> OSMnx</span>
-                <span class="tech-pill"><i class="fas fa-map-marked-alt"></i> Folium</span>
-                <span class="tech-pill"><i class="fas fa-database"></i> PostGIS</span>
-                <span class="tech-pill"><i class="fab fa-chrome"></i> Chrome Extensions</span>
-                <span class="tech-pill"><i class="fab fa-git-alt"></i> Git / GitHub</span>
-                <span class="tech-pill"><i class="fas fa-vial"></i> Pytest</span>
-                <span class="tech-pill"><i class="fab fa-linux"></i> Linux / macOS</span>
-                <span class="tech-pill"><i class="fas fa-wind"></i> Vite</span>
-            </div>
-        </section>
+                <a href="projects.html" class="glass-card" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:2.5rem 2rem; border-radius:1.25rem; border:1px solid var(--glass-border); text-decoration:none; color:inherit; transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 50px rgba(56,189,248,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div style="font-size:2.5rem; margin-bottom:1rem;">🚀</div>
+                    <h3 style="font-family:var(--font-heading); color:#fff; margin-bottom:0.5rem;">Projects</h3>
+                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.5;">Full catalog of AI, GIS, WebSocket, and accessibility projects.</p>
+                    <span style="color:var(--primary-color); font-size:0.85rem; margin-top:1rem; font-family:var(--font-code);">projects.html →</span>
+                </a>
 
-        <!-- Achievements Section -->
-        <section id="achievements" class="section" style="padding: 5rem 2rem;">
-            <h2 class="section-title">Key <span>Achievements</span></h2>
-            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 3rem;">Milestones built through hands-on projects and real-world problem solving.</p>
-            
-            <!-- Explorer Progress Panel -->
-            <div id="explorer-progress" style="max-width: 1100px; margin: 0 auto 3rem auto;"></div>
-            <div class="achievements-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; max-width:1100px; margin:0 auto;">
-                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <div style="font-size:2rem; margin-bottom:1rem;">🤖</div>
-                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Built Multiple AI-Based Applications</h4>
-                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Developed AI pipelines for live dubbing (Sonexa), sign language detection (Sign2Sound), and applied machine learning models.</p>
-                </div>
-                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <div style="font-size:2rem; margin-bottom:1rem;">⚡</div>
-                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Developed Real-Time WebSocket Systems</h4>
-                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Engineered low-latency WebSocket streaming backends and Chrome extension audio pipelines for real-time AI dubbing.</p>
-                </div>
-                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <div style="font-size:2rem; margin-bottom:1rem;">🏆</div>
-                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Participated in Hackathons</h4>
-                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Built The Last Minute Saver during Hackfest x Google for Developers, competing under tight deadlines with real delivery.</p>
-                </div>
-                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <div style="font-size:2rem; margin-bottom:1rem;">♿</div>
-                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Accessibility-Focused Technology</h4>
-                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Built Sign2Sound — a Computer Vision platform enabling people who use sign language to communicate through speech.</p>
-                </div>
-                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <div style="font-size:2rem; margin-bottom:1rem;">🗺️</div>
-                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">GIS-Based Visualization Tools</h4>
-                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Built Mapping Tomorrow — a geospatial disaster risk & circular economy resource dashboard for Pokhara, Nepal.</p>
-                </div>
-                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <div style="font-size:2rem; margin-bottom:1rem;">🧩</div>
-                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Scalable Monorepo Architecture</h4>
-                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Designed modular monorepo backends with pluggable provider abstractions covering ASR, translation, and TTS services.</p>
-                </div>
-            </div>
-        </section>
+                <a href="arcade.html" class="glass-card" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:2.5rem 2rem; border-radius:1.25rem; border:1px solid var(--glass-border); text-decoration:none; color:inherit; transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 50px rgba(56,189,248,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div style="font-size:2.5rem; margin-bottom:1rem;">🎮</div>
+                    <h3 style="font-family:var(--font-heading); color:#fff; margin-bottom:0.5rem;">Arcade</h3>
+                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.5;">Play Tech Snake and Debug the Code — earn XP!</p>
+                    <span style="color:var(--primary-color); font-size:0.85rem; margin-top:1rem; font-family:var(--font-code);">arcade.html →</span>
+                </a>
 
-        <!-- Tech Snake Section (Interactive Mode) -->
-        <section id="tech-snake" class="section game-section">
-            <h2 class="section-title">🐍 Tech <span>Snake</span></h2>
-            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Guide the snake to collect technology tokens & unlock project details!</p>
+                <a href="world.html" class="glass-card" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:2.5rem 2rem; border-radius:1.25rem; border:1px solid var(--glass-border); text-decoration:none; color:inherit; transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 50px rgba(56,189,248,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div style="font-size:2.5rem; margin-bottom:1rem;">🏙️</div>
+                    <h3 style="font-family:var(--font-heading); color:#fff; margin-bottom:0.5rem;">Portfolio World</h3>
+                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.5;">Interactive 2D city — click buildings to explore projects.</p>
+                    <span style="color:var(--primary-color); font-size:0.85rem; margin-top:1rem; font-family:var(--font-code);">world.html →</span>
+                </a>
 
-            <div class="snake-container glass-card">
-                <div class="snake-main">
-                    <div class="snake-header-bar">
-                        <span id="snake-score" class="snake-score-label">Score: 0</span>
-                        <span id="snake-highscore" class="snake-score-label">Best: 0</span>
-                        <div class="snake-controls-btns">
-                            <button id="snake-play-btn" class="btn btn-primary btn-sm">▶ Play</button>
-                            <button id="snake-restart-btn" class="btn btn-secondary btn-sm">↺ Restart</button>
-                        </div>
-                    </div>
-                    <div class="snake-canvas-wrapper">
-                        <canvas id="snake-canvas"></canvas>
-                        <div id="snake-popup" class="snake-tech-popup"></div>
-                    </div>
-                    <div class="snake-controls-hint">
-                        <span>Controls: Arrow Keys or W A S D</span>
-                    </div>
-                </div>
+                <a href="contact.html" class="glass-card" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:2.5rem 2rem; border-radius:1.25rem; border:1px solid var(--glass-border); text-decoration:none; color:inherit; transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 50px rgba(56,189,248,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div style="font-size:2.5rem; margin-bottom:1rem;">💬</div>
+                    <h3 style="font-family:var(--font-heading); color:#fff; margin-bottom:0.5rem;">Terminal &amp; Contact</h3>
+                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.5;">Interactive CLI terminal simulator and direct contact form.</p>
+                    <span style="color:var(--primary-color); font-size:0.85rem; margin-top:1rem; font-family:var(--font-code);">contact.html →</span>
+                </a>
 
-                <div class="snake-sidebar">
-                    <h3 class="snake-sidebar-title">Collected Technologies</h3>
-                    <div id="snake-tech-list" class="snake-tech-list"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact section">
-            <h2 class="section-title">Get In <span>Touch</span></h2>
-            <div class="contact-container">
-                <form class="contact-form" id="contact-form">
-                    <div class="input-group">
-                        <input type="text" id="contact-name" placeholder="Your Name" required>
-                    </div>
-                    <div class="input-group">
-                        <input type="email" id="contact-email" placeholder="Your Email" required>
-                    </div>
-                    <div class="input-group">
-                        <textarea id="contact-message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="contact-submit">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </form>
             </div>
         </section>
     </main>
@@ -527,10 +175,8 @@
     <footer>
         <div class="footer-socials">
             <a href="https://www.facebook.com/share/1ABnJLtE1j/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/s_hekhar?utm_source=qr&igsh=a2xnMnlla2p2ZHp3" target="_blank" title="Instagram"><i
-                    class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/s_hekhar" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://github.com/Shekhar493" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         </div>
         <p>&copy; 2026 Chandra Shekhar Yadav. All rights reserved.</p>
@@ -539,30 +185,18 @@
 
     <button id="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
-    <!-- Command Palette Backdrop -->
+    <!-- Command Palette -->
     <div class="cmd-palette-backdrop" id="cmd-palette">
         <div class="cmd-palette-container">
             <div class="cmd-search-wrapper">
                 <i class="fas fa-search"></i>
-                <input type="text" id="cmd-input" class="cmd-input" placeholder="Type a destination or command (e.g. projects, skills, contact)...">
+                <input type="text" id="cmd-input" class="cmd-input" placeholder="Search pages, themes, GitHub...">
             </div>
-            <div class="cmd-results" id="cmd-results">
-                <!-- Results rendered dynamically -->
-            </div>
+            <div class="cmd-results" id="cmd-results"></div>
         </div>
     </div>
 
-    <!-- Quick View Project Modal -->
-    <div class="modal-backdrop" id="project-modal">
-        <div class="modal-card">
-            <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
-            <div id="modal-content-body">
-                <!-- Modal content dynamically injected -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast Notifications Container -->
+    <!-- Toast Notifications -->
     <div class="toast-container" id="toast-container"></div>
 
     <script type="module" src="script.js"></script>

@@ -20,10 +20,10 @@ const PortfolioWorld = {
   state: 'idle',
 
   init() {
-    _visited = SaveManager.get('world').visited || [];
+    const saved = SaveManager.get('world');
+    _visited = (saved && saved.visited) ? saved.visited : [];
     this._renderGrid();
     this._bindEvents();
-    PortfolioManager.init();
 
     // Check achievement if all visited
     this._checkAllVisited();
