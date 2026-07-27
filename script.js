@@ -308,6 +308,25 @@ function initTerminal() {
             } else {
                 printOutput(`Usage: theme [default | violet | matrix | cyberpunk]`, 'warning');
             }
+        } else if (mainCmd === 'sound') {
+            const soundArg = parts[1]?.toLowerCase();
+            if (soundArg === 'on' || soundArg === 'off') {
+                const on = soundArg === 'on';
+                EventBus.emit('sound:toggle', { on });
+                printOutput(`Audio effects turned ${soundArg.toUpperCase()}!`, 'success');
+            } else {
+                printOutput(`Usage: sound [on | off]`, 'warning');
+            }
+        } else if (mainCmd === 'mode') {
+            const modeArg = parts[1]?.toLowerCase();
+            if (modeArg === 'classic' || modeArg === 'interactive') {
+                PortfolioManager.setMode(modeArg);
+                const modeCheckbox = document.getElementById('mode-toggle-checkbox');
+                if (modeCheckbox) modeCheckbox.checked = (modeArg === 'interactive');
+                printOutput(`Portfolio mode set to '${modeArg.toUpperCase()}'!`, 'success');
+            } else {
+                printOutput(`Usage: mode [classic | interactive]`, 'warning');
+            }
         } else if (commands[mainCmd]) {
             const result = commands[mainCmd]();
             if (result !== null) {
