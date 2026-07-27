@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chandra Shekhar Yadav | Portfolio</title>
+    <title>Chandra Shekhar Yadav | Interactive Developer Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+    <canvas id="bg-canvas"></canvas>
     <div class="cursor-follower"></div>
 
     <nav class="navbar">
@@ -22,26 +23,56 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#terminal">Terminal</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="projects.html">Projects</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="menu-btn">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="nav-actions">
+            <button class="cmd-k-btn" id="cmd-k-trigger" title="Quick Search (Ctrl+K)">
+                <i class="fas fa-search"></i>
+                <span class="cmd-k-badge">⌘K</span>
+            </button>
+            <div class="theme-dropdown">
+                <button class="theme-btn" id="theme-toggle" title="Switch Theme">
+                    <i class="fas fa-palette"></i>
+                </button>
+                <div class="theme-menu" id="theme-menu">
+                    <button class="theme-option" data-theme="default">
+                        <i class="fas fa-fire" style="color: #ff3e3e;"></i> Cyber Red
+                    </button>
+                    <button class="theme-option" data-theme="violet">
+                        <i class="fas fa-bolt" style="color: #a855f7;"></i> Neon Violet
+                    </button>
+                    <button class="theme-option" data-theme="matrix">
+                        <i class="fas fa-terminal" style="color: #10b981;"></i> Matrix Green
+                    </button>
+                    <button class="theme-option" data-theme="cyberpunk">
+                        <i class="fas fa-vr-cardboard" style="color: #00f0ff;"></i> Cyberpunk
+                    </button>
+                </div>
+            </div>
+            <div class="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
     <main>
+        <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="hero-content">
                 <h2 class="reveal">Hello, I'm</h2>
                 <h1 class="reveal-delay-1">Chandra Shekhar <span>Yadav</span></h1>
-                <p class="reveal-delay-2">A passionate developer specializing in C, Python, and Web Technologies with a focus on creating innovative solutions.</p>
+                <h3 class="reveal-delay-2" style="font-size: 1.4rem; color: #94a3b8; margin: 0.5rem 0 1rem 0;">
+                    Building <span class="typewriter-text"></span><span class="typewriter-cursor">|</span>
+                </h3>
+                <p class="reveal-delay-2">A passionate developer specializing in C, Python, and Web Technologies with a focus on creating innovative, high-performance solutions.</p>
                 <div class="hero-btns reveal">
-                    <a href="projects.html" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#terminal" class="btn btn-secondary"><i class="fas fa-terminal"></i> Open Terminal</a>
                 </div>
                 <div class="hero-socials reveal">
                     <a href="https://www.facebook.com/share/1ABnJLtE1j/" target="_blank" title="Facebook"><i
@@ -50,6 +81,7 @@
                         target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://www.instagram.com/s_hekhar?utm_source=qr&igsh=a2xnMnlla2p2ZHp3" target="_blank"
                         title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/Shekhar493" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -61,95 +93,206 @@
             </div>
         </section>
 
+        <!-- Stats Counter Section -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-code-branch"></i></div>
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="stat-number" data-target="5">0</div>
+                    <div class="stat-label">Core Technologies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-terminal"></i></div>
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">% Code Passion</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-globe-asia"></i></div>
+                    <div class="stat-number" data-target="2025">0</div>
+                    <div class="stat-label">Based in Kathmandu</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
         <section id="about" class="about section">
             <h2 class="section-title">About <span>Me</span></h2>
             <div class="about-container">
                 <div class="about-text">
-                    <p>I am a dedicated and passionate coder with a strong foundation in both system-level programming and modern web development. My expertise spans across <strong>C Programming</strong>, <strong>Python</strong>, and the <strong>Web Stack (HTML5, CSS3, JavaScript)</strong>.</p>
+                    <p>I am a dedicated coder with a strong foundation in both system-level programming and modern web development. My expertise spans across <strong>C Programming</strong>, <strong>Python</strong>, and the <strong>Web Stack (HTML5, CSS3, JavaScript)</strong>.</p>
                     <p>I love building efficient, scalable solutions and creating visually appealing user interfaces that provide exceptional user experiences. With a keen eye for detail and a commitment to clean code, I strive to deliver projects that not only meet but exceed expectations.</p>
-                    <p>Beyond coding, I'm passionate about continuous learning, staying updated with the latest technologies, and contributing to the developer community. Let's build something amazing together!</p>
+                    <p>Beyond coding, I'm passionate about continuous learning, staying updated with the latest technologies, and contributing to open-source developer communities.</p>
                 </div>
             </div>
         </section>
 
+        <!-- Interactive Developer Terminal Section -->
+        <section id="terminal" class="terminal-section section">
+            <h2 class="section-title">Developer <span>Terminal</span></h2>
+            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Type real commands below or click preset buttons to explore my background interactively.</p>
+            <div class="terminal-box">
+                <div class="header terminal-header">
+                    <div class="terminal-dots">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
+                    <div class="terminal-title">shekhar@portfolio:~ (zsh)</div>
+                    <div class="terminal-presets-top">
+                        <button class="preset-chip" data-cmd="help">help</button>
+                        <button class="preset-chip" data-cmd="skills">skills</button>
+                        <button class="preset-chip" data-cmd="projects">projects</button>
+                        <button class="preset-chip" data-cmd="contact">contact</button>
+                        <button class="preset-chip" data-cmd="clear">clear</button>
+                    </div>
+                </div>
+                <div class="terminal-body" id="terminal-output">
+                    <div class="terminal-line info">Welcome to Chandra Shekhar Yadav's interactive shell! [v2.0]</div>
+                    <div class="terminal-line output">Type '<span class="highlight">help</span>' to see available commands or click quick presets above.</div>
+                </div>
+                <div style="padding: 0 1.5rem 1.2rem 1.5rem;">
+                    <form id="terminal-form" class="terminal-input-form">
+                        <span class="terminal-prompt-symbol">shekhar@portfolio:~$</span>
+                        <input type="text" id="terminal-input" class="terminal-input" placeholder="Type a command (e.g. help, skills, theme)..." autocomplete="off" spellcheck="false">
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
         <section id="skills" class="skills section">
             <h2 class="section-title">My <span>Skills</span></h2>
             <div class="skills-grid">
-                <div class="skill-card">
+                <div class="skill-card" data-skill="c">
                     <div class="skill-icon"><i class="fas fa-code"></i></div>
                     <h3>C Programming</h3>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill" data-progress="88%"></div>
+                    </div>
+                    <div class="skill-percentage">88% Proficiency</div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-skill="python">
                     <div class="skill-icon"><i class="fab fa-python"></i></div>
                     <h3>Python</h3>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill" data-progress="92%"></div>
+                    </div>
+                    <div class="skill-percentage">92% Proficiency</div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-skill="html">
                     <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                    <h3>HTML5</h3>
+                    <h3>HTML5 & Semantics</h3>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill" data-progress="95%"></div>
+                    </div>
+                    <div class="skill-percentage">95% Proficiency</div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-skill="css">
                     <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-                    <h3>CSS3</h3>
+                    <h3>CSS3 & Glassmorphism</h3>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill" data-progress="90%"></div>
+                    </div>
+                    <div class="skill-percentage">90% Proficiency</div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-skill="js">
                     <div class="skill-icon"><i class="fab fa-js-square"></i></div>
-                    <h3>JavaScript</h3>
+                    <h3>JavaScript ES6+</h3>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill" data-progress="89%"></div>
+                    </div>
+                    <div class="skill-percentage">89% Proficiency</div>
                 </div>
             </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects" class="projects section">
             <h2 class="section-title">Featured <span>Projects</span></h2>
-            <p class="section-subtitle">Showcasing my latest work and coding journey.</p>
+            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Showcasing my latest work, interactive applications, and coding journey.</p>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card" data-id="portfolio">
                     <div class="project-image">
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <div class="project-info">
-                        <h3>Portfolio Website</h3>
-                        <p>A modern, responsive portfolio built with HTML5, CSS3, and JavaScript featuring glassmorphism design and smooth animations.</p>
+                        <h3>Interactive Portfolio</h3>
+                        <p>A modern, high-interactivity personal website built with HTML5, CSS3, and JavaScript featuring glassmorphism, terminal simulator, particle canvas, and theme switching.</p>
                         <div class="project-tags">
-                            <span>HTML5</span> <span>CSS3</span> <span>JavaScript</span>
+                            <span>HTML5</span> <span>CSS3</span> <span>JavaScript</span> <span>Vite</span>
                         </div>
-                        <a href="projects.html" class="btn-text">View Project →</a>
+                        <button class="btn-text quick-view-btn" data-project="portfolio">Quick View <i class="fas fa-expand-alt"></i></button>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-id="task-manager">
+                    <div class="project-image">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Task Manager Application</h3>
+                        <p>Interactive web application for organizing daily tasks with task filtering, dark theme, local storage persistence, and task statistics.</p>
+                        <div class="project-tags">
+                            <span>JavaScript</span> <span>LocalStorage</span> <span>CSS Grid</span>
+                        </div>
+                        <button class="btn-text quick-view-btn" data-project="task-manager">Quick View <i class="fas fa-expand-alt"></i></button>
+                    </div>
+                </div>
+                <div class="project-card" data-id="system-utility">
                     <div class="project-image">
                         <i class="fab fa-python"></i>
                     </div>
                     <div class="project-info">
-                        <h3>System Utility Tool</h3>
-                        <p>A Python-based utility for managing system tasks and automating repetitive workflows with an intuitive command-line interface.</p>
+                        <h3>System Automation Tool</h3>
+                        <p>A Python utility for managing system workflows, automated file organization, resource monitoring, and automated logging.</p>
                         <div class="project-tags">
-                            <span>Python</span> <span>Automation</span> <span>CLI</span>
+                            <span>Python</span> <span>CLI</span> <span>Automation</span>
                         </div>
-                        <a href="projects.html" class="btn-text">View Source →</a>
+                        <button class="btn-text quick-view-btn" data-project="system-utility">Quick View <i class="fas fa-expand-alt"></i></button>
+                    </div>
+                </div>
+                <div class="project-card" data-id="data-structures">
+                    <div class="project-image">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>C Data Structures Library</h3>
+                        <p>High-performance implementation of core data structures in C including LinkedLists, Stacks, Queues, Binary Trees, and Hash Maps.</p>
+                        <div class="project-tags">
+                            <span>C</span> <span>Memory Management</span> <span>Algorithms</span>
+                        </div>
+                        <button class="btn-text quick-view-btn" data-project="data-structures">Quick View <i class="fas fa-expand-alt"></i></button>
                     </div>
                 </div>
             </div>
             <div class="projects-view-all">
                 <a href="projects.html" class="btn btn-primary">
-                    <i class="fas fa-arrow-right"></i> View All Projects
+                    <i class="fas fa-arrow-right"></i> View Full Projects Directory
                 </a>
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="contact section">
             <h2 class="section-title">Get In <span>Touch</span></h2>
             <div class="contact-container">
-                <form class="contact-form">
+                <form class="contact-form" id="contact-form">
                     <div class="input-group">
-                        <input type="text" placeholder="Your Name" required>
+                        <input type="text" id="contact-name" placeholder="Your Name" required>
                     </div>
                     <div class="input-group">
-                        <input type="email" placeholder="Your Email" required>
+                        <input type="email" id="contact-email" placeholder="Your Email" required>
                     </div>
                     <div class="input-group">
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <textarea id="contact-message" placeholder="Your Message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="submit" class="btn btn-primary" id="contact-submit">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
                 </form>
             </div>
         </section>
@@ -162,14 +305,41 @@
                 target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             <a href="https://www.instagram.com/s_hekhar?utm_source=qr&igsh=a2xnMnlla2p2ZHp3" target="_blank" title="Instagram"><i
                     class="fab fa-instagram"></i></a>
+            <a href="https://github.com/Shekhar493" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         </div>
-        <p>&copy; 2025 Chandra Shekhar Yadav. All rights reserved.</p>
-        <p style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">Based in Kathmandu, Nepal | Web Developer & Designer</p>
+        <p>&copy; 2026 Chandra Shekhar Yadav. All rights reserved.</p>
+        <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">Based in Kathmandu, Nepal | Web Developer & Systems Programmer</p>
     </footer>
 
     <button id="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
-    <script src="script.js"></script>
+    <!-- Command Palette Backdrop -->
+    <div class="cmd-palette-backdrop" id="cmd-palette">
+        <div class="cmd-palette-container">
+            <div class="cmd-search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="cmd-input" class="cmd-input" placeholder="Type a destination or command (e.g. projects, skills, contact)...">
+            </div>
+            <div class="cmd-results" id="cmd-results">
+                <!-- Results rendered dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Project Modal -->
+    <div class="modal-backdrop" id="project-modal">
+        <div class="modal-card">
+            <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+            <div id="modal-content-body">
+                <!-- Modal content dynamically injected -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>

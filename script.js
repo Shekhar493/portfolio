@@ -1,231 +1,708 @@
-// ===== Smooth Scroll Behavior =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
+// ===== Chandra Shekhar Yadav - Interactive Portfolio Script =====
+
+document.addEventListener('DOMContentLoaded', () => {
+    initParticleCanvas();
+    initTypewriter();
+    initThemeManager();
+    initTerminal();
+    initCommandPalette();
+    initStatsCounter();
+    initSkillBars();
+    init3DTilt();
+    initProjectModals();
+    initContactForm();
+    initNavigation();
+    initCursorFollower();
 });
 
-// ===== Navbar Menu Toggle =====
-const menuBtn = document.querySelector('.menu-btn');
-const navLinks = document.querySelector('.nav-links');
+// ===== 1. Interactive Background Particle Canvas =====
+function initParticleCanvas() {
+    const canvas = document.getElementById('bg-canvas');
+    if (!canvas) return;
 
-if (menuBtn) {
-    menuBtn.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
+    const ctx = canvas.getContext('2d');
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    let particles = [];
+    const particleCount = Math.min(Math.floor(width / 18), 65);
+    const mouse = { x: null, y: null, radius: 140 };
+
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+
+    window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
+    window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.vx = (Math.random() - 0.5) * 0.8;
+            this.vy = (Math.random() - 0.5) * 0.8;
+            this.size = Math.random() * 2 + 1;
+        }
+
+        update() {
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
+
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // Mouse attraction
+            if (mouse.x !== null && mouse.y !== null) {
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < mouse.radius) {
+                    const force = (mouse.radius - dist) / mouse.radius;
+                    this.x -= (dx / dist) * force * 1.5;
+                    this.y -= (dy / dist) * force * 1.5;
+                }
+            }
+        }
+
+        draw() {
+            const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim() || '#ff3e3e';
+            ctx.fillStyle = primaryColor;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim() || '#ff3e3e';
+
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 110) {
+                    ctx.strokeStyle = primaryColor;
+                    ctx.globalAlpha = (1 - dist / 110) * 0.25;
+                    ctx.lineWidth = 0.8;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                    ctx.globalAlpha = 1.0;
+                }
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+// ===== 2. Typewriter Effect =====
+function initTypewriter() {
+    const typewriterEl = document.querySelector('.typewriter-text');
+    if (!typewriterEl) return;
+
+    const phrases = [
+        'Full-Stack Web Applications',
+        'High-Performance C Systems',
+        'Python Automation Scripts',
+        'Modern Responsive UIs'
+    ];
+
+    let phraseIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    let typeSpeed = 100;
+
+    function type() {
+        const currentPhrase = phrases[phraseIdx];
+
+        if (isDeleting) {
+            typewriterEl.textContent = currentPhrase.substring(0, charIdx - 1);
+            charIdx--;
+            typeSpeed = 40;
+        } else {
+            typewriterEl.textContent = currentPhrase.substring(0, charIdx + 1);
+            charIdx++;
+            typeSpeed = 90;
+        }
+
+        if (!isDeleting && charIdx === currentPhrase.length) {
+            typeSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIdx === 0) {
+            isDeleting = false;
+            phraseIdx = (phraseIdx + 1) % phrases.length;
+            typeSpeed = 400;
+        }
+
+        setTimeout(type, typeSpeed);
+    }
+    type();
+}
+
+// ===== 3. Theme Manager =====
+function initThemeManager() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeMenu = document.getElementById('theme-menu');
+    const themeOptions = document.querySelectorAll('.theme-option');
+
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'default';
+    setTheme(savedTheme);
+
+    if (themeToggle && themeMenu) {
+        themeToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            themeMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', () => {
+            themeMenu.classList.remove('active');
+        });
+    }
+
+    themeOptions.forEach(opt => {
+        opt.addEventListener('click', () => {
+            const theme = opt.getAttribute('data-theme');
+            setTheme(theme);
+            if (themeMenu) themeMenu.classList.remove('active');
+            showToast(`Theme switched to ${opt.textContent.trim()}! 🎨`);
+        });
+    });
+
+    function setTheme(theme) {
+        if (theme === 'default') {
+            document.documentElement.removeAttribute('data-theme');
+        } else {
+            document.documentElement.setAttribute('data-theme', theme);
+        }
+        localStorage.setItem('portfolio-theme', theme);
+    }
+}
+
+// ===== 4. Interactive Developer Terminal Simulator =====
+function initTerminal() {
+    const terminalOutput = document.getElementById('terminal-output');
+    const terminalForm = document.getElementById('terminal-form');
+    const terminalInput = document.getElementById('terminal-input');
+    const presets = document.querySelectorAll('.preset-chip');
+
+    if (!terminalOutput || !terminalInput) return;
+
+    const commands = {
+        help: () => `Available Commands:<br>
+  - <span class="highlight">about</span> : Learn about Chandra Shekhar Yadav<br>
+  - <span class="highlight">skills</span> : List technical stack and proficiencies<br>
+  - <span class="highlight">projects</span> : View key highlighted projects<br>
+  - <span class="highlight">contact</span> : Get social media and email info<br>
+  - <span class="highlight">theme [violet|matrix|cyberpunk|default]</span> : Switch terminal/portfolio theme<br>
+  - <span class="highlight">clear</span> : Clear terminal output<br>
+  - <span class="highlight">repo</span> : View GitHub repository link<br>
+  - <span class="highlight">whoami</span> : Display current session visitor info`,
+        about: () => `Name: Chandra Shekhar Yadav<br>Location: Kathmandu, Nepal<br>Role: Developer specializing in C, Python & Web Technologies.<br>Focus: Clean code, responsive designs, and automation tools.`,
+        skills: () => `Technical Skills:<br>
+  - C Programming [88%]<br>
+  - Python Development & Automation [92%]<br>
+  - HTML5 / CSS3 / Modern Layouts [95%]<br>
+  - JavaScript ES6+ & DOM [89%]`,
+        projects: () => `Featured Work:<br>
+  1. Interactive Developer Portfolio [HTML/CSS/JS/Vite]<br>
+  2. System Automation Tool [Python]<br>
+  3. Task Manager Application [JS/LocalStorage]<br>
+  4. C Data Structures Library [C]`,
+        contact: () => `Contact Info:<br>
+  - Email: <a href="mailto:chandrashekhary866@gmail.com" style="color:var(--primary-color)">chandrashekhary866@gmail.com</a><br>
+  - LinkedIn: <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" style="color:var(--primary-color)">Chandra Shekhar Yadav</a><br>
+  - GitHub: <a href="https://github.com/Shekhar493" target="_blank" style="color:var(--primary-color)">github.com/Shekhar493</a>`,
+        whoami: () => `guest@chandra-shekhar-portfolio [Permission: Visitor]`,
+        repo: () => `GitHub Repository: <a href="https://github.com/Shekhar493/portfolio" target="_blank" style="color:var(--primary-color)">https://github.com/Shekhar493/portfolio</a>`,
+        sudo: () => `<span class="warning">Nice try! Permission denied: User is not in the sudoers file. This incident will be reported.</span>`,
+        clear: () => {
+            terminalOutput.innerHTML = `<div class="terminal-line info">Terminal cleared. Type 'help' for options.</div>`;
+            return null;
+        }
+    };
+
+    function executeCommand(cmdStr) {
+        const rawCmd = cmdStr.trim();
+        if (!rawCmd) return;
+
+        // Print input prompt
+        const lineIn = document.createElement('div');
+        lineIn.className = 'terminal-line';
+        lineIn.innerHTML = `<span class="terminal-prompt-symbol">shekhar@portfolio:~$</span> ${escapeHtml(rawCmd)}`;
+        terminalOutput.appendChild(lineIn);
+
+        const parts = rawCmd.split(' ');
+        const mainCmd = parts[0].toLowerCase();
+
+        if (mainCmd === 'theme') {
+            const themeArg = parts[1]?.toLowerCase();
+            if (['violet', 'matrix', 'cyberpunk', 'default'].includes(themeArg)) {
+                if (themeArg === 'default') document.documentElement.removeAttribute('data-theme');
+                else document.documentElement.setAttribute('data-theme', themeArg);
+                localStorage.setItem('portfolio-theme', themeArg);
+                printOutput(`Theme changed to '${themeArg}'!`, 'success');
+            } else {
+                printOutput(`Usage: theme [default | violet | matrix | cyberpunk]`, 'warning');
+            }
+        } else if (commands[mainCmd]) {
+            const result = commands[mainCmd]();
+            if (result !== null) {
+                printOutput(result, 'output');
+            }
+        } else {
+            printOutput(`Command not found: '${escapeHtml(rawCmd)}'. Type '<span class="highlight">help</span>' for options.`, 'warning');
+        }
+
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
+
+    function printOutput(html, type = 'output') {
+        const lineOut = document.createElement('div');
+        lineOut.className = `terminal-line ${type}`;
+        lineOut.innerHTML = html;
+        terminalOutput.appendChild(lineOut);
+    }
+
+    if (terminalForm) {
+        terminalForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const val = terminalInput.value;
+            terminalInput.value = '';
+            executeCommand(val);
+        });
+    }
+
+    presets.forEach(p => {
+        p.addEventListener('click', () => {
+            const cmd = p.getAttribute('data-cmd');
+            executeCommand(cmd);
+        });
     });
 }
 
-// Close menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        menuBtn.classList.remove('active');
-        navLinks.classList.remove('active');
-    });
-});
+// ===== 5. Command Palette (Ctrl+K / ⌘K) =====
+function initCommandPalette() {
+    const backdrop = document.getElementById('cmd-palette');
+    const input = document.getElementById('cmd-input');
+    const results = document.getElementById('cmd-results');
+    const trigger = document.getElementById('cmd-k-trigger');
 
-// ===== Reveal Animations =====
-const revealElements = document.querySelectorAll('.reveal, .reveal-delay-1, .reveal-delay-2');
+    if (!backdrop || !input || !results) return;
 
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+    const items = [
+        { title: 'Go to Home', icon: 'fa-home', action: () => scrollToId('home') },
+        { title: 'About Chandra Shekhar', icon: 'fa-user', action: () => scrollToId('about') },
+        { title: 'Interactive Developer Terminal', icon: 'fa-terminal', action: () => scrollToId('terminal') },
+        { title: 'Skills & Proficiency', icon: 'fa-code', action: () => scrollToId('skills') },
+        { title: 'Featured Projects', icon: 'fa-layer-group', action: () => scrollToId('projects') },
+        { title: 'Contact Me', icon: 'fa-envelope', action: () => scrollToId('contact') },
+        { title: 'View GitHub Profile', icon: 'fa-github', action: () => window.open('https://github.com/Shekhar493', '_blank') },
+        { title: 'Switch to Cyber Red Theme', icon: 'fa-palette', action: () => setTheme('default') },
+        { title: 'Switch to Neon Violet Theme', icon: 'fa-bolt', action: () => setTheme('violet') },
+        { title: 'Switch to Matrix Green Theme', icon: 'fa-terminal', action: () => setTheme('matrix') }
+    ];
 
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            setTimeout(() => {
-                entry.target.classList.add('active');
-            }, entry.target.classList.contains('reveal-delay-1') ? 150 : 
-               entry.target.classList.contains('reveal-delay-2') ? 300 : 0);
-            observer.unobserve(entry.target);
+    function setTheme(t) {
+        if (t === 'default') document.documentElement.removeAttribute('data-theme');
+        else document.documentElement.setAttribute('data-theme', t);
+        localStorage.setItem('portfolio-theme', t);
+        showToast(`Theme set to ${t}!`);
+    }
+
+    function scrollToId(id) {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openPalette() {
+        backdrop.classList.add('active');
+        input.value = '';
+        renderResults('');
+        setTimeout(() => input.focus(), 50);
+    }
+
+    function closePalette() {
+        backdrop.classList.remove('active');
+    }
+
+    function renderResults(filter) {
+        results.innerHTML = '';
+        const filtered = items.filter(i => i.title.toLowerCase().includes(filter.toLowerCase()));
+
+        if (filtered.length === 0) {
+            results.innerHTML = `<div style="padding: 1rem; text-align: center; color: #94a3b8;">No matching results found</div>`;
+            return;
+        }
+
+        filtered.forEach((item, idx) => {
+            const div = document.createElement('div');
+            div.className = `cmd-item ${idx === 0 ? 'selected' : ''}`;
+            div.innerHTML = `
+                <div class="cmd-item-left">
+                    <i class="fas ${item.icon}"></i>
+                    <span>${item.title}</span>
+                </div>
+                <span class="cmd-shortcut">Jump</span>
+            `;
+            div.addEventListener('click', () => {
+                item.action();
+                closePalette();
+            });
+            results.appendChild(div);
+        });
+    }
+
+    if (trigger) trigger.addEventListener('click', openPalette);
+
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+            e.preventDefault();
+            if (backdrop.classList.contains('active')) closePalette();
+            else openPalette();
+        } else if (e.key === 'Escape' && backdrop.classList.contains('active')) {
+            closePalette();
         }
     });
-}, observerOptions);
 
-revealElements.forEach(el => observer.observe(el));
+    backdrop.addEventListener('click', (e) => {
+        if (e.target === backdrop) closePalette();
+    });
 
-// ===== Cursor Follower =====
-const cursorFollower = document.querySelector('.cursor-follower');
+    input.addEventListener('input', (e) => {
+        renderResults(e.target.value);
+    });
+}
 
-if (cursorFollower) {
-    let mouseX = 0;
-    let mouseY = 0;
-    let followerX = 0;
-    let followerY = 0;
-    const speed = 0.15;
+// ===== 6. Animated Stats Counter =====
+function initStatsCounter() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    if (!statNumbers.length) return;
+
+    let hasAnimated = false;
+
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+            hasAnimated = true;
+            statNumbers.forEach(num => {
+                const target = parseInt(num.getAttribute('data-target'), 10);
+                let current = 0;
+                const increment = Math.max(1, Math.ceil(target / 40));
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        num.textContent = target + (target === 15 ? '+' : target === 5 ? '+' : '');
+                        clearInterval(timer);
+                    } else {
+                        num.textContent = current;
+                    }
+                }, 30);
+            });
+        }
+    }, { threshold: 0.3 });
+
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection) observer.observe(statsSection);
+}
+
+// ===== 7. Skill Progress Bars =====
+function initSkillBars() {
+    const skillCards = document.querySelectorAll('.skill-card');
+    if (!skillCards.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const fill = entry.target.querySelector('.skill-bar-fill');
+                if (fill) {
+                    const targetWidth = fill.getAttribute('data-progress');
+                    fill.style.width = targetWidth;
+                }
+            }
+        });
+    }, { threshold: 0.2 });
+
+    skillCards.forEach(card => observer.observe(card));
+}
+
+// ===== 8. 3D Tilt Effect =====
+function init3DTilt() {
+    const cards = document.querySelectorAll('.skill-card, .project-card, .stat-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -8;
+            const rotateY = ((x - centerX) / centerX) * 8;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+        });
+    });
+}
+
+// ===== 9. Project Quick View Modals =====
+function initProjectModals() {
+    const modal = document.getElementById('project-modal');
+    const modalClose = document.getElementById('modal-close');
+    const modalBody = document.getElementById('modal-content-body');
+    const quickViewBtns = document.querySelectorAll('.quick-view-btn');
+
+    if (!modal || !modalBody) return;
+
+    const projectData = {
+        portfolio: {
+            title: 'Interactive Personal Portfolio',
+            category: 'Web Development & UI/UX',
+            description: 'A high-performance, glassmorphic portfolio featuring custom particle animations, interactive CLI developer terminal, live theme switcher, command palette (⌘K), and responsive design.',
+            tech: ['HTML5', 'CSS3', 'JavaScript ES6+', 'Vite', 'Font Awesome'],
+            features: [
+                'Interactive Background Particles Canvas with mouse attraction',
+                'Embedded zsh-like Developer Terminal Simulator',
+                'Command Palette (Ctrl+K) for instant keyboard navigation',
+                'Multi-Theme Switching (Cyber Red, Neon Violet, Matrix Green, Cyberpunk)',
+                'Clean Vite bundling setup'
+            ],
+            github: 'https://github.com/Shekhar493/portfolio'
+        },
+        'task-manager': {
+            title: 'Task Manager Application',
+            category: 'Web Application',
+            description: 'Interactive task management tool allowing users to create, categorize, filter, and track daily tasks with persistent browser local storage.',
+            tech: ['JavaScript ES6+', 'CSS3 Flexbox/Grid', 'HTML5 LocalStorage'],
+            features: [
+                'Dynamic task adding, completing, and deletion',
+                'Filter tasks by Status (All, Active, Completed)',
+                'Dark-themed glassmorphism interface',
+                'Automatic state persistence in LocalStorage'
+            ],
+            github: 'https://github.com/Shekhar493'
+        },
+        'system-utility': {
+            title: 'System Automation Tool',
+            category: 'Python Systems & Scripting',
+            description: 'Python CLI application engineered to streamline file management, system diagnostics, automated log rotation, and task execution.',
+            tech: ['Python 3', 'OS & Sys Modules', 'CLI Parser', 'Logging'],
+            features: [
+                'Automated file sorting and duplicate cleanup',
+                'System resource monitoring & CPU usage alerts',
+                'Customizable command-line flags and flags parser',
+                'Detailed execution logging'
+            ],
+            github: 'https://github.com/Shekhar493'
+        },
+        'data-structures': {
+            title: 'C Data Structures Library',
+            category: 'Systems Programming & Algorithms',
+            description: 'Comprehensive, high-performance Data Structures implementation written in standard C for maximum speed and efficient memory allocation.',
+            tech: ['C Programming', 'Pointers', 'Dynamic Memory (malloc/free)', 'Algorithms'],
+            features: [
+                'Implementations of Singly & Doubly Linked Lists',
+                'Stack & Queue memory-safe structures',
+                'Binary Search Tree (BST) insertion & traversals',
+                'Hash Table implementation with collision handling'
+            ],
+            github: 'https://github.com/Shekhar493'
+        }
+    };
+
+    quickViewBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const pid = btn.getAttribute('data-project');
+            const data = projectData[pid];
+            if (!data) return;
+
+            modalBody.innerHTML = `
+                <div style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; text-transform: uppercase;">${data.category}</div>
+                <h2 style="font-size: 1.8rem; margin: 0.4rem 0 1rem 0; color: #fff;">${data.title}</h2>
+                <p style="color: #cbd5e1; line-height: 1.6; margin-bottom: 1.5rem;">${data.description}</p>
+                
+                <h4 style="color: #fff; margin-bottom: 0.5rem;"><i class="fas fa-microchip" style="color:var(--primary-color)"></i> Tech Stack</h4>
+                <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom: 1.5rem;">
+                    ${data.tech.map(t => `<span style="background:rgba(255,255,255,0.08); padding:0.3rem 0.7rem; border-radius:6px; font-size:0.85rem; border:1px solid var(--glass-border);">${t}</span>`).join('')}
+                </div>
+
+                <h4 style="color: #fff; margin-bottom: 0.5rem;"><i class="fas fa-star" style="color:var(--primary-color)"></i> Key Features</h4>
+                <ul style="color: #cbd5e1; padding-left: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                    ${data.features.map(f => `<li>${f}</li>`).join('')}
+                </ul>
+
+                <div style="display:flex; gap:1rem; margin-top: 1.5rem;">
+                    <a href="${data.github}" target="_blank" class="btn btn-primary" style="font-size:0.9rem;">
+                        <i class="fab fa-github"></i> View GitHub Repository
+                    </a>
+                </div>
+            `;
+            modal.classList.add('active');
+        });
+    });
+
+    if (modalClose) {
+        modalClose.addEventListener('click', () => modal.classList.remove('active'));
+    }
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('active');
+    });
+}
+
+// ===== 10. Contact Form Handling & Toast =====
+function initContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('contact-name').value;
+        const email = document.getElementById('contact-email').value;
+        const message = document.getElementById('contact-message').value;
+
+        if (!name || !email || !message) {
+            showToast('Please fill out all required fields.', 'warning');
+            return;
+        }
+
+        const submitBtn = document.getElementById('contact-submit');
+        const origText = submitBtn.innerHTML;
+
+        submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending...`;
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+            submitBtn.innerHTML = `<i class="fas fa-check"></i> Message Sent!`;
+            submitBtn.style.background = '#10b981';
+            showToast(`Thank you ${name}! Your message has been received. ✨`, 'success');
+            form.reset();
+
+            setTimeout(() => {
+                submitBtn.innerHTML = origText;
+                submitBtn.style.background = '';
+                submitBtn.disabled = false;
+            }, 3000);
+        }, 1200);
+    });
+}
+
+// ===== 11. Navigation & Cursor Follower =====
+function initNavigation() {
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.style.opacity = '1';
+                backToTopBtn.style.pointerEvents = 'auto';
+            } else {
+                backToTopBtn.style.opacity = '0';
+                backToTopBtn.style.pointerEvents = 'none';
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+}
+
+function initCursorFollower() {
+    const cursorFollower = document.querySelector('.cursor-follower');
+    if (!cursorFollower) return;
+
+    let mouseX = 0, mouseY = 0;
+    let followerX = 0, followerY = 0;
 
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
     });
 
-    function animateCursor() {
-        followerX += (mouseX - followerX) * speed;
-        followerY += (mouseY - followerY) * speed;
-        
-        cursorFollower.style.left = followerX + 'px';
-        cursorFollower.style.top = followerY + 'px';
-        
-        requestAnimationFrame(animateCursor);
+    function animate() {
+        followerX += (mouseX - followerX) * 0.15;
+        followerY += (mouseY - followerY) * 0.15;
+        cursorFollower.style.left = `${followerX}px`;
+        cursorFollower.style.top = `${followerY}px`;
+        requestAnimationFrame(animate);
     }
+    animate();
 
-    animateCursor();
-
-    // Hide cursor follower on mobile
     if (window.innerWidth <= 768) {
         cursorFollower.style.display = 'none';
     }
 }
 
-// ===== Back to Top Button =====
-const backToTopBtn = document.getElementById('back-to-top');
+// ===== Utility Toast Notification System =====
+function showToast(msg, type = 'info') {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
 
-if (backToTopBtn) {
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            backToTopBtn.style.opacity = '1';
-            backToTopBtn.style.pointerEvents = 'auto';
-        } else {
-            backToTopBtn.style.opacity = '0';
-            backToTopBtn.style.pointerEvents = 'none';
-        }
-    });
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    const icon = type === 'success' ? 'fa-check-circle' : type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+    toast.innerHTML = `<i class="fas ${icon}" style="color:var(--primary-color)"></i> <span>${msg}</span>`;
 
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%)';
+        toast.style.transition = 'all 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+    }, 3500);
 }
 
-// ===== Contact Form Handling =====
-const contactForm = document.querySelector('.contact-form');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form values
-        const name = this.querySelector('input[type="text"]').value;
-        const email = this.querySelector('input[type="email"]').value;
-        const message = this.querySelector('textarea').value;
-
-        // Validate
-        if (!name || !email || !message) {
-            alert('Please fill in all fields');
-            return;
-        }
-
-        // Here you would typically send this data to a server
-        console.log({
-            name,
-            email,
-            message,
-            timestamp: new Date()
-        });
-
-        // Show success message
-        const submitBtn = this.querySelector('button');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Message Sent! ✓';
-        submitBtn.style.background = '#00aa00';
-        submitBtn.style.color = 'white';
-
-        // Reset form
-        this.reset();
-
-        // Reset button after 3 seconds
-        setTimeout(() => {
-            submitBtn.textContent = originalText;
-            submitBtn.style.background = '';
-            submitBtn.style.color = '';
-        }, 3000);
-    });
+function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, (m) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    })[m]);
 }
 
-// ===== Skill Cards Hover Effect =====
-const skillCards = document.querySelectorAll('.skill-card');
-
-skillCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        skillCards.forEach(c => c.style.opacity = '0.6');
-        this.style.opacity = '1';
-    });
-
-    card.addEventListener('mouseleave', function() {
-        skillCards.forEach(c => c.style.opacity = '1');
-    });
-});
-
-// ===== Project Cards Hover Effect =====
-const projectCards = document.querySelectorAll('.project-card');
-
-projectCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        projectCards.forEach(c => c.style.opacity = '0.7');
-        this.style.opacity = '1';
-    });
-
-    card.addEventListener('mouseleave', function() {
-        projectCards.forEach(c => c.style.opacity = '1');
-    });
-});
-
-// ===== Responsive Navbar =====
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-        navLinks.classList.remove('active');
-        if (menuBtn) menuBtn.classList.remove('active');
-    }
-});
-
-// ===== Active Section Highlight =====
-const sections = document.querySelectorAll('section');
-const navItems = document.querySelectorAll('.nav-links a');
-
-window.addEventListener('scroll', () => {
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (scrollY >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('href').slice(1) === current) {
-            item.classList.add('active');
-        }
-    });
-});
-
-// ===== Parallax Effect (Optional) =====
-if (window.innerWidth > 992) {
-    const heroSection = document.querySelector('.hero');
-    
-    window.addEventListener('scroll', () => {
-        if (heroSection) {
-            const scrollPosition = window.scrollY;
-            heroSection.style.transform = `translateY(${scrollPosition * 0.5}px)`;
-        }
-    });
-}
-
-// ===== Loading Animation =====
-window.addEventListener('load', () => {
-    document.body.style.opacity = '1';
-});
-
-// Log initialization
-console.log('Portfolio script loaded successfully! 🚀');

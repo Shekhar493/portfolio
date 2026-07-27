@@ -10,12 +10,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+    <canvas id="bg-canvas"></canvas>
     <div class="cursor-follower"></div>
 
     <nav class="navbar">
@@ -23,14 +24,40 @@
         <ul class="nav-links">
             <li><a href="index.html#home">Home</a></li>
             <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#terminal">Terminal</a></li>
             <li><a href="index.html#skills">Skills</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
-        <div class="menu-btn">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="nav-actions">
+            <button class="cmd-k-btn" id="cmd-k-trigger" title="Quick Search (Ctrl+K)">
+                <i class="fas fa-search"></i>
+                <span class="cmd-k-badge">⌘K</span>
+            </button>
+            <div class="theme-dropdown">
+                <button class="theme-btn" id="theme-toggle" title="Switch Theme">
+                    <i class="fas fa-palette"></i>
+                </button>
+                <div class="theme-menu" id="theme-menu">
+                    <button class="theme-option" data-theme="default">
+                        <i class="fas fa-fire" style="color: #ff3e3e;"></i> Cyber Red
+                    </button>
+                    <button class="theme-option" data-theme="violet">
+                        <i class="fas fa-bolt" style="color: #a855f7;"></i> Neon Violet
+                    </button>
+                    <button class="theme-option" data-theme="matrix">
+                        <i class="fas fa-terminal" style="color: #10b981;"></i> Matrix Green
+                    </button>
+                    <button class="theme-option" data-theme="cyberpunk">
+                        <i class="fas fa-vr-cardboard" style="color: #00f0ff;"></i> Cyberpunk
+                    </button>
+                </div>
+            </div>
+            <div class="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
@@ -630,8 +657,34 @@
 
     <button id="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
-    <script src="script.js"></script>
-    <script src="projects.js"></script>
+    <!-- Command Palette Backdrop -->
+    <div class="cmd-palette-backdrop" id="cmd-palette">
+        <div class="cmd-palette-container">
+            <div class="cmd-search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="cmd-input" class="cmd-input" placeholder="Type a destination or command (e.g. projects, skills, contact)...">
+            </div>
+            <div class="cmd-results" id="cmd-results">
+                <!-- Results rendered dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Project Modal -->
+    <div class="modal-backdrop" id="project-modal">
+        <div class="modal-card">
+            <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+            <div id="modal-content-body">
+                <!-- Modal content dynamically injected -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="projects.js"></script>
 </body>
 
 </html>
