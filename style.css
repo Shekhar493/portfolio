@@ -1355,3 +1355,33 @@ footer {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* ===== Technologies Tag Cloud ===== */
+.tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    background: var(--glass-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    color: #cbd5e1;
+    font-size: 0.875rem;
+    font-family: var(--font-code);
+    backdrop-filter: blur(8px);
+    transition: all 0.25s ease;
+    cursor: default;
+    white-space: nowrap;
+}
+
+.tech-pill:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.tech-pill i {
+    font-size: 0.9rem;
+}
