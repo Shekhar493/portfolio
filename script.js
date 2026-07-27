@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initInteractiveSystem();
 });
 
-// ===== 1. Interactive Background Particle Canvas =====
+// ===== 1. Interactive Deep Space Starfield Engine =====
 function initParticleCanvas() {
     const canvas = document.getElementById('bg-canvas');
     if (!canvas) return;
@@ -33,9 +33,14 @@ function initParticleCanvas() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    let particles = [];
-    const particleCount = Math.min(Math.floor(width / 18), 65);
-    const mouse = { x: null, y: null, radius: 140 };
+    let stars = [];
+    let shootingStars = [];
+    const starCount = Math.min(Math.floor((width * height) / 7000), 160);
+    const mouse = { x: null, y: null, radius: 150 };
+
+    const starColors = [
+        '#ffffff', '#e2e8f0', '#93c5fd', '#c084fc', '#67e8f9', '#fde047'
+    ];
 
     window.addEventListener('mousemove', (e) => {
         mouse.x = e.clientX;
@@ -52,74 +57,167 @@ function initParticleCanvas() {
         height = canvas.height = window.innerHeight;
     });
 
-    class Particle {
+    class Star {
         constructor() {
+            this.reset();
+        }
+
+        reset() {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            this.vx = (Math.random() - 0.5) * 0.8;
-            this.vy = (Math.random() - 0.5) * 0.8;
-            this.size = Math.random() * 2 + 1;
+            this.z = Math.random() * 2 + 0.5; // depth speed
+            this.size = (3 - this.z) * 0.7 + 0.4;
+            this.color = starColors[Math.floor(Math.random() * starColors.length)];
+            this.alpha = Math.random() * 0.7 + 0.3;
+            this.twinkleSpeed = (Math.random() * 0.02 + 0.005) * (Math.random() < 0.5 ? 1 : -1);
+            this.vx = (Math.random() - 0.5) * 0.2 / this.z;
+            this.vy = (Math.random() - 0.5) * 0.2 / this.z;
         }
 
         update() {
-            if (this.x < 0 || this.x > width) this.vx *= -1;
-            if (this.y < 0 || this.y > height) this.vy *= -1;
-
             this.x += this.vx;
             this.y += this.vy;
 
-            // Mouse attraction
+            // Wrap around edges
+            if (this.x < 0) this.x = width;
+            if (this.x > width) this.x = 0;
+            if (this.y < 0) this.y = height;
+            if (this.y > height) this.y = 0;
+
+            // Twinkle effect
+            this.alpha += this.twinkleSpeed;
+            if (this.alpha > 0.95 || this.alpha < 0.2) {
+                this.twinkleSpeed *= -1;
+            }
+
+            // Mouse gravitational lensing
             if (mouse.x !== null && mouse.y !== null) {
                 const dx = mouse.x - this.x;
                 const dy = mouse.y - this.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 if (dist < mouse.radius) {
                     const force = (mouse.radius - dist) / mouse.radius;
-                    this.x -= (dx / dist) * force * 1.5;
-                    this.y -= (dy / dist) * force * 1.5;
+                    this.x -= (dx / dist) * force * 0.8 * (3 - this.z);
+                    this.y -= (dy / dist) * force * 0.8 * (3 - this.z);
                 }
             }
         }
 
         draw() {
-            const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim() || '#ff3e3e';
-            ctx.fillStyle = primaryColor;
+            ctx.save();
+            ctx.globalAlpha = Math.max(0.1, Math.min(1, this.alpha));
+            ctx.fillStyle = this.color;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
+
+            // Glow for larger stars
+            if (this.size > 1.5) {
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+            }
+            ctx.restore();
         }
     }
 
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
+    class ShootingStar {
+        constructor() {
+            this.reset();
+        }
+
+        reset() {
+            this.x = Math.random() * width * 1.2 - width * 0.1;
+            this.y = Math.random() * (height * 0.5);
+            this.length = Math.random() * 80 + 60;
+            this.speed = Math.random() * 8 + 6;
+            this.angle = Math.PI / 4 + (Math.random() - 0.5) * 0.2; // ~45 deg
+            this.dx = Math.cos(this.angle) * this.speed;
+            this.dy = Math.sin(this.angle) * this.speed;
+            this.opacity = 1;
+            this.active = true;
+        }
+
+        update() {
+            if (!this.active) return;
+            this.x += this.dx;
+            this.y += this.dy;
+            this.opacity -= 0.015;
+            if (this.opacity <= 0 || this.x > width || this.y > height) {
+                this.active = false;
+            }
+        }
+
+        draw() {
+            if (!this.active) return;
+            ctx.save();
+            const tailX = this.x - Math.cos(this.angle) * this.length;
+            const tailY = this.y - Math.sin(this.angle) * this.length;
+
+            const gradient = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
+            gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
+            gradient.addColorStop(0.3, `rgba(147, 197, 253, ${this.opacity * 0.6})`);
+            gradient.addColorStop(1, 'rgba(147, 197, 253, 0)');
+
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y);
+            ctx.lineTo(tailX, tailY);
+            ctx.stroke();
+            ctx.restore();
+        }
     }
+
+    // Init stars
+    for (let i = 0; i < starCount; i++) {
+        stars.push(new Star());
+    }
+
+    // Periodically spawn shooting stars
+    setInterval(() => {
+        if (Math.random() < 0.7 && shootingStars.length < 3) {
+            shootingStars.push(new ShootingStar());
+        }
+    }, 3500);
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
 
-        const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim() || '#ff3e3e';
+        // Update & Draw Stars
+        for (let i = 0; i < stars.length; i++) {
+            stars[i].update();
+            stars[i].draw();
 
-        for (let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw();
-
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-
-                if (dist < 110) {
-                    ctx.strokeStyle = primaryColor;
-                    ctx.globalAlpha = (1 - dist / 110) * 0.25;
-                    ctx.lineWidth = 0.8;
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.stroke();
-                    ctx.globalAlpha = 1.0;
+            // Constellation connections for close stars near mouse
+            if (mouse.x !== null && mouse.y !== null) {
+                const distToMouse = Math.hypot(stars[i].x - mouse.x, stars[i].y - mouse.y);
+                if (distToMouse < mouse.radius) {
+                    for (let j = i + 1; j < stars.length; j++) {
+                        const distBetween = Math.hypot(stars[i].x - stars[j].x, stars[i].y - stars[j].y);
+                        if (distBetween < 90) {
+                            ctx.save();
+                            ctx.strokeStyle = '#93c5fd';
+                            ctx.globalAlpha = (1 - distBetween / 90) * 0.2;
+                            ctx.lineWidth = 0.6;
+                            ctx.beginPath();
+                            ctx.moveTo(stars[i].x, stars[i].y);
+                            ctx.lineTo(stars[j].x, stars[j].y);
+                            ctx.stroke();
+                            ctx.restore();
+                        }
+                    }
                 }
             }
         }
+
+        // Update & Draw Shooting Stars
+        shootingStars = shootingStars.filter(s => s.active);
+        for (let s of shootingStars) {
+            s.update();
+            s.draw();
+        }
+
         requestAnimationFrame(animate);
     }
     animate();
