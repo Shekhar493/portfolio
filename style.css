@@ -1,9 +1,9 @@
 :root {
-    --bg-color: #0d0f17;
-    --text-color: #e2e8f0;
-    --primary-color: #ff3e3e;
-    --primary-hover: #ff1a1a;
-    --accent-glow: rgba(255, 62, 62, 0.4);
+    --bg-color: #090d16;
+    --text-color: #f8fafc;
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --accent-glow: rgba(99, 102, 241, 0.35);
     --secondary-color: #a855f7;
 
     /* Neumorphic Shadows (Dark Mode) */
@@ -322,8 +322,8 @@ span {
     justify-content: space-between;
     align-items: center;
     padding: 8rem 10% 4rem;
-    background: radial-gradient(circle at 10% 10%, rgba(255, 62, 62, 0.03) 0%, transparent 40%),
-        radial-gradient(circle at 90% 90%, rgba(255, 62, 62, 0.03) 0%, transparent 40%);
+    background: radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(99, 102, 241, 0.05) 0%, transparent 40%);
     gap: 4rem;
 }
 
@@ -387,7 +387,7 @@ span {
 
 .profile-container:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 62, 62, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(99, 102, 241, 0.15);
 }
 
 .profile-container:hover .profile-img {
@@ -543,7 +543,7 @@ span {
 }
 
 .project-tags span {
-    background: rgba(255, 62, 62, 0.15);
+    background: rgba(99, 102, 241, 0.2);
     color: var(--primary-color);
     padding: 0.4rem 0.8rem;
     border-radius: 8px;
@@ -1667,7 +1667,7 @@ body[data-mode="classic"] .interactive-only-btn {
     transition: background 0.15s ease;
     user-select: none;
 }
-.dc-line:hover, .dc-line:focus-visible { background: rgba(255, 62, 62, 0.15); }
+.dc-line:hover, .dc-line:focus-visible { background: rgba(99, 102, 241, 0.2); }
 .dc-linenum { color: #475569; width: 30px; font-size: 0.85rem; }
 .dc-linetext { color: #e2e8f0; }
 .dc-line.dc-correct-line { background: rgba(16, 185, 129, 0.25) !important; border-left: 4px solid #10b981; }
