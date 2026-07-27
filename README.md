@@ -1,36 +1,56 @@
-# 🚀 Chandra Shekhar Yadav - Interactive Portfolio Website
+# 🚀 Chandra Shekhar Yadav — Software Developer & Systems Builder
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![C Programming](https://img.shields.io/badge/C-A8B9CC?logo=c&logoColor=white)](https://en.cppreference.com/w/c)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?logo=opencv&logoColor=white)](https://opencv.org/)
 
-An ultra-modern, high-interactivity developer portfolio built for **Chandra Shekhar Yadav** — featuring an interactive background particle canvas, an embedded `zsh`-like CLI terminal simulator, a command search palette (`⌘K`), dynamic theme switching, 3D card tilt effects, project quick-view modals, and scroll-triggered stats counters.
+An ultra-modern, high-interactivity developer portfolio built for **Chandra Shekhar Yadav** — highlighting AI systems, real-time WebSockets, computer vision accessibility, and GIS mapping applications.
 
----
-
-## 🌟 Key Interactive Features
-
-- **⚡ Interactive Particle Canvas Background**: Real-time canvas particle constellation that reacts to mouse movements and draws dynamic connection lines.
-- **🖥️ Embedded Developer Terminal Simulator**: Interactive in-browser terminal shell supporting commands like `help`, `about`, `skills`, `projects`, `contact`, `theme`, `clear`, `repo`, `whoami`, and preset chips for fast execution.
-- **🔍 Quick Search Command Palette (`Ctrl+K` / `⌘K`)**: Instant keyboard search overlay allowing visitors to jump to any section, toggle themes, or view social profiles.
-- **🎨 Dynamic Multi-Theme Engine**: Real-time theme switcher with persistent settings (`Cyber Red`, `Neon Violet`, `Matrix Green`, and `Cyberpunk`).
-- **🕹️ 3D Card Tilt & Parallax**: Mouse tracking 3D tilt effects on skills, statistics, and project showcase cards.
-- **📊 Animated Stats Counter**: Scroll-triggered numerical counters highlighting key achievements and project metrics.
-- **🔍 Project Quick View Modals**: Modal drawers offering detailed architecture breakdowns, tech stack chips, and feature lists for featured projects.
-- **💬 Real-Time Form Validation & Toast Notifications**: Interactive toast notification system providing feedback for form submissions and user interactions.
+> *"I'm a software developer passionate about building intelligent systems that solve real-world problems. My interests span AI, full-stack web development, computer vision, accessibility technologies, and geospatial applications."*
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## 🌟 Highlighted Flagship Projects
 
-- **Frontend Core**: HTML5 Semantic Markup, Modern Vanilla CSS3 (Custom Variables, Glassmorphism, Neumorphism, Flexbox, Grid), JavaScript ES6+ Modules
-- **Build System**: [Vite](https://vitejs.dev/)
-- **Icons & Typography**: [Font Awesome 6](https://fontawesome.com/), Google Fonts (*Inter*, *Outfit*, *Fira Code*)
-- **Deployment Environments**: Compatible with Vercel, Netlify, GitHub Pages, or any static web host.
+1. 🎬 **[Sonexa — AI Live Dubbing Platform](https://github.com/Shekhar493)**
+   - Real-time WebSocket streaming audio pipeline, Chrome extension for stream capture, Whisper/Deepgram ASR, translation engine, and synthetic voice generation with modular provider architecture.
+   - **Stack**: FastAPI, WebSockets, Async Python, Chrome Extension, React, ASR/TTS.
+
+2. 🤟 **[Sign2Sound — Accessibility Platform](https://github.com/Shekhar493)**
+   - Computer Vision platform detecting sign language hand gestures in real time using MediaPipe and OpenCV, translating gestures to audible speech and text-to-Braille concepts.
+   - **Stack**: Python, MediaPipe, OpenCV, Computer Vision, Speech Synthesis.
+
+3. 🌍 **[Mapping Tomorrow: Risk & Resource Dashboard](https://github.com/Shekhar493/Mapping_Tommorow)**
+   - Streamlit geospatial application visualizing circular economy waste/recycling resources and analyzing natural disaster risk vulnerability (floods, landslides) in Pokhara, Nepal.
+   - **Stack**: Streamlit, GeoPandas, OSMnx, Folium, PyDeck, OpenStreetMap.
+
+---
+
+## 🌟 Key Interactive Portfolio Features
+
+- **⚡ Interactive Particle Canvas Background**: Real-time canvas particle constellation reacting to cursor movements.
+- **🖥️ Embedded Developer Terminal Simulator**: Interactive in-browser terminal shell supporting commands (`help`, `sonexa`, `sign2sound`, `about`, `skills`, `projects`, `contact`, `theme`, `clear`, `repo`, `whoami`).
+- **🔍 Quick Search Command Palette (`Ctrl+K` / `⌘K`)**: Instant keyboard search overlay to jump across sections.
+- **🎨 Dynamic Multi-Theme Engine**: Persistent themes (`Cyber Red`, `Neon Violet`, `Matrix Green`, `Cyberpunk`).
+- **🕹️ 3D Card Tilt & Parallax**: Mouse-tracking 3D tilt transforms.
+- **📊 Animated Stats Counter**: Scroll-triggered numerical counters.
+- **🔍 Quick View Project Modals**: Slide-in modal drawers with architecture breakdowns.
+
+---
+
+## 🛠️ Full Technical Stack
+
+- **Languages**: Python, JavaScript, TypeScript, HTML5, CSS3, C
+- **Frontend**: React, Vite, Tailwind CSS, Chrome Extension Development, Responsive UI Design
+- **Backend**: FastAPI, REST APIs, WebSocket Programming, Async Python, API Integration
+- **AI & ML**: Computer Vision, MediaPipe, OpenCV, Speech Recognition (ASR/TTS), Translation Pipelines
+- **GIS & Mapping**: GeoPandas, OSMnx, PostGIS, Folium, PyDeck, OpenStreetMap Data
+- **Developer Tools**: Git, GitHub, VS Code, Linux, macOS, Chrome DevTools
+- **Software Engineering**: Monorepo Architecture, Testing (Pytest), Modular Design, WebSocket Streaming
 
 ---
 
@@ -55,37 +75,17 @@ portfolio/
 
 ## 💻 Local Development Setup
 
-### 1. Prerequisites
-Ensure Node.js (v18+) and npm are installed on your machine.
-
-### 2. Installation
-Clone the repository and install dependencies:
-
 ```bash
 git clone https://github.com/Shekhar493/portfolio.git
 cd portfolio
 npm install
-```
-
-### 3. Start Development Server
-Run Vite in development mode with hot module replacement:
-
-```bash
 npm run dev
 ```
 
-### 4. Production Build
-Compile and bundle optimized assets for production:
+Build for production:
 
 ```bash
 npm run build
-```
-
-### 5. Preview Production Build
-Preview local production build:
-
-```bash
-npm run preview
 ```
 
 ---
@@ -95,24 +95,16 @@ npm run preview
 | Command | Action / Description |
 | :--- | :--- |
 | `help` | Lists all available interactive commands |
-| `about` | Displays personal background and summary |
-| `skills` | Displays core technical skills and proficiencies |
+| `sonexa` | Displays Sonexa platform architecture & features |
+| `sign2sound` | Displays Sign2Sound accessibility platform details |
+| `about` | Displays personal background and bio summary |
+| `skills` | Displays technical domains and proficiencies |
 | `projects` | Highlights featured projects and stack details |
 | `contact` | Prints social links and direct email contact |
-| `theme [theme_name]` | Switches theme dynamically (`default`, `violet`, `matrix`, `cyberpunk`) |
+| `theme [theme]` | Switches theme dynamically (`default`, `violet`, `matrix`, `cyberpunk`) |
 | `repo` | Direct link to the GitHub repository |
 | `whoami` | Displays current visitor session information |
-| `clear` | Clears terminal history |
-
----
-
-## 🚀 Deployment Config
-
-### Vercel
-The project includes `vercel.json` pre-configured for static asset routing and build output pointing to `dist`.
-
-### Netlify
-The project includes `netlify.toml` pre-configured with `publish = "dist"` and `command = "npm run build"`.
+| `clear` | Clears terminal output |
 
 ---
 

@@ -210,25 +210,37 @@ function initTerminal() {
 
     const commands = {
         help: () => `Available Commands:<br>
+  - <span class="highlight">sonexa</span> : Learn about Sonexa (AI Live Dubbing Platform)<br>
+  - <span class="highlight">sign2sound</span> : Learn about Sign2Sound (Sign Language Accessibility)<br>
   - <span class="highlight">about</span> : Learn about Chandra Shekhar Yadav<br>
-  - <span class="highlight">skills</span> : List technical stack and proficiencies<br>
+  - <span class="highlight">skills</span> : List technical domains and proficiencies<br>
   - <span class="highlight">projects</span> : View key highlighted projects<br>
   - <span class="highlight">contact</span> : Get social media and email info<br>
   - <span class="highlight">theme [violet|matrix|cyberpunk|default]</span> : Switch terminal/portfolio theme<br>
   - <span class="highlight">clear</span> : Clear terminal output<br>
   - <span class="highlight">repo</span> : View GitHub repository link<br>
   - <span class="highlight">whoami</span> : Display current session visitor info`,
-        about: () => `Name: Chandra Shekhar Yadav<br>Location: Kathmandu, Nepal<br>Role: Developer specializing in C, Python & Web Technologies.<br>Focus: Clean code, responsive designs, and automation tools.`,
-        skills: () => `Technical Skills:<br>
-  - C Programming [88%]<br>
-  - Python Development & Automation [92%]<br>
-  - HTML5 / CSS3 / Modern Layouts [95%]<br>
-  - JavaScript ES6+ & DOM [89%]`,
+        sonexa: () => `<strong>Sonexa — AI Live Dubbing Platform</strong><br>
+  - Core Stack: FastAPI, WebSockets, Async Python, Chrome Extension, React<br>
+  - Features: Real-time audio streaming, Whisper/Deepgram ASR, translation pipeline, synthetic voice output<br>
+  - Architecture: Modular provider architecture with low-latency streaming.`,
+        sign2sound: () => `<strong>Sign2Sound — Sign Language Accessibility</strong><br>
+  - Core Stack: MediaPipe, OpenCV, Python, Computer Vision, Speech Synthesis<br>
+  - Features: Real-time gesture detection, sign language to speech translation, text-to-Braille concepts.`,
+        about: () => `I'm a software developer passionate about building intelligent systems that solve real-world problems. My interests span AI, full-stack web development, computer vision, accessibility technologies, and geospatial applications.`,
+        skills: () => `Technical Expertise:<br>
+  - AI & Computer Vision (OpenCV, MediaPipe, Speech ASR/TTS, Translation) [92%]<br>
+  - Backend & Real-Time (Python, FastAPI, WebSockets, Async Pipelines) [94%]<br>
+  - Frontend & Extensions (React, TypeScript, JS, Chrome Extensions) [90%]<br>
+  - GIS & Mapping (GeoPandas, OSMnx, Folium, PyDeck, OSM) [88%]<br>
+  - Software Engineering (Monorepo, Modular Design, C, Git, Pytest) [91%]`,
         projects: () => `Featured Work:<br>
-  1. Interactive Developer Portfolio [HTML/CSS/JS/Vite]<br>
-  2. System Automation Tool [Python]<br>
-  3. Task Manager Application [JS/LocalStorage]<br>
-  4. C Data Structures Library [C]`,
+  1. Sonexa — AI Live Dubbing Platform [FastAPI / WebSockets / Extension]<br>
+  2. Sign2Sound — Accessibility Platform [MediaPipe / OpenCV / Speech]<br>
+  3. Mapping Tomorrow — Pokhara Disaster & Risk Dashboard [Streamlit / OSM]<br>
+  4. The Last Minute Saver — Hackfest x Google for Developers Tool<br>
+  5. Spell Bee — Interactive Word Puzzle Game [Python]<br>
+  6. Interactive Portfolio [HTML / CSS / JS / Vite]`,
         contact: () => `Contact Info:<br>
   - Email: <a href="mailto:chandrashekhary866@gmail.com" style="color:var(--primary-color)">chandrashekhary866@gmail.com</a><br>
   - LinkedIn: <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" style="color:var(--primary-color)">Chandra Shekhar Yadav</a><br>
@@ -480,6 +492,32 @@ function initProjectModals() {
     if (!modal || !modalBody) return;
 
     const projectData = {
+        sonexa: {
+            title: 'Sonexa — AI-Powered Live Dubbing Platform',
+            category: 'Real-Time AI & WebSockets System Architecture',
+            description: 'A flagship real-time AI live dubbing and translation platform combining WebSocket backend streaming, Chrome Extension audio capture, Whisper/Deepgram ASR, translation pipeline, and low-latency synthetic AI voice generation.',
+            tech: ['FastAPI', 'WebSockets', 'Async Python', 'Chrome Extension', 'React', 'Whisper/Deepgram ASR', 'TTS Voice Pipelines'],
+            features: [
+                'Real-time low-latency WebSocket audio streaming & dubbing pipeline',
+                'Chrome Extension for instant web audio stream capture',
+                'Modular provider architecture supporting multiple ASR, Translation, and TTS providers',
+                'Asynchronous backend pipeline designed for minimal latency overhead'
+            ],
+            github: 'https://github.com/Shekhar493'
+        },
+        sign2sound: {
+            title: 'Sign2Sound — Sign Language Accessibility Platform',
+            category: 'Computer Vision & Accessibility Tech',
+            description: 'An accessibility-focused platform detecting sign language hand gestures in real time using MediaPipe and OpenCV, translating gestures to audible speech and text-to-Braille concepts.',
+            tech: ['Python', 'MediaPipe', 'OpenCV', 'Computer Vision', 'Speech Synthesis', 'Braille Concepts'],
+            features: [
+                'Real-time 3D hand tracking and landmark gesture recognition',
+                'Instant translation of recognized signs into natural speech output',
+                'Text-to-Braille tactile concepts for multi-modal accessibility',
+                'High FPS vision processing pipeline'
+            ],
+            github: 'https://github.com/Shekhar493'
+        },
         'mapping-tomorrow': {
             title: 'Mapping Tomorrow: Pokhara Risk & Resource Dashboard',
             category: 'Python, Streamlit & Geospatial GIS',
