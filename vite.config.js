@@ -12,7 +12,6 @@ export default defineConfig({
         about: resolve(__dirname, 'about.html'),
         projects: resolve(__dirname, 'projects.html'),
         arcade: resolve(__dirname, 'arcade.html'),
-        world: resolve(__dirname, 'world.html'),
         contact: resolve(__dirname, 'contact.html'),
       },
     },

@@ -607,7 +607,6 @@ function initCommandPalette() {
         { title: 'About Chandra Shekhar & Skills', icon: 'fa-user', action: () => navigateOrScroll('about.html', 'about') },
         { title: 'Projects Catalog Showcase', icon: 'fa-layer-group', action: () => navigateOrScroll('projects.html', 'projects') },
         { title: 'Arcade & Gaming Hub (Tech Snake & Debug)', icon: 'fa-gamepad', action: () => navigateOrScroll('arcade.html', 'tech-snake') },
-        { title: 'Interactive 2D Portfolio World', icon: 'fa-city', action: () => window.location.href = 'world.html' },
         { title: 'CLI Developer Terminal Simulator', icon: 'fa-terminal', action: () => navigateOrScroll('contact.html', 'terminal') },
         { title: 'Contact Me & Social Links', icon: 'fa-envelope', action: () => navigateOrScroll('contact.html', 'contact') },
         { title: 'View GitHub Profile', icon: 'fa-github', action: () => window.open('https://github.com/Shekhar493', '_blank') },
