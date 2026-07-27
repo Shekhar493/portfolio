@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal & Contact | Chandra Shekhar Yadav | Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <canvas id="bg-canvas"></canvas>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">CS<span>Y</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="arcade.html">Arcade</a></li>
+            <li><a href="world.html">World</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="nav-icon-btn" id="sound-toggle-btn" title="Toggle Sound" aria-label="Toggle Sound">
+                <i class="fas fa-volume-mute" id="sound-icon"></i>
+            </button>
+            <button class="nav-icon-btn" id="achievements-modal-btn" title="View Achievements" aria-label="View Achievements">
+                <i class="fas fa-trophy"></i>
+            </button>
+            <div class="mode-toggle-wrapper" title="Switch Mode">
+                <span class="mode-label">💼 Classic</span>
+                <label class="switch">
+                    <input type="checkbox" id="mode-toggle-checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <span class="mode-label">🎮 Interactive</span>
+            </div>
+            <button class="cmd-k-btn" id="cmd-k-trigger" title="Quick Search (Ctrl+K)">
+                <i class="fas fa-search"></i>
+                <span class="cmd-k-badge">⌘K</span>
+            </button>
+            <div class="theme-dropdown">
+                <button class="theme-btn" id="theme-toggle" title="Switch Theme">
+                    <i class="fas fa-palette"></i>
+                </button>
+                <div class="theme-menu" id="theme-menu">
+                    <button class="theme-option" data-theme="default">
+                        <i class="fas fa-fire" style="color: #38bdf8;"></i> Cosmic Cyan
+                    </button>
+                    <button class="theme-option" data-theme="violet">
+                        <i class="fas fa-bolt" style="color: #a855f7;"></i> Neon Violet
+                    </button>
+                    <button class="theme-option" data-theme="matrix">
+                        <i class="fas fa-terminal" style="color: #10b981;"></i> Matrix Green
+                    </button>
+                    <button class="theme-option" data-theme="cyberpunk">
+                        <i class="fas fa-vr-cardboard" style="color: #00f0ff;"></i> Cyberpunk
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Contact Content -->
+    <main style="padding-top: 100px;">
+        <!-- Terminal Simulator Section -->
+        <section id="terminal" class="terminal-section section" style="margin-bottom: 4rem;">
+            <h2 class="section-title">CLI <span>Terminal</span></h2>
+            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Interactive shell simulator — type 'help' or click presets below</p>
+
+            <div class="terminal-container glass-card" style="max-width: 900px; margin: 0 auto; border-radius: 1rem; overflow: hidden;">
+                <div class="terminal-header" style="background: rgba(0,0,0,0.5); padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--glass-border);">
+                    <div style="display: flex; gap: 0.5rem;">
+                        <span style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f56; display: inline-block;"></span>
+                        <span style="width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e; display: inline-block;"></span>
+                        <span style="width: 12px; height: 12px; border-radius: 50%; background: #27c93f; display: inline-block;"></span>
+                    </div>
+                    <span style="font-family: var(--font-code); font-size: 0.85rem; color: #94a3b8;">shekhar@portfolio:~ (zsh)</span>
+                </div>
+
+                <div class="terminal-body" style="padding: 1.25rem; background: rgba(5, 8, 16, 0.95); font-family: var(--font-code); font-size: 0.9rem; min-height: 280px; max-height: 380px; overflow-y: auto;" id="terminal-output">
+                    <div class="terminal-line info" style="color: var(--primary-color);">Welcome to Chandra Shekhar's Interactive CLI v1.0. Type 'help' to get started.</div>
+                </div>
+
+                <form id="terminal-form" style="display: flex; background: #080c16; padding: 0.75rem 1.25rem; border-top: 1px solid var(--glass-border);">
+                    <span style="color: var(--primary-color); font-family: var(--font-code); margin-right: 0.6rem; font-weight: 600;">shekhar@portfolio:~$</span>
+                    <input type="text" id="terminal-input" style="flex: 1; background: transparent; border: none; outline: none; color: #fff; font-family: var(--font-code); font-size: 0.9rem;" placeholder="Type a command..." autocomplete="off">
+                </form>
+
+                <div class="terminal-presets" style="padding: 0.75rem 1.25rem; background: rgba(0,0,0,0.3); display: flex; gap: 0.5rem; flex-wrap: wrap; border-top: 1px solid var(--glass-border);">
+                    <button class="preset-chip btn btn-secondary btn-sm" data-cmd="sonexa">sonexa</button>
+                    <button class="preset-chip btn btn-secondary btn-sm" data-cmd="sign2sound">sign2sound</button>
+                    <button class="preset-chip btn btn-secondary btn-sm" data-cmd="skills">skills</button>
+                    <button class="preset-chip btn btn-secondary btn-sm" data-cmd="achievements">achievements</button>
+                    <button class="preset-chip btn btn-secondary btn-sm" data-cmd="contact">contact</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <div class="contact-container" style="max-width: 800px; margin: 0 auto; padding: 2.5rem; border-radius: 1.25rem;">
+                <form class="contact-form" id="contact-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                    <div class="input-group">
+                        <input type="text" id="contact-name" placeholder="Your Name" required style="width: 100%; padding: 1rem; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass-border); border-radius: 8px; color: #fff;">
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="contact-email" placeholder="Your Email" required style="width: 100%; padding: 1rem; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass-border); border-radius: 8px; color: #fff;">
+                    </div>
+                    <div class="input-group">
+                        <textarea id="contact-message" placeholder="Your Message" rows="5" required style="width: 100%; padding: 1rem; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass-border); border-radius: 8px; color: #fff; font-family: var(--font-main);"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="contact-submit">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+
+                <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 2.5rem; flex-wrap: wrap;">
+                    <a href="mailto:chandrashekhary866@gmail.com" style="color: #94a3b8; text-decoration: none; font-size: 1rem;"><i class="fas fa-envelope" style="color:var(--primary-color);"></i> chandrashekhary866@gmail.com</a>
+                    <a href="https://github.com/Shekhar493" target="_blank" style="color: #94a3b8; text-decoration: none; font-size: 1rem;"><i class="fab fa-github" style="color:var(--primary-color);"></i> github.com/Shekhar493</a>
+                    <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" style="color: #94a3b8; text-decoration: none; font-size: 1rem;"><i class="fab fa-linkedin" style="color:var(--primary-color);"></i> Chandra Shekhar Yadav</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 3rem 1rem; margin-top: 4rem; border-top: 1px solid var(--glass-border); color: #64748b; font-size: 0.9rem;">
+        <p>© 2026 Chandra Shekhar Yadav · CLI Terminal & Contact Hub</p>
+    </footer>
+
+    <!-- Command Palette Modal -->
+    <div class="cmd-palette-backdrop" id="cmd-palette">
+        <div class="cmd-palette-modal glass-card">
+            <div class="cmd-input-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="cmd-input" placeholder="Type a command or search..." autocomplete="off">
+                <span class="cmd-esc-badge">ESC</span>
+            </div>
+            <div class="cmd-results" id="cmd-results"></div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

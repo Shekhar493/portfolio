@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initInteractiveSystem();
 });
 
-// ===== 1. Interactive Deep Space Starfield Engine =====
+// ===== 1. Interactive Stellarium Space & Planet Engine =====
 function initParticleCanvas() {
     const canvas = document.getElementById('bg-canvas');
     if (!canvas) return;
@@ -35,21 +35,122 @@ function initParticleCanvas() {
 
     let stars = [];
     let shootingStars = [];
-    const starCount = Math.min(Math.floor((width * height) / 7000), 160);
-    const mouse = { x: null, y: null, radius: 150 };
+    const starCount = Math.min(Math.floor((width * height) / 6500), 180);
+    const mouse = { x: null, y: null, radius: 180 };
+    let hoveredPlanet = null;
+
+    // Create planet tooltip element if not present
+    let tooltip = document.getElementById('planet-tooltip');
+    if (!tooltip) {
+        tooltip = document.createElement('div');
+        tooltip.id = 'planet-tooltip';
+        document.body.appendChild(tooltip);
+    }
 
     const starColors = [
-        '#ffffff', '#e2e8f0', '#93c5fd', '#c084fc', '#67e8f9', '#fde047'
+        '#ffffff', '#e0f2fe', '#bae6fd', '#7dd3fc', '#38bdf8', '#00f2fe'
+    ];
+
+    // Interactive Planets in orbit
+    const planets = [
+        {
+            id: 'sonexa',
+            name: 'Sonexa Prime',
+            icon: '🎬',
+            desc: 'AI Live Dubbing & WebSockets Stream',
+            color: '#38bdf8',
+            angle: 0.2,
+            rx: 0.36, ry: 0.22,
+            speed: 0.0008,
+            size: 16,
+            link: 'projects.html'
+        },
+        {
+            id: 'sign2sound',
+            name: 'Sign2Sound AI',
+            icon: '✋',
+            desc: 'Computer Vision & Gesture Speech',
+            color: '#818cf8',
+            angle: 1.8,
+            rx: 0.42, ry: 0.28,
+            speed: 0.0006,
+            size: 18,
+            link: 'projects.html'
+        },
+        {
+            id: 'mapping',
+            name: 'Geo Pokhara',
+            icon: '🗺️',
+            desc: 'Geospatial Risk & Disaster Dashboard',
+            color: '#34d399',
+            angle: 3.5,
+            rx: 0.30, ry: 0.35,
+            speed: 0.0007,
+            size: 15,
+            link: 'projects.html'
+        },
+        {
+            id: 'arcade',
+            name: 'Arcade Nexus',
+            icon: '🎮',
+            desc: 'Tech Snake & Debug Challenge Games',
+            color: '#00f2fe',
+            angle: 5.1,
+            rx: 0.45, ry: 0.18,
+            speed: 0.0009,
+            size: 17,
+            link: 'arcade.html'
+        }
     ];
 
     window.addEventListener('mousemove', (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
+
+        // Check planet hovering
+        let hit = null;
+        const centerX = width / 2;
+        const centerY = height / 2;
+
+        planets.forEach(p => {
+            const px = centerX + Math.cos(p.angle) * (width * p.rx);
+            const py = centerY + Math.sin(p.angle) * (height * p.ry);
+            const dist = Math.hypot(e.clientX - px, e.clientY - py);
+
+            if (dist < p.size + 15) {
+                hit = { planet: p, x: px, y: py };
+            }
+        });
+
+        if (hit) {
+            hoveredPlanet = hit.planet;
+            canvas.style.cursor = 'pointer';
+            tooltip.className = 'active';
+            tooltip.style.left = `${e.clientX}px`;
+            tooltip.style.top = `${e.clientY}px`;
+            tooltip.innerHTML = `
+                <div class="planet-tt-name">${hit.planet.icon} ${hit.planet.name}</div>
+                <div class="planet-tt-desc">${hit.planet.desc}</div>
+                <div class="planet-tt-action"><i class="fas fa-external-link-alt"></i> Click to Explore</div>
+            `;
+        } else {
+            hoveredPlanet = null;
+            canvas.style.cursor = 'default';
+            tooltip.className = '';
+        }
+    });
+
+    window.addEventListener('click', (e) => {
+        if (hoveredPlanet && hoveredPlanet.link) {
+            window.location.href = hoveredPlanet.link;
+        }
     });
 
     window.addEventListener('mouseleave', () => {
         mouse.x = null;
         mouse.y = null;
+        hoveredPlanet = null;
+        if (tooltip) tooltip.className = '';
     });
 
     window.addEventListener('resize', () => {
@@ -58,14 +159,11 @@ function initParticleCanvas() {
     });
 
     class Star {
-        constructor() {
-            this.reset();
-        }
-
+        constructor() { this.reset(); }
         reset() {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            this.z = Math.random() * 2 + 0.5; // depth speed
+            this.z = Math.random() * 2 + 0.5;
             this.size = (3 - this.z) * 0.7 + 0.4;
             this.color = starColors[Math.floor(Math.random() * starColors.length)];
             this.alpha = Math.random() * 0.7 + 0.3;
@@ -77,20 +175,14 @@ function initParticleCanvas() {
         update() {
             this.x += this.vx;
             this.y += this.vy;
-
-            // Wrap around edges
             if (this.x < 0) this.x = width;
             if (this.x > width) this.x = 0;
             if (this.y < 0) this.y = height;
             if (this.y > height) this.y = 0;
 
-            // Twinkle effect
             this.alpha += this.twinkleSpeed;
-            if (this.alpha > 0.95 || this.alpha < 0.2) {
-                this.twinkleSpeed *= -1;
-            }
+            if (this.alpha > 0.95 || this.alpha < 0.2) this.twinkleSpeed *= -1;
 
-            // Mouse gravitational lensing
             if (mouse.x !== null && mouse.y !== null) {
                 const dx = mouse.x - this.x;
                 const dy = mouse.y - this.y;
@@ -111,10 +203,9 @@ function initParticleCanvas() {
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
 
-            // Glow for larger stars
-            if (this.size > 1.5) {
-                ctx.shadowBlur = 6;
-                ctx.shadowColor = this.color;
+            if (this.size > 1.4) {
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = '#38bdf8';
                 ctx.fill();
             }
             ctx.restore();
@@ -122,16 +213,13 @@ function initParticleCanvas() {
     }
 
     class ShootingStar {
-        constructor() {
-            this.reset();
-        }
-
+        constructor() { this.reset(); }
         reset() {
             this.x = Math.random() * width * 1.2 - width * 0.1;
             this.y = Math.random() * (height * 0.5);
-            this.length = Math.random() * 80 + 60;
+            this.length = Math.random() * 90 + 70;
             this.speed = Math.random() * 8 + 6;
-            this.angle = Math.PI / 4 + (Math.random() - 0.5) * 0.2; // ~45 deg
+            this.angle = Math.PI / 4 + (Math.random() - 0.5) * 0.2;
             this.dx = Math.cos(this.angle) * this.speed;
             this.dy = Math.sin(this.angle) * this.speed;
             this.opacity = 1;
@@ -143,9 +231,7 @@ function initParticleCanvas() {
             this.x += this.dx;
             this.y += this.dy;
             this.opacity -= 0.015;
-            if (this.opacity <= 0 || this.x > width || this.y > height) {
-                this.active = false;
-            }
+            if (this.opacity <= 0 || this.x > width || this.y > height) this.active = false;
         }
 
         draw() {
@@ -155,9 +241,9 @@ function initParticleCanvas() {
             const tailY = this.y - Math.sin(this.angle) * this.length;
 
             const gradient = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
-            gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
-            gradient.addColorStop(0.3, `rgba(147, 197, 253, ${this.opacity * 0.6})`);
-            gradient.addColorStop(1, 'rgba(147, 197, 253, 0)');
+            gradient.addColorStop(0, `rgba(56, 189, 248, ${this.opacity})`);
+            gradient.addColorStop(0.4, `rgba(0, 242, 254, ${this.opacity * 0.5})`);
+            gradient.addColorStop(1, 'rgba(56, 189, 248, 0)');
 
             ctx.strokeStyle = gradient;
             ctx.lineWidth = 2;
@@ -170,36 +256,36 @@ function initParticleCanvas() {
     }
 
     // Init stars
-    for (let i = 0; i < starCount; i++) {
-        stars.push(new Star());
-    }
+    for (let i = 0; i < starCount; i++) stars.push(new Star());
 
-    // Periodically spawn shooting stars
+    // Spawn shooting stars
     setInterval(() => {
-        if (Math.random() < 0.7 && shootingStars.length < 3) {
+        if (Math.random() < 0.75 && shootingStars.length < 3) {
             shootingStars.push(new ShootingStar());
         }
-    }, 3500);
+    }, 3200);
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
 
-        // Update & Draw Stars
+        const centerX = width / 2;
+        const centerY = height / 2;
+
+        // 1. Draw Starfield & Constellations
         for (let i = 0; i < stars.length; i++) {
             stars[i].update();
             stars[i].draw();
 
-            // Constellation connections for close stars near mouse
             if (mouse.x !== null && mouse.y !== null) {
                 const distToMouse = Math.hypot(stars[i].x - mouse.x, stars[i].y - mouse.y);
                 if (distToMouse < mouse.radius) {
                     for (let j = i + 1; j < stars.length; j++) {
                         const distBetween = Math.hypot(stars[i].x - stars[j].x, stars[i].y - stars[j].y);
-                        if (distBetween < 90) {
+                        if (distBetween < 95) {
                             ctx.save();
-                            ctx.strokeStyle = '#93c5fd';
-                            ctx.globalAlpha = (1 - distBetween / 90) * 0.2;
-                            ctx.lineWidth = 0.6;
+                            ctx.strokeStyle = '#38bdf8';
+                            ctx.globalAlpha = (1 - distBetween / 95) * 0.35;
+                            ctx.lineWidth = 0.7;
                             ctx.beginPath();
                             ctx.moveTo(stars[i].x, stars[i].y);
                             ctx.lineTo(stars[j].x, stars[j].y);
@@ -211,12 +297,55 @@ function initParticleCanvas() {
             }
         }
 
-        // Update & Draw Shooting Stars
+        // 2. Draw Shooting Stars
         shootingStars = shootingStars.filter(s => s.active);
         for (let s of shootingStars) {
             s.update();
             s.draw();
         }
+
+        // 3. Draw Orbiting Stellarium Planets
+        planets.forEach(p => {
+            p.angle += p.speed;
+            const px = centerX + Math.cos(p.angle) * (width * p.rx);
+            const py = centerY + Math.sin(p.angle) * (height * p.ry);
+            const isHovered = (hoveredPlanet === p);
+
+            ctx.save();
+
+            // Orbital path ring
+            ctx.beginPath();
+            ctx.ellipse(centerX, centerY, width * p.rx, height * p.ry, 0, 0, Math.PI * 2);
+            ctx.strokeStyle = isHovered ? 'rgba(56, 189, 248, 0.35)' : 'rgba(255, 255, 255, 0.04)';
+            ctx.lineWidth = isHovered ? 1.5 : 1;
+            ctx.setLineDash([4, 6]);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Planet atmosphere glow
+            ctx.beginPath();
+            ctx.arc(px, py, p.size + (isHovered ? 10 : 5), 0, Math.PI * 2);
+            ctx.fillStyle = isHovered ? 'rgba(56, 189, 248, 0.35)' : 'rgba(56, 189, 248, 0.12)';
+            ctx.fill();
+
+            // Planet Body
+            ctx.beginPath();
+            ctx.arc(px, py, p.size + (isHovered ? 2 : 0), 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.shadowBlur = isHovered ? 20 : 10;
+            ctx.shadowColor = p.color;
+            ctx.fill();
+
+            // Planet Icon & Title
+            ctx.shadowBlur = 0;
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `bold ${isHovered ? 13 : 11}px Outfit, sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'top';
+            ctx.fillText(`${p.icon} ${p.name}`, px, py + p.size + 6);
+
+            ctx.restore();
+        });
 
         requestAnimationFrame(animate);
     }
@@ -297,7 +426,9 @@ function initThemeManager() {
     });
 
     function setTheme(theme) {
-        if (theme === 'default') {
+        if (theme === 'default' || theme === 'cyber-red') {
+            document.documentElement.setAttribute('data-theme', 'cyber-red');
+        } else if (theme === 'indigo') {
             document.documentElement.removeAttribute('data-theme');
         } else {
             document.documentElement.setAttribute('data-theme', theme);
@@ -323,7 +454,7 @@ function initTerminal() {
   - <span class="highlight">skills</span> : List technical domains and proficiencies<br>
   - <span class="highlight">projects</span> : View key highlighted projects<br>
   - <span class="highlight">contact</span> : Get social media and email info<br>
-  - <span class="highlight">theme [violet|matrix|cyberpunk|default]</span> : Switch terminal/portfolio theme<br>
+  - <span class="highlight">theme [indigo|cyber-red|violet|matrix|cyberpunk|default]</span> : Switch terminal/portfolio theme<br>
   - <span class="highlight">clear</span> : Clear terminal output<br>
   - <span class="highlight">repo</span> : View GitHub repository link<br>
   - <span class="highlight">achievements</span> : View your unlocked achievements<br>
@@ -398,13 +529,14 @@ function initTerminal() {
 
         if (mainCmd === 'theme') {
             const themeArg = parts[1]?.toLowerCase();
-            if (['violet', 'matrix', 'cyberpunk', 'default'].includes(themeArg)) {
-                if (themeArg === 'default') document.documentElement.removeAttribute('data-theme');
+            if (['violet', 'matrix', 'cyberpunk', 'default', 'cyber-red', 'indigo'].includes(themeArg)) {
+                if (themeArg === 'default' || themeArg === 'cyber-red') document.documentElement.setAttribute('data-theme', 'cyber-red');
+                else if (themeArg === 'indigo') document.documentElement.removeAttribute('data-theme');
                 else document.documentElement.setAttribute('data-theme', themeArg);
                 localStorage.setItem('portfolio-theme', themeArg);
                 printOutput(`Theme changed to '${themeArg}'!`, 'success');
             } else {
-                printOutput(`Usage: theme [default | violet | matrix | cyberpunk]`, 'warning');
+                printOutput(`Usage: theme [default | cyber-red | indigo | violet | matrix | cyberpunk]`, 'warning');
             }
         } else if (mainCmd === 'sound') {
             const soundArg = parts[1]?.toLowerCase();
@@ -471,28 +603,34 @@ function initCommandPalette() {
     if (!backdrop || !input || !results) return;
 
     const items = [
-        { title: 'Go to Home', icon: 'fa-home', action: () => scrollToId('home') },
-        { title: 'About Chandra Shekhar', icon: 'fa-user', action: () => scrollToId('about') },
-        { title: 'Interactive Developer Terminal', icon: 'fa-terminal', action: () => scrollToId('terminal') },
-        { title: 'Skills & Proficiency', icon: 'fa-code', action: () => scrollToId('skills') },
-        { title: 'Featured Projects', icon: 'fa-layer-group', action: () => scrollToId('projects') },
-        { title: 'Contact Me', icon: 'fa-envelope', action: () => scrollToId('contact') },
+        { title: 'Go to Home Hub', icon: 'fa-home', action: () => navigateOrScroll('index.html', 'home') },
+        { title: 'About Chandra Shekhar & Skills', icon: 'fa-user', action: () => navigateOrScroll('about.html', 'about') },
+        { title: 'Projects Catalog Showcase', icon: 'fa-layer-group', action: () => navigateOrScroll('projects.html', 'projects') },
+        { title: 'Arcade & Gaming Hub (Tech Snake & Debug)', icon: 'fa-gamepad', action: () => navigateOrScroll('arcade.html', 'tech-snake') },
+        { title: 'Interactive 2D Portfolio World', icon: 'fa-city', action: () => window.location.href = 'world.html' },
+        { title: 'CLI Developer Terminal Simulator', icon: 'fa-terminal', action: () => navigateOrScroll('contact.html', 'terminal') },
+        { title: 'Contact Me & Social Links', icon: 'fa-envelope', action: () => navigateOrScroll('contact.html', 'contact') },
         { title: 'View GitHub Profile', icon: 'fa-github', action: () => window.open('https://github.com/Shekhar493', '_blank') },
-        { title: 'Switch to Cyber Red Theme', icon: 'fa-palette', action: () => setTheme('default') },
+        { title: 'Switch to Cosmic Cyan Theme', icon: 'fa-palette', action: () => setTheme('default') },
         { title: 'Switch to Neon Violet Theme', icon: 'fa-bolt', action: () => setTheme('violet') },
         { title: 'Switch to Matrix Green Theme', icon: 'fa-terminal', action: () => setTheme('matrix') }
     ];
 
     function setTheme(t) {
-        if (t === 'default') document.documentElement.removeAttribute('data-theme');
+        if (t === 'default' || t === 'cyber-red') document.documentElement.setAttribute('data-theme', 'cyber-red');
+        else if (t === 'indigo') document.documentElement.removeAttribute('data-theme');
         else document.documentElement.setAttribute('data-theme', t);
         localStorage.setItem('portfolio-theme', t);
         showToast(`Theme set to ${t}!`);
     }
 
-    function scrollToId(id) {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    function navigateOrScroll(pageUrl, elementId) {
+        const el = document.getElementById(elementId);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            window.location.href = pageUrl;
+        }
     }
 
     function openPalette() {

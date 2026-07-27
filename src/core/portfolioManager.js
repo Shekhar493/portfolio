@@ -122,14 +122,18 @@ const PortfolioManager = {
     const loads = [];
     if (CONFIG.features.debugChallenge) {
       loads.push(import('../games/debugChallenge.js').then(m => {
-        this.registerGame(m.default);
-        m.default.init();
+        if (!this.getGame(m.default.id)) {
+          this.registerGame(m.default);
+          m.default.init();
+        }
       }).catch(() => {}));
     }
     if (CONFIG.features.snake) {
       loads.push(import('../games/techSnake.js').then(m => {
-        this.registerGame(m.default);
-        m.default.init();
+        if (!this.getGame(m.default.id)) {
+          this.registerGame(m.default);
+          m.default.init();
+        }
       }).catch(() => {}));
     }
     await Promise.all(loads);

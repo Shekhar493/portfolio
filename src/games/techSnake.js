@@ -133,10 +133,29 @@ function _draw() {
 
   // Food
   if (_food && _food.tech) {
-    _ctx.font = `${cellPx - 4}px serif`;
+    const fx = _food.x * cellPx + cellPx / 2;
+    const fy = _food.y * cellPx + cellPx / 2;
+
+    _ctx.save();
+    // Glowing Food Token Circle
+    _ctx.beginPath();
+    _ctx.arc(fx, fy, cellPx / 2 - 2, 0, Math.PI * 2);
+    _ctx.fillStyle = 'rgba(56, 189, 248, 0.25)';
+    _ctx.fill();
+    _ctx.strokeStyle = '#38bdf8';
+    _ctx.lineWidth = 1.5;
+    _ctx.shadowBlur = 12;
+    _ctx.shadowColor = '#38bdf8';
+    _ctx.stroke();
+
+    // Food Emoji Icon
+    _ctx.shadowBlur = 0;
+    _ctx.fillStyle = '#ffffff';
+    _ctx.font = `${cellPx - 6}px sans-serif`;
     _ctx.textAlign = 'center';
     _ctx.textBaseline = 'middle';
-    _ctx.fillText(_food.tech.icon, _food.x * cellPx + cellPx / 2, _food.y * cellPx + cellPx / 2);
+    _ctx.fillText(_food.tech.icon, fx, fy);
+    _ctx.restore();
   }
 
   // Snake body
@@ -144,12 +163,13 @@ function _draw() {
     _snake.forEach((seg, i) => {
       const progress = 1 - i / _snake.length;
       _ctx.fillStyle = i === 0 ? '#6366f1' : `rgba(99, 102, 241, ${0.4 + progress * 0.5})`;
-      _ctx.beginPath();
-      _ctx.roundRect(
-        seg.x * cellPx + 2, seg.y * cellPx + 2,
-        cellPx - 4, cellPx - 4, 4
-      );
-      _ctx.fill();
+      if (_ctx.roundRect) {
+        _ctx.beginPath();
+        _ctx.roundRect(seg.x * cellPx + 2, seg.y * cellPx + 2, cellPx - 4, cellPx - 4, 4);
+        _ctx.fill();
+      } else {
+        _ctx.fillRect(seg.x * cellPx + 2, seg.y * cellPx + 2, cellPx - 4, cellPx - 4);
+      }
     });
   }
 
@@ -237,10 +257,14 @@ function _bindKeys() {
       }
     }
 
-    if (e.key === ' ' && _state !== 'idle' && _state !== 'game_over') {
+    if (e.key === ' ') {
       e.preventDefault();
       if (_state === 'playing') TechSnake.pause();
       else if (_state === 'paused') TechSnake.resume();
+      else if (_state === 'idle' || _state === 'game_over') {
+        TechSnake.reset();
+        TechSnake.resume();
+      }
       return;
     }
 

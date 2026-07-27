@@ -209,17 +209,26 @@
     </style>
 </head>
 <body data-mode="interactive">
-    <header class="world-header">
-        <div class="world-title-area">
-            <a href="index.html" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;">
-                <i class="fas fa-arrow-left"></i> Back to Portfolio
-            </a>
-            <h1>🏙️ Portfolio <span>World</span></h1>
+    <canvas id="bg-canvas"></canvas>
+    <div class="cursor-follower"></div>
+
+    <!-- Unified Navbar -->
+    <nav class="navbar">
+        <div class="logo">CS<span>Y</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="arcade.html">Arcade</a></li>
+            <li><a href="world.html" class="active">World</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <span style="color: #94a3b8; font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem;">
+                <i class="fas fa-city" style="color:var(--primary-color);"></i> 2D District
+            </span>
         </div>
-        <div>
-            <span style="color: #94a3b8; font-size: 0.9rem;">Click any building to enter & explore</span>
-        </div>
-    </header>
+    </nav>
 
     <main class="world-container">
         <div class="world-intro">
@@ -246,6 +255,7 @@
         </div>
     </div>
 
+    <script type="module" src="script.js"></script>
     <script type="module" src="src/games/portfolioWorld.js"></script>
 </body>
 </html>
