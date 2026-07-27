@@ -1066,7 +1066,11 @@ function initInteractiveSystem() {
     if (achBtn) {
         achBtn.addEventListener('click', () => {
             const achEl = document.getElementById('achievements');
-            if (achEl) achEl.scrollIntoView({ behavior: 'smooth' });
+            if (achEl) {
+                achEl.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                window.location.href = 'about.html#achievements';
+            }
         });
     }
 
