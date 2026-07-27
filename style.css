@@ -1503,48 +1503,42 @@ body[data-mode="classic"] .interactive-only-btn {
     display: none !important;
 }
 
-/* ── XP HUD Overlay (Fixed Position) ── */
+/* ── XP HUD Overlay (Embedded Navbar Pill) ── */
 #xp-hud {
-    position: fixed;
-    top: 80px;
-    right: 1.5rem;
-    z-index: 1000;
-    background: rgba(10, 16, 28, 0.92);
-    border: 1px solid var(--primary-color);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 15px var(--accent-glow);
-    border-radius: 12px;
-    padding: 0.65rem 0.9rem;
-    width: 200px;
-    backdrop-filter: blur(16px);
+    position: static !important;
     display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    font-size: 0.85rem;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+    width: auto !important;
+    box-shadow: none !important;
+    margin: 0;
 }
-#xp-hud.hud-visible { display: flex; }
-.hud-level { display: flex; align-items: center; gap: 0.4rem; font-weight: 700; color: #fff; }
-.hud-title { color: var(--primary-color); font-size: 0.8rem; font-weight: 600; }
+#xp-hud:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px var(--accent-glow) !important;
+}
+.hud-level { display: flex; align-items: center; gap: 0.3rem; font-weight: 700; color: #fff; font-family: var(--font-heading); }
+.hud-level-num { color: var(--primary-color); font-size: 0.85rem; }
 .hud-xp-bar {
+    width: 45px;
     height: 5px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.12);
     border-radius: 3px;
     overflow: hidden;
 }
 .hud-xp-fill { height: 100%; background: var(--primary-color); transition: width 0.4s ease; }
-.hud-xp-text { color: #94a3b8; font-size: 0.72rem; text-align: right; }
-
-body.home-viewport-page #xp-hud {
-    top: 75px;
-    right: 1.25rem;
-}
+.hud-xp-text { color: #94a3b8; font-size: 0.7rem; font-family: var(--font-code); white-space: nowrap; }
 
 @media (max-width: 768px) {
     #xp-hud {
-        top: auto;
-        bottom: 1.25rem;
-        right: 1rem;
-        width: 175px;
+        display: none !important;
     }
 }
 
