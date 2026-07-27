@@ -480,6 +480,58 @@ function initProjectModals() {
     if (!modal || !modalBody) return;
 
     const projectData = {
+        'mapping-tomorrow': {
+            title: 'Mapping Tomorrow: Pokhara Risk & Resource Dashboard',
+            category: 'Python, Streamlit & Geospatial GIS',
+            description: 'A geospatial web application designed to visualize circular economy resources (waste/recycling points) and analyze their vulnerability to natural disasters (floods, landslides) in Pokhara, Nepal using OpenStreetMap (OSM) data.',
+            tech: ['Python 3', 'Streamlit', 'OpenStreetMap API', 'Folium', 'Geospatial Analysis'],
+            features: [
+                'Interactive hazard and disaster risk mapping for Pokhara, Nepal',
+                'Circular economy resource point visualization and categorization',
+                'Vulnerability analysis against flood and landslide zone overlays',
+                'OpenStreetMap (OSM) live data integration'
+            ],
+            github: 'https://github.com/Shekhar493/Mapping_Tommorow'
+        },
+        'last-minute-saver': {
+            title: 'The Last Minute Saver',
+            category: 'Web Application (Hackfest x Google for Developers)',
+            description: 'Engineered for Hackfest x Google for Developers — a rapid emergency study preparation and resource consolidation application designed to help students optimize exam review under tight deadlines.',
+            tech: ['JavaScript ES6+', 'HTML5/CSS3', 'Google Developer APIs', 'Web Stack'],
+            features: [
+                'Rapid resource indexer and study material breakdown',
+                'Focus session timer and milestone tracker',
+                'Built during Hackfest in collaboration with Google for Developers',
+                'Responsive glassmorphism UI'
+            ],
+            github: 'https://github.com/Shekhar493/The-Last-Minute-Saver'
+        },
+        'spell-bee': {
+            title: 'Spell Bee Interactive Word Game',
+            category: 'Python Game Development & Logic',
+            description: 'An interactive word puzzle game testing spelling speed, vocabulary recall, and letter pattern recognition with real-time scoring.',
+            tech: ['Python 3', 'Interactive Terminal/GUI', 'Word Algorithms'],
+            features: [
+                'Dynamic word dictionary validation',
+                'Score multiplier for complex & rare words',
+                'Interactive hint engine and timer',
+                'Clean game loop architecture'
+            ],
+            github: 'https://github.com/Shekhar493/Spell-Bee'
+        },
+        'ml-cfe': {
+            title: 'Applied Machine Learning Suite',
+            category: 'Machine Learning & Data Science',
+            description: 'A collection of machine learning notebooks and model implementations exploring predictive modeling, supervised/unsupervised learning, data preprocessing, and algorithm evaluation.',
+            tech: ['Python', 'Jupyter Notebooks', 'Scikit-Learn', 'Pandas', 'NumPy'],
+            features: [
+                'Supervised classification and regression models',
+                'Feature selection and hyperparameter tuning',
+                'Data visualization & exploratory data analysis (EDA)',
+                'Model evaluation metrics (Accuracy, Precision, Recall, ROC-AUC)'
+            ],
+            github: 'https://github.com/Shekhar493/machine_learning_cfe'
+        },
         portfolio: {
             title: 'Interactive Personal Portfolio',
             category: 'Web Development & UI/UX',
@@ -494,44 +546,17 @@ function initProjectModals() {
             ],
             github: 'https://github.com/Shekhar493/portfolio'
         },
-        'task-manager': {
-            title: 'Task Manager Application',
-            category: 'Web Application',
-            description: 'Interactive task management tool allowing users to create, categorize, filter, and track daily tasks with persistent browser local storage.',
-            tech: ['JavaScript ES6+', 'CSS3 Flexbox/Grid', 'HTML5 LocalStorage'],
+        'python-learning': {
+            title: 'Python Learning & Systems Automation',
+            category: 'Python Development & Utilities',
+            description: 'Comprehensive repository covering Python programming fundamentals, custom automation utilities, data structures, and practical scripting exercises.',
+            tech: ['Python 3', 'CLI Tools', 'Data Structures', 'Automation'],
             features: [
-                'Dynamic task adding, completing, and deletion',
-                'Filter tasks by Status (All, Active, Completed)',
-                'Dark-themed glassmorphism interface',
-                'Automatic state persistence in LocalStorage'
+                'Automated file & system management scripts',
+                'Core algorithm implementations in pure Python',
+                'Hands-on exercises and clean modular structure'
             ],
-            github: 'https://github.com/Shekhar493'
-        },
-        'system-utility': {
-            title: 'System Automation Tool',
-            category: 'Python Systems & Scripting',
-            description: 'Python CLI application engineered to streamline file management, system diagnostics, automated log rotation, and task execution.',
-            tech: ['Python 3', 'OS & Sys Modules', 'CLI Parser', 'Logging'],
-            features: [
-                'Automated file sorting and duplicate cleanup',
-                'System resource monitoring & CPU usage alerts',
-                'Customizable command-line flags and flags parser',
-                'Detailed execution logging'
-            ],
-            github: 'https://github.com/Shekhar493'
-        },
-        'data-structures': {
-            title: 'C Data Structures Library',
-            category: 'Systems Programming & Algorithms',
-            description: 'Comprehensive, high-performance Data Structures implementation written in standard C for maximum speed and efficient memory allocation.',
-            tech: ['C Programming', 'Pointers', 'Dynamic Memory (malloc/free)', 'Algorithms'],
-            features: [
-                'Implementations of Singly & Doubly Linked Lists',
-                'Stack & Queue memory-safe structures',
-                'Binary Search Tree (BST) insertion & traversals',
-                'Hash Table implementation with collision handling'
-            ],
-            github: 'https://github.com/Shekhar493'
+            github: 'https://github.com/Shekhar493/Python_Learning'
         }
     };
 
