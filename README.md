@@ -1,80 +1,85 @@
-# 🌿 Chandra Shekhar Yadav — Portfolio
+# Chandra Shekhar Yadav — Portfolio
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?logo=opencv&logoColor=white)](https://opencv.org/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-A minimalist, editorial, and timeless developer portfolio for **Chandra Shekhar Yadav** — highlighting AI voice streaming architectures, computer vision accessibility tools, real-time distributed backends, and geospatial systems.
+A minimalist personal portfolio showcasing my projects, experiments, and work across AI, software development, computer vision, geospatial systems, and game development.
 
-> *"I build useful digital products and explore technology through projects. Focused on real-time systems, streaming AI voice pipelines, computer vision tools, and reliable software architecture."*
-
----
-
-## 🌟 Highlighted Works
-
-1. 🎙️ **[Sonexa — AI Live Dubbing Platform](https://github.com/Shekhar493)**
-   - Real-time low-latency WebSocket audio streaming pipeline, Chrome extension for instant audio capture, Whisper/Deepgram ASR, translation engine, and synthetic AI voice generation with a modular provider architecture.
-   - **Stack**: FastAPI, WebSockets, Async Python, Chrome Extension, Whisper / Deepgram.
-
-2. 🕹️ **[Veilborn — Spatial Simulation & Game System](https://github.com/Shekhar493)**
-   - Procedural world generation and game mechanics engine experimenting with spatial navigation, deterministic state updates, and real-time interactive loops.
-   - **Stack**: Procedural Algorithms, State Machines, Interactive Systems.
-
-3. 🤟 **[Sign2Sound — Sign to Speech & Braille Translator](https://github.com/Shekhar493)**
-   - Computer vision platform detecting 21 hand landmarks in real time using OpenCV and Google MediaPipe, translating gestures to synthesized voice and Braille notation.
-   - **Stack**: Python, MediaPipe, OpenCV, Speech Synthesis (TTS).
-
-4. 🌍 **[Cultracast — Meteorological Intelligence Tool](https://github.com/Shekhar493)**
-   - Geospatial analytics platform aggregating localized meteorological metrics and weather visualizations for agricultural planning.
-   - **Stack**: Geospatial APIs, Data Processing, JavaScript, Mapping.
+> *"I build useful digital products and explore technology through projects."*
 
 ---
 
-## 🎨 Design Philosophy
+## Selected Projects
 
-- **Warm Editorial Aesthetic:** Off-white `#F7F7F5` backdrop, deep `#171717` typography, muted forest green `#2F5D50` accents.
-- **Clean Typography:** Manrope / Inter for headlines & narrative body text, paired with IBM Plex Mono for technical tags and specifications.
-- **Fast & Responsive:** Built with clean semantic HTML5, Vanilla CSS, and lightweight JS without unnecessary dependencies or heavy particle engines.
+1. **Sonexa — AI Live Dubbing Platform**
+   - Real-time live dubbing architecture using Chrome Extension audio capture, WebSocket streaming, ASR (Whisper/Deepgram), translation pipelines, and synthetic voice synthesis.
+   - **Stack:** FastAPI, WebSockets, Python, Chrome Extension, Whisper / Deepgram
+   - **Source:** Private Repository
+
+2. **Veilborn — Spatial Simulation & Game System**
+   - Exploratory game project experimenting with procedural generation, spatial navigation, and real-time state management.
+   - **Stack:** Procedural Logic, State Systems, Interactive UI
+   - **Source:** Private Repository
+
+3. **Sign2Sound — Sign Language to Speech Translator**
+   - Accessibility tool using OpenCV and MediaPipe to detect hand landmarks in real time and translate sign gestures into speech and Braille representations.
+   - **Stack:** Python, MediaPipe, OpenCV, Speech Synthesis (TTS)
+   - **Source:** Private Repository
+
+4. **Cultracast — Meteorological Intelligence Tool**
+   - Geospatial analytics platform aggregating weather data and localized visualizations for agricultural planning.
+   - **Stack:** Geospatial Data, JavaScript, Mapping APIs
+   - **Source:** Private Repository
 
 ---
 
-## 📁 Repository Structure
+## Design Philosophy
+
+- **Warm Editorial Aesthetic:** Off-white background (`#F7F7F5`), near-black typography (`#171717`), and muted forest green accents (`#2F5D50`).
+- **Clean Typography:** Manrope for headings, Inter for readable body text, and IBM Plex Mono for technical tags.
+- **Fast & Lightweight:** Built with semantic HTML5, Vanilla CSS, and modular JavaScript without heavy frameworks or bloated animation libraries.
+
+---
+
+## Repository Structure
 
 ```text
 portfolio/
-├── index.html          # Main landing page & selected work
-├── about.html          # Background, experience timeline & stack
-├── projects.html       # Complete categorized project archive
-├── contact.html        # Direct contact channels & inquiry form
-├── style.css           # Minimalist editorial design system
-├── profile.jpg         # Profile image asset
-├── package.json        # Dependencies and build scripts
-├── vite.config.js      # Multi-page build configuration
-└── vercel.json         # Vercel deployment configuration
+├── index.html        # Home page & selected work
+├── about.html        # Background, experience & skills
+├── projects.html     # Categorized project archive
+├── contact.html      # Contact channels & message form
+├── style.css         # Minimalist editorial design system
+├── profile.jpg       # Profile photo
+├── vite.config.js    # Multi-page build config
+├── vercel.json       # Deployment configuration
+├── package.json      # Dependencies and scripts
+└── README.md         # Documentation
 ```
 
 ---
 
-## 🚀 Development & Build
+## Getting Started
 
 ```bash
 # Install dependencies
 npm install
 
-# Start local development server
+# Run development server
 npm run dev
 
-# Build production bundle
+# Build for production
 npm run build
 
-# Preview production build locally
+# Preview build locally
 npm run preview
 ```
 
 ---
 
-## 📄 License
+## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
