@@ -1,5 +1,6 @@
 # Chandra Shekhar Yadav — Portfolio
 
+[![Live Site](https://img.shields.io/badge/Live-portfolio.vercel.app-2F5D50?logo=vercel&logoColor=white)](https://portfolio.vercel.app)
 [![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -7,6 +8,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 A minimalist personal portfolio showcasing my projects, experiments, and work across AI, Python systems, computer vision, and geospatial tools.
+
+🌐 **Live Website:** [portfolio.vercel.app](https://portfolio.vercel.app)
 
 > *"I build useful digital products and explore technology through projects."*
 
