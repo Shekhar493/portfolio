@@ -4,157 +4,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal & Contact | Chandra Shekhar Yadav | Developer Portfolio</title>
+    <title>Contact &middot; Chandra Shekhar Yadav</title>
+    <meta name="description" content="Get in touch with Chandra Shekhar Yadav for software engineering roles, project inquiries, and collaborations.">
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <canvas id="bg-canvas"></canvas>
-    <div class="cursor-follower"></div>
+    <!-- ── Minimalist Sticky Navbar ── -->
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-brand">
+                CHANDRA SHEKHAR YADAV
+            </a>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="logo">CS<span>Y</span></div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="arcade.html">Arcade</a></li>
-            <li><a href="contact.html" class="active">Contact</a></li>
-        </ul>
-        <div class="nav-actions">
-            <button class="nav-icon-btn" id="sound-toggle-btn" title="Toggle Sound" aria-label="Toggle Sound">
-                <i class="fas fa-volume-mute" id="sound-icon"></i>
-            </button>
-            <button class="nav-icon-btn" id="achievements-modal-btn" title="View Achievements" aria-label="View Achievements">
-                <i class="fas fa-trophy"></i>
-            </button>
-            <div class="mode-toggle-wrapper" title="Switch Mode">
-                <span class="mode-label">💼 Classic</span>
-                <label class="switch">
-                    <input type="checkbox" id="mode-toggle-checkbox">
-                    <span class="slider round"></span>
-                </label>
-                <span class="mode-label">🎮 Interactive</span>
-            </div>
-            <button class="cmd-k-btn" id="cmd-k-trigger" title="Quick Search (Ctrl+K)">
-                <i class="fas fa-search"></i>
-                <span class="cmd-k-badge">⌘K</span>
-            </button>
-            <div class="theme-dropdown">
-                <button class="theme-btn" id="theme-toggle" title="Switch Theme">
-                    <i class="fas fa-palette"></i>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Work</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">All Projects</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="nav-btn-contact">Get in touch</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+                    <i class="fas fa-bars"></i>
                 </button>
-                <div class="theme-menu" id="theme-menu">
-                    <button class="theme-option" data-theme="default">
-                        <i class="fas fa-fire" style="color: #38bdf8;"></i> Cosmic Cyan
-                    </button>
-                    <button class="theme-option" data-theme="violet">
-                        <i class="fas fa-bolt" style="color: #a855f7;"></i> Neon Violet
-                    </button>
-                    <button class="theme-option" data-theme="matrix">
-                        <i class="fas fa-terminal" style="color: #10b981;"></i> Matrix Green
-                    </button>
-                    <button class="theme-option" data-theme="cyberpunk">
-                        <i class="fas fa-vr-cardboard" style="color: #00f0ff;"></i> Cyberpunk
-                    </button>
-                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Main Contact Content -->
-    <main style="padding-top: 100px;">
-        <!-- Terminal Simulator Section -->
-        <section id="terminal" class="terminal-section section" style="margin-bottom: 4rem;">
-            <h2 class="section-title">CLI <span>Terminal</span></h2>
-            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Interactive shell simulator — type 'help' or click presets below</p>
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-label">Contact</div>
+                <h1 class="hero-name" style="margin-bottom: 1rem;">Let's Connect</h1>
+                <p style="font-size: 1.15rem; color: var(--text-secondary); max-width: 620px; margin-bottom: 3.5rem;">
+                    Have an opportunity, a technical question, or an interesting project idea? Drop a note below or reach out via direct channels.
+                </p>
 
-            <div class="terminal-container glass-card" style="max-width: 900px; margin: 0 auto; border-radius: 1rem; overflow: hidden;">
-                <div class="terminal-header" style="background: rgba(0,0,0,0.5); padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--glass-border);">
-                    <div style="display: flex; gap: 0.5rem;">
-                        <span style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f56; display: inline-block;"></span>
-                        <span style="width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e; display: inline-block;"></span>
-                        <span style="width: 12px; height: 12px; border-radius: 50%; background: #27c93f; display: inline-block;"></span>
+                <div class="contact-grid">
+                    <!-- Left: Direct Info -->
+                    <div>
+                        <h2 style="font-size: 1.35rem; margin-bottom: 1.25rem;">Direct Channels</h2>
+                        <div class="contact-info-list">
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="contact-info-label">Email</div>
+                                    <a href="mailto:shekharyadav493@gmail.com" class="contact-info-value" style="color: var(--accent);">
+                                        shekharyadav493@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon">
+                                    <i class="fas fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <div class="contact-info-label">Location</div>
+                                    <div class="contact-info-value">Kathmandu, Nepal (UTC+5:45)</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div>
+                                    <div class="contact-info-label">GitHub</div>
+                                    <a href="https://github.com/Shekhar493" target="_blank" rel="noopener noreferrer" class="contact-info-value" style="color: var(--accent);">
+                                        github.com/Shekhar493
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </div>
+                                <div>
+                                    <div class="contact-info-label">LinkedIn</div>
+                                    <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" rel="noopener noreferrer" class="contact-info-value" style="color: var(--accent);">
+                                        linkedin.com/in/chandra-shekhar-yadav
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <span style="font-family: var(--font-code); font-size: 0.85rem; color: #94a3b8;">shekhar@portfolio:~ (zsh)</span>
-                </div>
 
-                <div class="terminal-body" style="padding: 1.25rem; background: rgba(5, 8, 16, 0.95); font-family: var(--font-code); font-size: 0.9rem; min-height: 280px; max-height: 380px; overflow-y: auto;" id="terminal-output">
-                    <div class="terminal-line info" style="color: var(--primary-color);">Welcome to Chandra Shekhar's Interactive CLI v1.0. Type 'help' to get started.</div>
-                </div>
+                    <!-- Right: Clean Contact Form -->
+                    <div style="background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-card); padding: 2.25rem;">
+                        <h2 style="font-size: 1.35rem; margin-bottom: 1.5rem;">Send a Message</h2>
+                        <form id="contact-form" action="https://formspree.io/f/placeholder" method="POST">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Your Name</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Jane Doe" required>
+                            </div>
 
-                <form id="terminal-form" style="display: flex; background: #080c16; padding: 0.75rem 1.25rem; border-top: 1px solid var(--glass-border);">
-                    <span style="color: var(--primary-color); font-family: var(--font-code); margin-right: 0.6rem; font-weight: 600;">shekhar@portfolio:~$</span>
-                    <input type="text" id="terminal-input" style="flex: 1; background: transparent; border: none; outline: none; color: #fff; font-family: var(--font-code); font-size: 0.9rem;" placeholder="Type a command..." autocomplete="off">
-                </form>
+                            <div class="form-group">
+                                <label class="form-label" for="email">Your Email Address</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="jane@example.com" required>
+                            </div>
 
-                <div class="terminal-presets" style="padding: 0.75rem 1.25rem; background: rgba(0,0,0,0.3); display: flex; gap: 0.5rem; flex-wrap: wrap; border-top: 1px solid var(--glass-border);">
-                    <button class="preset-chip btn btn-secondary btn-sm" data-cmd="sonexa">sonexa</button>
-                    <button class="preset-chip btn btn-secondary btn-sm" data-cmd="sign2sound">sign2sound</button>
-                    <button class="preset-chip btn btn-secondary btn-sm" data-cmd="skills">skills</button>
-                    <button class="preset-chip btn btn-secondary btn-sm" data-cmd="achievements">achievements</button>
-                    <button class="preset-chip btn btn-secondary btn-sm" data-cmd="contact">contact</button>
-                </div>
-            </div>
-        </section>
+                            <div class="form-group">
+                                <label class="form-label" for="message">Message</label>
+                                <textarea id="message" name="message" class="form-control" placeholder="Tell me about your project, idea, or inquiry..." required></textarea>
+                            </div>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact section">
-            <h2 class="section-title">Get In <span>Touch</span></h2>
-            <div class="contact-container" style="max-width: 800px; margin: 0 auto; padding: 2.5rem; border-radius: 1.25rem;">
-                <form class="contact-form" id="contact-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
-                    <div class="input-group">
-                        <input type="text" id="contact-name" placeholder="Your Name" required style="width: 100%; padding: 1rem; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass-border); border-radius: 8px; color: #fff;">
+                            <button type="submit" class="btn btn-accent" style="width: 100%; margin-top: 0.5rem;">
+                                Send Message <i class="fas fa-paper-plane" style="font-size: 0.8rem;"></i>
+                            </button>
+                        </form>
                     </div>
-                    <div class="input-group">
-                        <input type="email" id="contact-email" placeholder="Your Email" required style="width: 100%; padding: 1rem; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass-border); border-radius: 8px; color: #fff;">
-                    </div>
-                    <div class="input-group">
-                        <textarea id="contact-message" placeholder="Your Message" rows="5" required style="width: 100%; padding: 1rem; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass-border); border-radius: 8px; color: #fff; font-family: var(--font-main);"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="contact-submit">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </form>
-
-                <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 2.5rem; flex-wrap: wrap;">
-                    <a href="mailto:chandrashekhary866@gmail.com" style="color: #94a3b8; text-decoration: none; font-size: 1rem;"><i class="fas fa-envelope" style="color:var(--primary-color);"></i> chandrashekhary866@gmail.com</a>
-                    <a href="https://github.com/Shekhar493" target="_blank" style="color: #94a3b8; text-decoration: none; font-size: 1rem;"><i class="fab fa-github" style="color:var(--primary-color);"></i> github.com/Shekhar493</a>
-                    <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" style="color: #94a3b8; text-decoration: none; font-size: 1rem;"><i class="fab fa-linkedin" style="color:var(--primary-color);"></i> Chandra Shekhar Yadav</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-socials">
-            <a href="https://www.facebook.com/share/1ABnJLtE1j/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/s_hekhar" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/Shekhar493" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <!-- ── Minimalist Footer ── -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                &copy; 2026 Chandra Shekhar Yadav &middot; Built with purpose and restraint.
+            </div>
+            <div class="footer-socials">
+                <a href="https://github.com/Shekhar493" target="_blank" title="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" title="LinkedIn" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/s_hekhar" target="_blank" title="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1ABnJLtE1j/" target="_blank" title="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            </div>
         </div>
-        <p>&copy; 2026 Chandra Shekhar Yadav. All rights reserved.</p>
-        <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">Based in Kathmandu, Nepal &nbsp;·&nbsp; AI Systems · Real-Time Apps · Computer Vision · GIS</p>
     </footer>
 
-    <!-- Command Palette Modal -->
-    <div class="cmd-palette-backdrop" id="cmd-palette">
-        <div class="cmd-palette-modal glass-card">
-            <div class="cmd-input-wrapper">
-                <i class="fas fa-search"></i>
-                <input type="text" id="cmd-input" placeholder="Type a command or search..." autocomplete="off">
-                <span class="cmd-esc-badge">ESC</span>
-            </div>
-            <div class="cmd-results" id="cmd-results"></div>
-        </div>
-    </div>
-
-    <script type="module" src="script.js"></script>
+    <script>
+        const toggleBtn = document.getElementById('mobile-toggle');
+        const navLinks = document.getElementById('nav-links');
+        if (toggleBtn && navLinks) {
+            toggleBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
 </body>
+
 </html>

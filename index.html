@@ -4,158 +4,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chandra Shekhar Yadav | Developer Portfolio</title>
-    <meta name="description" content="Software developer building AI systems, real-time WebSocket backends, computer vision tools, and geospatial applications.">
+    <title>Chandra Shekhar Yadav — Developer & Builder</title>
+    <meta name="description" content="Personal portfolio of Chandra Shekhar Yadav — Computer Science student building AI systems, real-time architectures, computer vision, and practical digital products.">
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body class="home-viewport-page">
-    <canvas id="bg-canvas"></canvas>
-    <div class="cursor-follower"></div>
+<body>
+    <!-- ── Minimalist Sticky Navbar ── -->
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-brand">
+                CHANDRA SHEKHAR YADAV
+            </a>
 
-    <nav class="navbar">
-        <div class="logo">CS<span>Y</span></div>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="arcade.html">Arcade</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="nav-actions">
-            <button class="nav-icon-btn" id="sound-toggle-btn" title="Toggle Sound" aria-label="Toggle Sound">
-                <i class="fas fa-volume-mute" id="sound-icon"></i>
-            </button>
-            <button class="nav-icon-btn" id="achievements-modal-btn" title="View Achievements" aria-label="View Achievements">
-                <i class="fas fa-trophy"></i>
-            </button>
-            <div class="mode-toggle-wrapper" title="Switch Mode">
-                <span class="mode-label">💼 Classic</span>
-                <label class="switch">
-                    <input type="checkbox" id="mode-toggle-checkbox">
-                    <span class="slider round"></span>
-                </label>
-                <span class="mode-label">🎮 Interactive</span>
-            </div>
-            <button class="cmd-k-btn" id="cmd-k-trigger" title="Quick Search (Ctrl+K)">
-                <i class="fas fa-search"></i>
-                <span class="cmd-k-badge">⌘K</span>
-            </button>
-            <div class="theme-dropdown">
-                <button class="theme-btn" id="theme-toggle" title="Switch Theme">
-                    <i class="fas fa-palette"></i>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#work" class="active">Work</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">All Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="nav-btn-contact">Get in touch</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+                    <i class="fas fa-bars"></i>
                 </button>
-                <div class="theme-menu" id="theme-menu">
-                    <button class="theme-option" data-theme="default">
-                        <i class="fas fa-fire" style="color: #38bdf8;"></i> Cosmic Cyan
-                    </button>
-                    <button class="theme-option" data-theme="violet">
-                        <i class="fas fa-bolt" style="color: #a855f7;"></i> Neon Violet
-                    </button>
-                    <button class="theme-option" data-theme="matrix">
-                        <i class="fas fa-terminal" style="color: #10b981;"></i> Matrix Green
-                    </button>
-                    <button class="theme-option" data-theme="cyberpunk">
-                        <i class="fas fa-vr-cardboard" style="color: #00f0ff;"></i> Cyberpunk
-                    </button>
-                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
     <main>
         <!-- ── Hero Section ── -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h2 class="reveal">Hello, I'm</h2>
-                <h1 class="reveal-delay-1">Chandra Shekhar <span>Yadav</span></h1>
-                <h3 class="reveal-delay-2" style="font-size: 1.4rem; color: #94a3b8; margin: 0.5rem 0 1rem 0;">
-                    Building <span class="typewriter-text"></span><span class="typewriter-cursor">|</span>
-                </h3>
-                <p class="reveal-delay-2">Software developer building AI systems, real-time WebSocket backends, computer vision tools, and geospatial applications that solve real-world problems.</p>
-                <div class="hero-btns reveal">
-                    <a href="projects.html" class="btn btn-primary"><i class="fas fa-layer-group"></i> View Projects</a>
-                    <a href="about.html" class="btn btn-secondary"><i class="fas fa-user"></i> About &amp; Skills</a>
-                    <a href="arcade.html" class="btn btn-secondary"><i class="fas fa-gamepad"></i> Play Arcade</a>
-                    <a href="contact.html" class="btn btn-secondary"><i class="fas fa-terminal"></i> Terminal</a>
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-text-col">
+                    <div class="hero-tag">
+                        <span class="status-dot"></span>
+                        <span>Available for engineering roles & collaborations</span>
+                    </div>
+
+                    <h1 class="hero-name">Chandra Shekhar Yadav</h1>
+                    <h2 class="hero-role">Computer Science Student &middot; Developer &amp; Builder</h2>
+
+                    <p class="hero-bio">
+                        I build useful digital products and explore technology through projects. Focused on real-time systems, streaming AI voice pipelines, computer vision tools, and reliable software architecture.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#work" class="btn btn-primary">
+                            View selected work <i class="fas fa-arrow-down" style="font-size: 0.8rem;"></i>
+                        </a>
+                        <a href="about.html" class="btn btn-secondary">
+                            About &amp; Background
+                        </a>
+                        <a href="https://github.com/Shekhar493" target="_blank" class="btn btn-secondary" title="GitHub Profile">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
                 </div>
-                <div class="hero-socials reveal">
-                    <a href="https://www.facebook.com/share/1ABnJLtE1j/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.instagram.com/s_hekhar" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://github.com/Shekhar493" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="profile-container">
-                    <div class="profile-inner">
-                        <img src="profile.jpg" alt="Chandra Shekhar Yadav" class="profile-img">
+
+                <div class="hero-avatar-col">
+                    <div class="hero-avatar">
+                        <img src="profile.jpg" alt="Chandra Shekhar Yadav" onerror="this.style.display='none'">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ── Stats Counter Section ── -->
-        <section class="stats-section">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-code-branch"></i></div>
-                    <div class="stat-number" data-target="8">0</div>
-                    <div class="stat-label">Projects Built</div>
+        <hr class="section-divider">
+
+        <!-- ── Selected Work Section ── -->
+        <section id="work" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <div class="section-label">Portfolio</div>
+                        <h2 class="section-title">Selected Work</h2>
+                    </div>
+                    <a href="projects.html" class="section-link">
+                        View all projects <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
-                    <div class="stat-number" data-target="20">0</div>
-                    <div class="stat-label">Technologies</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-brain"></i></div>
-                    <div class="stat-number" data-target="5">0</div>
-                    <div class="stat-label">AI Systems Built</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-trophy"></i></div>
-                    <div class="stat-number" data-target="3">0</div>
-                    <div class="stat-label">Hackathons</div>
+
+                <div class="projects-grid">
+                    <!-- Project 1: Sonexa -->
+                    <article class="project-card">
+                        <div class="project-info">
+                            <div class="project-meta-top">
+                                <span class="project-category">AI &amp; Real-Time</span>
+                                <span class="project-year">2026</span>
+                            </div>
+                            <h3 class="project-title">Sonexa — AI Live Dubbing Platform</h3>
+                            <p class="project-description">
+                                A real-time AI live dubbing architecture combining low-latency WebSocket streaming, Chrome extension audio capture, Whisper/Deepgram ASR, translation pipelines, and synthetic voice synthesis.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">FastAPI</span>
+                                <span class="tag">WebSockets</span>
+                                <span class="tag">Chrome Extension</span>
+                                <span class="tag">Whisper / Deepgram</span>
+                                <span class="tag">Python</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="projects.html#sonexa">
+                                    Project details <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <a href="https://github.com/Shekhar493" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i> Source code
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-visual">
+                            <i class="fas fa-headphones-simple"></i>
+                            <span>Real-Time Stream Pipeline</span>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Veilborn -->
+                    <article class="project-card">
+                        <div class="project-info">
+                            <div class="project-meta-top">
+                                <span class="project-category">Interactive &amp; Game Tech</span>
+                                <span class="project-year">2025 – 2026</span>
+                            </div>
+                            <h3 class="project-title">Veilborn — Spatial Simulation &amp; Game System</h3>
+                            <p class="project-description">
+                                An exploratory game development and procedural mechanics engine experimenting with spatial navigation, deterministic state updates, atmospheric shaders, and interactive gameplay loops.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Game Systems</span>
+                                <span class="tag">Procedural Logic</span>
+                                <span class="tag">Interactive UI</span>
+                                <span class="tag">State Management</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="projects.html#veilborn">
+                                    Project details <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <a href="https://github.com/Shekhar493" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i> Source code
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-visual">
+                            <i class="fas fa-cube"></i>
+                            <span>Simulation &amp; Logic</span>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Sign2Sound -->
+                    <article class="project-card">
+                        <div class="project-info">
+                            <div class="project-meta-top">
+                                <span class="project-category">Computer Vision</span>
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title">Sign2Sound — Accessibility Platform</h3>
+                            <p class="project-description">
+                                Computer vision system translating sign language gestures into real-time speech and accessible Braille representations using landmark tracking and neural classification.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">MediaPipe</span>
+                                <span class="tag">OpenCV</span>
+                                <span class="tag">TTS Engine</span>
+                                <span class="tag">Python</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="projects.html#sign2sound">
+                                    Project details <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <a href="https://github.com/Shekhar493" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i> Source code
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-visual">
+                            <i class="fas fa-hands-asl-interpreting"></i>
+                            <span>Landmark Tracking</span>
+                        </div>
+                    </article>
+
+                    <!-- Project 4: Cultracast -->
+                    <article class="project-card">
+                        <div class="project-info">
+                            <div class="project-meta-top">
+                                <span class="project-category">Geospatial &amp; Data</span>
+                                <span class="project-year">2024</span>
+                            </div>
+                            <h3 class="project-title">Cultracast — Meteorological Intelligence Tool</h3>
+                            <p class="project-description">
+                                Geospatial analysis and weather visualization platform providing localized climatic metrics, data aggregation, and responsive mapping interfaces for agricultural planning.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Geospatial API</span>
+                                <span class="tag">Data Visualization</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Mapping</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="projects.html#cultracast">
+                                    Project details <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <a href="https://github.com/Shekhar493" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i> Source code
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-visual">
+                            <i class="fas fa-earth-americas"></i>
+                            <span>Geospatial Engine</span>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
+        <hr class="section-divider">
 
+        <!-- ── Quick Overview / Stats ── -->
+        <section class="section" style="background-color: var(--card-bg);">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <div class="section-label">Engineering Snapshot</div>
+                        <h2 class="section-title">Core Competencies &amp; Focus</h2>
+                    </div>
+                </div>
+
+                <div class="skills-group-grid">
+                    <div class="skills-card">
+                        <h3><i class="fas fa-microchip"></i> AI &amp; Computer Vision</h3>
+                        <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                            Building practical pipelines around ASR speech-to-text, synthetic voice generation, OpenCV landmark tracking, and MediaPipe hand gesture analysis.
+                        </p>
+                        <div class="skills-pill-list">
+                            <span class="tag">MediaPipe</span>
+                            <span class="tag">OpenCV</span>
+                            <span class="tag">Whisper</span>
+                            <span class="tag">Deepgram</span>
+                            <span class="tag">PyTorch</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-card">
+                        <h3><i class="fas fa-server"></i> Backend &amp; Real-Time</h3>
+                        <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                            Designing asynchronous servers, bidirectional WebSocket communication, and robust API endpoints with clean modular separation of concerns.
+                        </p>
+                        <div class="skills-pill-list">
+                            <span class="tag">Python</span>
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">WebSockets</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">REST APIs</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-card">
+                        <h3><i class="fas fa-layer-group"></i> Frontend &amp; Product UI</h3>
+                        <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                            Crafting clean, accessible, and responsive user interfaces with vanilla CSS, modern JavaScript, and component libraries.
+                        </p>
+                        <div class="skills-pill-list">
+                            <span class="tag">HTML5 / Modern CSS</span>
+                            <span class="tag">JavaScript (ES6+)</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Chrome Extensions</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-card">
+                        <h3><i class="fas fa-compass-drafting"></i> Engineering Principles</h3>
+                        <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                            Dedicated to timeless software design: clean repository structures, strong documentation, defensive error handling, and performance optimization.
+                        </p>
+                        <div class="skills-pill-list">
+                            <span class="tag">Git &amp; GitHub</span>
+                            <span class="tag">System Design</span>
+                            <span class="tag">Clean Code</span>
+                            <span class="tag">Documentation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- ── Contact Callout ── -->
+        <section class="section">
+            <div class="container-narrow" style="text-align: center;">
+                <div class="section-label">Get in Touch</div>
+                <h2 class="section-title" style="margin-bottom: 1rem;">Let's build something meaningful.</h2>
+                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                    I am always interested in discussing new engineering projects, research collaborations, or software development opportunities.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn btn-accent">
+                        Send a message <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="mailto:contact@chandrashekhar.dev" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Email directly
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <div class="footer-socials">
-            <a href="https://www.facebook.com/share/1ABnJLtE1j/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/s_hekhar" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/Shekhar493" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <!-- ── Minimalist Footer ── -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                &copy; 2026 Chandra Shekhar Yadav &middot; Built with purpose and restraint.
+            </div>
+            <div class="footer-socials">
+                <a href="https://github.com/Shekhar493" target="_blank" title="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" title="LinkedIn" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/s_hekhar" target="_blank" title="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1ABnJLtE1j/" target="_blank" title="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            </div>
         </div>
-        <p>&copy; 2026 Chandra Shekhar Yadav. All rights reserved.</p>
-        <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">Based in Kathmandu, Nepal &nbsp;·&nbsp; AI Systems · Real-Time Apps · Computer Vision · GIS</p>
     </footer>
 
-    <button id="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-
-    <!-- Command Palette -->
-    <div class="cmd-palette-backdrop" id="cmd-palette">
-        <div class="cmd-palette-container">
-            <div class="cmd-search-wrapper">
-                <i class="fas fa-search"></i>
-                <input type="text" id="cmd-input" class="cmd-input" placeholder="Search pages, themes, GitHub...">
-            </div>
-            <div class="cmd-results" id="cmd-results"></div>
-        </div>
-    </div>
-
-    <!-- Toast Notifications -->
-    <div class="toast-container" id="toast-container"></div>
-
-    <script type="module" src="script.js"></script>
+    <script>
+        // Minimal mobile navigation toggle
+        const toggleBtn = document.getElementById('mobile-toggle');
+        const navLinks = document.getElementById('nav-links');
+        if (toggleBtn && navLinks) {
+            toggleBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
 </body>
 
 </html>

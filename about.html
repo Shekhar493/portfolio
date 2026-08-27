@@ -4,222 +4,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About &amp; Skills | Chandra Shekhar Yadav</title>
-    <meta name="description" content="About Chandra Shekhar Yadav — engineering story, technical skills, and proficiency in AI, backend, GIS, and frontend development.">
+    <title>About &middot; Chandra Shekhar Yadav</title>
+    <meta name="description" content="Background, engineering philosophy, and technical experience of Chandra Shekhar Yadav.">
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <canvas id="bg-canvas"></canvas>
-    <div class="cursor-follower"></div>
+    <!-- ── Minimalist Sticky Navbar ── -->
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-brand">
+                CHANDRA SHEKHAR YADAV
+            </a>
 
-    <nav class="navbar">
-        <div class="logo">CS<span>Y</span></div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" class="active">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="arcade.html">Arcade</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="nav-actions">
-            <button class="nav-icon-btn" id="sound-toggle-btn" title="Toggle Sound" aria-label="Toggle Sound">
-                <i class="fas fa-volume-mute" id="sound-icon"></i>
-            </button>
-            <button class="cmd-k-btn" id="cmd-k-trigger" title="Quick Search (Ctrl+K)">
-                <i class="fas fa-search"></i>
-                <span class="cmd-k-badge">⌘K</span>
-            </button>
-            <div class="theme-dropdown">
-                <button class="theme-btn" id="theme-toggle" title="Switch Theme">
-                    <i class="fas fa-palette"></i>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Work</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="projects.html">All Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="nav-btn-contact">Get in touch</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+                    <i class="fas fa-bars"></i>
                 </button>
-                <div class="theme-menu" id="theme-menu">
-                    <button class="theme-option" data-theme="default"><i class="fas fa-fire" style="color:#38bdf8;"></i> Cosmic Cyan</button>
-                    <button class="theme-option" data-theme="violet"><i class="fas fa-bolt" style="color:#a855f7;"></i> Neon Violet</button>
-                    <button class="theme-option" data-theme="matrix"><i class="fas fa-terminal" style="color:#10b981;"></i> Matrix Green</button>
-                    <button class="theme-option" data-theme="cyberpunk"><i class="fas fa-vr-cardboard" style="color:#00f0ff;"></i> Cyberpunk</button>
-                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <main style="padding-top: 90px;">
+    <main>
+        <!-- ── About Hero ── -->
+        <section class="section" style="padding-bottom: 2rem;">
+            <div class="container-narrow">
+                <div class="section-label">Background &amp; Philosophy</div>
+                <h1 class="hero-name" style="margin-bottom: 1.5rem;">About Me</h1>
 
-        <!-- ── About Section ── -->
-        <section id="about" class="about section">
-            <h2 class="section-title">About <span>Me</span></h2>
-            <div class="about-container">
-                <div class="about-text">
-                    <p style="font-size: 1.15rem; line-height: 1.8; color: #f1f5f9; margin-bottom: 1.2rem;">
-                        I'm a software developer passionate about building intelligent systems that solve real-world problems. My interests span <strong>Artificial Intelligence</strong>, <strong>Full-Stack Web Development</strong>, <strong>Computer Vision</strong>, <strong>Accessibility Technologies</strong>, and <strong>Geospatial Applications</strong>.
+                <div class="about-prose">
+                    <p>
+                        I am a <strong>Computer Science student and software developer</strong> based in Kathmandu, Nepal. I spend my time designing and building software systems with an emphasis on real-time streaming architectures, AI pipelines, computer vision models, and practical utility.
                     </p>
-                    <p style="font-size: 1.05rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 1.2rem;">
-                        I enjoy designing scalable architectures, developing real-time applications (WebSockets, streaming ASR/TTS), and transforming innovative ideas into practical products. With a strong builder mindset, I prefer long-term, high-impact projects over quick tutorials.
+                    <p>
+                        My journey as a builder is guided by curiosity and craftsmanship. Rather than assembling fragile surface-level demos, I focus on understanding underlying protocols—how WebSocket frames are streamed under latency constraints, how landmark coordinate vectors translate into accessible sign recognition, and how software design choices impact maintainability over years.
                     </p>
-                    <p style="font-size: 1.05rem; line-height: 1.7; color: #94a3b8;">
-                        I'm continuously expanding my skills through hands-on projects, open-source development, and hackathons, with the ultimate goal of creating technology that has meaningful, lasting impact.
+                    <p>
+                        When I'm not writing Python or designing user interfaces, I explore spatial game architectures, geospatial analysis tools, and open-source contributions.
                     </p>
-                    <div class="hero-btns reveal" style="margin-top: 2rem;">
-                        <a href="projects.html" class="btn btn-primary"><i class="fas fa-layer-group"></i> View Projects</a>
-                        <a href="contact.html" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Me</a>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- ── Technical Focus & Experience ── -->
+        <section class="section">
+            <div class="container-narrow">
+                <div class="section-label">Experience &amp; Milestones</div>
+                <h2 class="section-title" style="margin-bottom: 2rem;">Timeline</h2>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-period">2025 — PRESENT</div>
+                        <h3 class="timeline-title">Independent Software Builder &amp; Researcher</h3>
+                        <p class="timeline-sub">
+                            Architected flagship projects including <strong>Sonexa</strong> (low-latency AI live dubbing pipeline) and <strong>Veilborn</strong> (interactive spatial system), establishing clean modular microservices and real-time streaming interfaces.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-period">2024 — 2025</div>
+                        <h3 class="timeline-title">Computer Vision &amp; Accessibility Research</h3>
+                        <p class="timeline-sub">
+                            Developed <strong>Sign2Sound</strong>, leveraging MediaPipe landmark recognition and speech synthesis engines to bridge communication barriers for hearing and visually impaired users.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-period">2023 — 2026 (EXPECTED)</div>
+                        <h3 class="timeline-title">Bachelor of Science in Computer Science</h3>
+                        <p class="timeline-sub">
+                            Studying foundational computation, data structures &amp; algorithms, distributed systems, database management, and discrete mathematics.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ── Skills Section ── -->
-        <section id="skills" class="skills section">
-            <h2 class="section-title">Technical <span>Expertise</span></h2>
-            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Core domains, frameworks, and engineering tools.</p>
-            <div class="skills-grid">
-                <div class="skill-card" data-skill="ai">
-                    <div class="skill-icon"><i class="fas fa-brain"></i></div>
-                    <h3>AI &amp; Computer Vision</h3>
-                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">OpenCV, MediaPipe, Speech ASR/TTS, Translation Pipelines</p>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar-fill" data-progress="92%"></div>
+        <hr class="section-divider">
+
+        <!-- ── Detailed Skills & Tooling ── -->
+        <section class="section" style="background-color: var(--card-bg);">
+            <div class="container-narrow">
+                <div class="section-label">Stack</div>
+                <h2 class="section-title" style="margin-bottom: 2rem;">Tools &amp; Technologies</h2>
+
+                <div style="display: flex; flex-direction: column; gap: 2rem;">
+                    <div>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--text-main);">
+                            Languages &amp; Runtimes
+                        </h3>
+                        <div class="skills-pill-list">
+                            <span class="tag">Python 3</span>
+                            <span class="tag">JavaScript (ES6+)</span>
+                            <span class="tag">C / C++</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">HTML5 / CSS3</span>
+                        </div>
                     </div>
-                    <div class="skill-percentage">92% Proficiency</div>
-                </div>
-                <div class="skill-card" data-skill="backend">
-                    <div class="skill-icon"><i class="fas fa-server"></i></div>
-                    <h3>Backend &amp; Real-Time</h3>
-                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">Python, FastAPI, WebSockets, Async Pipelines, REST APIs</p>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar-fill" data-progress="94%"></div>
+
+                    <div>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--text-main);">
+                            AI &amp; Computer Vision Frameworks
+                        </h3>
+                        <div class="skills-pill-list">
+                            <span class="tag">MediaPipe</span>
+                            <span class="tag">OpenCV</span>
+                            <span class="tag">OpenAI Whisper</span>
+                            <span class="tag">Deepgram API</span>
+                            <span class="tag">PyTorch Basics</span>
+                            <span class="tag">gTTS &amp; Kokoro TTS</span>
+                        </div>
                     </div>
-                    <div class="skill-percentage">94% Proficiency</div>
-                </div>
-                <div class="skill-card" data-skill="frontend">
-                    <div class="skill-icon"><i class="fab fa-react"></i></div>
-                    <h3>Frontend &amp; Extensions</h3>
-                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">React, TypeScript, JS ES6+, Chrome Extensions, Vite</p>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar-fill" data-progress="90%"></div>
+
+                    <div>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--text-main);">
+                            Backend &amp; Infrastructure
+                        </h3>
+                        <div class="skills-pill-list">
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">WebSockets (asyncio)</span>
+                            <span class="tag">Node.js / Express</span>
+                            <span class="tag">RESTful Architecture</span>
+                            <span class="tag">Git &amp; GitHub</span>
+                            <span class="tag">Linux / Unix Shell</span>
+                        </div>
                     </div>
-                    <div class="skill-percentage">90% Proficiency</div>
-                </div>
-                <div class="skill-card" data-skill="gis">
-                    <div class="skill-icon"><i class="fas fa-globe-americas"></i></div>
-                    <h3>GIS &amp; Spatial Tech</h3>
-                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">GeoPandas, OSMnx, Folium, PyDeck, OpenStreetMap, PostGIS</p>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar-fill" data-progress="88%"></div>
+
+                    <div>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--text-main);">
+                            Geospatial &amp; Data
+                        </h3>
+                        <div class="skills-pill-list">
+                            <span class="tag">Geospatial Data Processing</span>
+                            <span class="tag">Leaflet / Mapbox</span>
+                            <span class="tag">Data Wrangling</span>
+                            <span class="tag">JSON Pipelines</span>
+                        </div>
                     </div>
-                    <div class="skill-percentage">88% Proficiency</div>
-                </div>
-                <div class="skill-card" data-skill="engineering">
-                    <div class="skill-icon"><i class="fas fa-cubes"></i></div>
-                    <h3>Software Engineering</h3>
-                    <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.3rem;">Monorepo Architecture, Modular Design, C, Git, Pytest, Linux/macOS</p>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar-fill" data-progress="91%"></div>
-                    </div>
-                    <div class="skill-percentage">91% Proficiency</div>
                 </div>
             </div>
         </section>
 
-        <!-- ── Technologies Tag Cloud ── -->
-        <section class="section" style="padding: 5rem 2rem;">
-            <h2 class="section-title">Technologies &amp; <span>Tools</span></h2>
-            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 3rem;">Every tool I use to build real-world systems.</p>
-            <div style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; max-width:900px; margin:0 auto 4rem;">
-                <span class="tech-pill"><i class="fab fa-python"></i> Python</span>
-                <span class="tech-pill"><i class="fab fa-js-square"></i> JavaScript</span>
-                <span class="tech-pill"><i class="fab fa-react"></i> React</span>
-                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" style="width:14px;height:14px;vertical-align:middle;"> TypeScript</span>
-                <span class="tech-pill"><i class="fab fa-html5"></i> HTML5</span>
-                <span class="tech-pill"><i class="fab fa-css3-alt"></i> CSS3</span>
-                <span class="tech-pill"><i class="fas fa-code"></i> C</span>
-                <span class="tech-pill"><i class="fas fa-server"></i> FastAPI</span>
-                <span class="tech-pill"><i class="fas fa-plug"></i> WebSockets</span>
-                <span class="tech-pill"><i class="fas fa-bolt"></i> Async Python</span>
-                <span class="tech-pill"><i class="fas fa-eye"></i> OpenCV</span>
-                <span class="tech-pill"><i class="fas fa-hand-paper"></i> MediaPipe</span>
-                <span class="tech-pill"><i class="fas fa-microphone"></i> Whisper / Deepgram</span>
-                <span class="tech-pill"><i class="fas fa-globe-americas"></i> GeoPandas</span>
-                <span class="tech-pill"><i class="fas fa-map"></i> OSMnx</span>
-                <span class="tech-pill"><i class="fas fa-map-marked-alt"></i> Folium</span>
-                <span class="tech-pill"><i class="fas fa-database"></i> PostGIS</span>
-                <span class="tech-pill"><i class="fab fa-chrome"></i> Chrome Extensions</span>
-                <span class="tech-pill"><i class="fab fa-git-alt"></i> Git / GitHub</span>
-                <span class="tech-pill"><i class="fas fa-vial"></i> Pytest</span>
-                <span class="tech-pill"><i class="fab fa-linux"></i> Linux / macOS</span>
-                <span class="tech-pill"><i class="fas fa-wind"></i> Vite</span>
+        <hr class="section-divider">
+
+        <!-- ── Contact Callout ── -->
+        <section class="section">
+            <div class="container-narrow" style="text-align: center;">
+                <h2 class="section-title" style="margin-bottom: 1rem;">Interested in collaborating?</h2>
+                <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                    Whether it's discussing an open-source project, technical question, or prospective role, feel free to reach out.
+                </p>
+                <a href="contact.html" class="btn btn-accent">Contact me &rarr;</a>
             </div>
         </section>
-
-        <!-- ── Key Achievements ── -->
-        <section id="achievements" class="section" style="padding: 5rem 2rem;">
-            <h2 class="section-title">Key <span>Achievements</span></h2>
-            <p class="section-subtitle" style="text-align:center; color:#94a3b8; margin-bottom: 3rem;">Milestones built through hands-on projects and real-world problem solving.</p>
-            <div id="explorer-progress" style="max-width: 1100px; margin: 0 auto 3rem auto;"></div>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; max-width:1100px; margin:0 auto;">
-                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <div style="font-size:2rem; margin-bottom:1rem;">🤖</div>
-                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Built Multiple AI-Based Applications</h4>
-                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Developed AI pipelines for live dubbing (Sonexa), sign language detection (Sign2Sound), and applied machine learning models.</p>
-                </div>
-                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <div style="font-size:2rem; margin-bottom:1rem;">⚡</div>
-                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Developed Real-Time WebSocket Systems</h4>
-                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Engineered low-latency WebSocket streaming backends and Chrome extension audio pipelines for real-time AI dubbing.</p>
-                </div>
-                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <div style="font-size:2rem; margin-bottom:1rem;">🏆</div>
-                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Participated in Hackathons</h4>
-                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Built The Last Minute Saver during Hackfest x Google for Developers, competing under tight deadlines with real delivery.</p>
-                </div>
-                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <div style="font-size:2rem; margin-bottom:1rem;">♿</div>
-                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Accessibility-Focused Technology</h4>
-                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Built Sign2Sound — a Computer Vision platform enabling people who use sign language to communicate through speech.</p>
-                </div>
-                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <div style="font-size:2rem; margin-bottom:1rem;">🗺️</div>
-                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">GIS-Based Visualization Tools</h4>
-                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Built Mapping Tomorrow — a geospatial disaster risk &amp; circular economy resource dashboard for Pokhara, Nepal.</p>
-                </div>
-                <div class="achievement-card glass-card" style="padding:1.75rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.08); background:var(--glass-card); transition:transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <div style="font-size:2rem; margin-bottom:1rem;">🧩</div>
-                    <h4 style="color:#f1f5f9; margin-bottom:0.5rem; font-family:var(--font-heading);">Scalable Monorepo Architecture</h4>
-                    <p style="color:#94a3b8; font-size:0.9rem; line-height:1.6;">Designed modular monorepo backends with pluggable provider abstractions covering ASR, translation, and TTS services.</p>
-                </div>
-            </div>
-        </section>
-
     </main>
 
-    <footer>
-        <div class="footer-socials">
-            <a href="https://github.com/Shekhar493" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/s_hekhar" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/share/1ABnJLtE1j/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <!-- ── Minimalist Footer ── -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                &copy; 2026 Chandra Shekhar Yadav &middot; Built with purpose and restraint.
+            </div>
+            <div class="footer-socials">
+                <a href="https://github.com/Shekhar493" target="_blank" title="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/chandra-shekhar-yadav-a359a4346" target="_blank" title="LinkedIn" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/s_hekhar" target="_blank" title="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1ABnJLtE1j/" target="_blank" title="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            </div>
         </div>
-        <p>&copy; 2026 Chandra Shekhar Yadav. All rights reserved.</p>
-        <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">Based in Kathmandu, Nepal &nbsp;·&nbsp; AI Systems · Real-Time Apps · Computer Vision · GIS</p>
     </footer>
 
-    <button id="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-
-    <div class="cmd-palette-backdrop" id="cmd-palette">
-        <div class="cmd-palette-container">
-            <div class="cmd-search-wrapper">
-                <i class="fas fa-search"></i>
-                <input type="text" id="cmd-input" class="cmd-input" placeholder="Search pages, themes...">
-            </div>
-            <div class="cmd-results" id="cmd-results"></div>
-        </div>
-    </div>
-    <div class="toast-container" id="toast-container"></div>
-    <script type="module" src="script.js"></script>
+    <script>
+        const toggleBtn = document.getElementById('mobile-toggle');
+        const navLinks = document.getElementById('nav-links');
+        if (toggleBtn && navLinks) {
+            toggleBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
 </body>
 
 </html>
