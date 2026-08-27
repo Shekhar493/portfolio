@@ -6,7 +6,7 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-A minimalist personal portfolio showcasing my projects, experiments, and work across AI, software development, computer vision, geospatial systems, and game development.
+A minimalist personal portfolio showcasing my projects, experiments, and work across AI, Python systems, computer vision, and geospatial tools.
 
 > *"I build useful digital products and explore technology through projects."*
 
@@ -14,24 +14,24 @@ A minimalist personal portfolio showcasing my projects, experiments, and work ac
 
 ## Selected Projects
 
-1. **Sonexa — AI Live Dubbing Platform**
+1. **InnerTwin — AI Persona & Interaction Scaffold**
+   - Interactive AI agent architecture exploring digital persona synthesis, real-time context streaming, conversational memory, and responsive UI scaffolding.
+   - **Stack:** AI Systems, Next.js / React, Python Backend, Streaming APIs
+   - **Live Application:** [innertwin-scaffold.vercel.app](https://innertwin-scaffold.vercel.app/)
+
+2. **Cultracast — Meteorological Intelligence Tool**
+   - Full-stack geospatial analytics platform aggregating weather data and localized visualizations for agricultural planning.
+   - **Stack:** Python, Geospatial Data, JavaScript, Mapping APIs
+   - **Live Application:** [cultracast.vercel.app](https://cultracast.vercel.app/)
+
+3. **Sonexa — AI Live Dubbing Platform**
    - Real-time live dubbing architecture using Chrome Extension audio capture, WebSocket streaming, ASR (Whisper/Deepgram), translation pipelines, and synthetic voice synthesis.
-   - **Stack:** FastAPI, WebSockets, Python, Chrome Extension, Whisper / Deepgram
+   - **Stack:** Python (FastAPI), WebSockets, Chrome Extension, Whisper / Deepgram
    - **Source:** Private Repository
 
-2. **Veilborn — Spatial Simulation & Game System**
-   - Exploratory game project experimenting with procedural generation, spatial navigation, and real-time state management.
-   - **Stack:** Procedural Logic, State Systems, Interactive UI
-   - **Source:** Private Repository
-
-3. **Sign2Sound — Sign Language to Speech Translator**
-   - Accessibility tool using OpenCV and MediaPipe to detect hand landmarks in real time and translate sign gestures into speech and Braille representations.
+4. **Sign2Sound — Sign Language to Speech Translator**
+   - Accessibility tool using Python, OpenCV, and MediaPipe to detect hand landmarks in real time and translate sign gestures into speech and Braille representations.
    - **Stack:** Python, MediaPipe, OpenCV, Speech Synthesis (TTS)
-   - **Source:** Private Repository
-
-4. **Cultracast — Meteorological Intelligence Tool**
-   - Geospatial analytics platform aggregating weather data and localized visualizations for agricultural planning.
-   - **Stack:** Geospatial Data, JavaScript, Mapping APIs
    - **Source:** Private Repository
 
 ---
